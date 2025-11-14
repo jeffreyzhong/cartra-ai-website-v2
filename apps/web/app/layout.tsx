@@ -21,7 +21,12 @@ export const metadata: Metadata = {
   title: "Cartra | Custom AI Agents",
   description: "Custom AI Agents That Bring Efficiency & Productivity to Your Business. Cut operational costs by replacing manual processes with customized AI Agents tailored to your company.",
   icons: {
-    icon: '/cartra_geometric_logo_small.png',
+    icon: [
+      { url: '/cartra_geometric_logo_round_v2.png', sizes: 'any' },
+      { url: '/cartra_geometric_logo_round_v2.png', type: 'image/png' },
+    ],
+    apple: '/cartra_geometric_logo_round_v2.png',
+    shortcut: '/cartra_geometric_logo_round_v2.png',
   },
 };
 
