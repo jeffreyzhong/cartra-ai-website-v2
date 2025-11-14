@@ -33,9 +33,12 @@ export default function Home() {
             </FadeIn>
             <FadeIn delay={400}>
               <div className="flex items-center justify-center gap-6 mb-12 flex-wrap">
-                <CalendlyButton className="inline-block bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors cursor-pointer">
-                  Book a Free Consultation
-                </CalendlyButton>
+                <div className="flex flex-col">
+                  <CalendlyButton className="inline-block bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors cursor-pointer">
+                    Book a Free Consultation
+                  </CalendlyButton>
+                  <p className="text-sm text-gray-600 mt-2">or email us at <span className="underline">team@cartra.ai</span></p>
+                </div>
                 <div className="flex items-center gap-2 text-sm text-gray-700">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
@@ -654,7 +657,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-xl font-heading">Cartra</p>
+              <p className="text-xl font-heading mb-2">Cartra AI</p>
+              <div className="text-sm text-gray-600">
+                <p>2261 Market Street STE 85777</p>
+                <p>San Francisco, CA 94114</p>
+              </div>
             </div>
             <div className="flex flex-wrap gap-6 text-sm text-gray-600">
               <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
