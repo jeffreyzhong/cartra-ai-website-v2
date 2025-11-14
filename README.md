@@ -131,9 +131,13 @@ To deploy this monorepo to Vercel:
    - Go to your Vercel dashboard
    - Click "Add New Project"
    - Select your repository
-   - **Important**: Set the **Root Directory** to `apps/web`
-   - Vercel will automatically detect Next.js from the `package.json` in that directory
-   - The build settings should be automatically configured via the `vercel.json` file
+   - **Important**: Configure the following settings:
+     - **Root Directory**: Set to `apps/web`
+     - **Framework Preset**: Next.js (should auto-detect)
+     - **Build Command**: `cd ../.. && pnpm install && pnpm build --filter=web`
+     - **Output Directory**: `.next` (default, should auto-detect)
+     - **Install Command**: `cd ../.. && pnpm install`
+   - Vercel will automatically detect Next.js from the `package.json` in the `apps/web` directory
 
 Alternatively, you can use Vercel CLI:
 ```sh
