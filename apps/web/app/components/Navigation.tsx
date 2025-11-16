@@ -11,7 +11,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 text-3xl text-gray-900 font-heading">
             <Image 
-              src="/cartra_geometric_logo_round_v2.png" 
+              src="/cartra_geometric_logo_round.png" 
               alt="Cartra Logo" 
               width={32} 
               height={32}
