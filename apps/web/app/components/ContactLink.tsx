@@ -7,7 +7,7 @@ interface ContactLinkProps {
 export default function ContactLink({ className }: ContactLinkProps) {
   const handleClick = () => {
     if (typeof window !== 'undefined' && (window as any).Calendly) {
-      (window as any).Calendly.initPopupWidget({url: 'https://calendly.com/jeff-cartra/30min'});
+      (window as any).Calendly.initPopupWidget({url: 'https://calendly.com/jeff-cartra/discovery-call'});
     }
   };
 

@@ -6,7 +6,24 @@ import ContactLink from './components/ContactLink';
 import Link from 'next/link';
 import Image from 'next/image';
 
+function getQuarterAvailability() {
+  const now = new Date();
+  const month = now.getMonth();
+  const quarter = Math.floor(month / 3) + 1;
+  const year = now.getFullYear();
+  const quarterStartMonth = (quarter - 1) * 3;
+  const quarterStart = new Date(year, quarterStartMonth, 1);
+  const quarterEnd = new Date(year, quarterStartMonth + 3, 1);
+  const totalDays = (quarterEnd.getTime() - quarterStart.getTime()) / (1000 * 60 * 60 * 24);
+  const daysElapsed = (now.getTime() - quarterStart.getTime()) / (1000 * 60 * 60 * 24);
+  const progress = daysElapsed / totalDays;
+  const spots = Math.max(2, Math.round(9 - 7 * progress));
+  return { quarter, year, spots };
+}
+
 export default function Home() {
+  const { quarter, year, spots } = getQuarterAvailability();
+
   return (
     <div className="min-h-screen text-gray-900">
       <Navigation />
@@ -44,7 +61,7 @@ export default function Home() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
                   </span>
-                  <span className="font-medium">Accepting 2 more clients in Q4 2025</span>
+                  <span className="font-medium">Accepting {spots} more client{spots !== 1 ? 's' : ''} in Q{quarter} {year}</span>
                 </div>
               </div>
             </FadeIn>
@@ -646,7 +663,7 @@ export default function Home() {
               Book a Free Consultation
             </CalendlyButton>
           </div>
-          <p className="mt-6 text-sm text-gray-500">Limited Availability - Accepting 2 More Clients in Q4 2025</p>
+          <p className="mt-6 text-sm text-gray-500">Limited Availability - Accepting {spots} More Client{spots !== 1 ? 's' : ''} in Q{quarter} {year}</p>
         </div>
       </section>
       </FadeIn>
