@@ -1,0 +1,246 @@
+/**
+ * Cartra Design System — Component Styles
+ *
+ * CSS classes that back the primitive components. Apps import this
+ * once and the components reference these class names.
+ *
+ * Naming: `.ds-{component}[-{variant}]`
+ */
+
+/* ── Display headline ──────────────────────────────────── */
+
+.ds-display {
+  font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.028em;
+  color: var(--c-text);
+  text-wrap: balance;
+}
+
+.ds-display em {
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: italic;
+  letter-spacing: inherit;
+  color: var(--c-text);
+  position: relative;
+  padding: 0 0.04em;
+  background-image: linear-gradient(to right, var(--c-orange), var(--c-orange));
+  background-size: 0% 0.12em;
+  background-position: 0 92%;
+  background-repeat: no-repeat;
+  animation: ds-underline-draw var(--duration-slow) var(--ease-out) 1180ms forwards;
+}
+
+/* ── Body paragraph ────────────────────────────────────── */
+
+.ds-body {
+  font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  max-width: 52ch;
+  text-wrap: pretty;
+}
+
+/* ── Eyebrow label ─────────────────────────────────────── */
+
+.ds-eyebrow {
+  font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--text-body-xs);
+  letter-spacing: var(--tracking-wide);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ds-eyebrow-accent {
+  color: var(--c-accent);
+}
+
+.ds-eyebrow-muted {
+  color: var(--c-text-soft);
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-loose);
+}
+
+.ds-eyebrow-soft {
+  color: var(--c-text-soft);
+  font-size: var(--text-caption);
+}
+
+.ds-eyebrow[data-with-dot="true"]::before {
+  content: '';
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+}
+
+/* ── Button ────────────────────────────────────────────── */
+
+.ds-btn {
+  font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-snug);
+  font-weight: 500;
+  letter-spacing: var(--tracking-snug);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) calc(var(--space-md) + var(--space-2xs));
+  border-radius: var(--radius-pill);
+  border: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform var(--duration-medium) var(--ease-out-soft),
+    background var(--duration-base) var(--ease-out-soft),
+    color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-medium) var(--ease-out-soft);
+}
+
+.ds-btn:hover {
+  transform: scale(1.015);
+}
+
+.ds-btn-primary {
+  background: var(--c-navy);
+  color: var(--c-on-dark);
+}
+.ds-btn-primary:hover {
+  background: var(--c-navy-2);
+  box-shadow:
+    inset 0 1px 0 0 color-mix(in oklab, white 14%, transparent),
+    0 8px 24px -10px color-mix(in oklab, var(--c-navy) 70%, transparent);
+}
+
+.ds-btn-ghost {
+  background: transparent;
+  color: var(--c-text);
+}
+.ds-btn-ghost:hover {
+  background: var(--c-surface);
+  color: var(--c-text);
+}
+
+/* ── Logo pill ─────────────────────────────────────────── */
+
+.ds-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) calc(var(--space-md) - 0.15rem);
+  border-radius: var(--radius-md);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.ds-logo-pill:hover {
+  transform: translateY(-1px);
+}
+
+/* ── Card ──────────────────────────────────────────────── */
+
+.ds-card {
+  border-radius: var(--radius-xl);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.ds-card-frosted {
+  background: color-mix(in oklab, var(--c-surface) 55%, transparent);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid color-mix(in oklab, var(--c-text) 7%, transparent);
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, white 60%, transparent) inset,
+    0 12px 32px -16px color-mix(in oklab, var(--c-text) 14%, transparent);
+}
+
+.ds-card-panel {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+}
+
+.ds-card-navy {
+  background: var(--c-navy);
+  color: var(--c-on-dark);
+  border: 1px solid color-mix(in oklab, white 6%, transparent);
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, white 8%, transparent) inset,
+    0 30px 60px -30px color-mix(in oklab, var(--c-navy) 80%, transparent),
+    0 8px 20px -12px color-mix(in oklab, var(--c-text) 60%, transparent);
+}
+
+/* ── Stat group + Stat ─────────────────────────────────── */
+
+.ds-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 3vw, 2.25rem);
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 4vw, 2.5rem);
+  background: color-mix(in oklab, var(--c-surface) 55%, transparent);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid color-mix(in oklab, var(--c-text) 7%, transparent);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, white 60%, transparent) inset,
+    0 12px 32px -16px color-mix(in oklab, var(--c-text) 14%, transparent);
+}
+
+.ds-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
+.ds-stat-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.ds-stat-num {
+  font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.2vw, 2.625rem);
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  color: var(--c-text);
+}
+
+.ds-stat-unit {
+  font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.95rem, 1.4vw, 1.125rem);
+  letter-spacing: var(--tracking-snug);
+  color: var(--c-text-muted);
+}
+
+.ds-stat-label {
+  font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-body-xs);
+  line-height: 1.35;
+  color: var(--c-text-muted);
+  max-width: 18ch;
+}
+
+@media (max-width: 540px) {
+  .ds-stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    max-width: 22rem;
+    padding: var(--space-lg) var(--space-lg);
+  }
+}

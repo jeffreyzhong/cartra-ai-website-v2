@@ -1,0 +1,85 @@
+/**
+ * Cartra Design System — Motion
+ *
+ * Keyframe animations and animation classes used by primitive components.
+ * Easing tokens come from tokens.css (--ease-out, --ease-out-soft, etc).
+ *
+ * The `Rise` component uses `.ds-rise` + `.ds-rise-N` for staggered entrances.
+ * The `Word` component uses `.ds-word` for headline word reveals.
+ * The `Mesh` component uses `@property` registrations to drift gradients.
+ */
+
+/* ── Animated property registrations ─────────────────────── */
+
+@property --ds-mesh-x1 { syntax: '<percentage>'; inherits: false; initial-value: 85%; }
+@property --ds-mesh-y1 { syntax: '<percentage>'; inherits: false; initial-value: -10%; }
+@property --ds-mesh-x2 { syntax: '<percentage>'; inherits: false; initial-value: -10%; }
+@property --ds-mesh-y2 { syntax: '<percentage>'; inherits: false; initial-value: 30%; }
+@property --ds-mesh-x3 { syntax: '<percentage>'; inherits: false; initial-value: 50%; }
+@property --ds-mesh-y3 { syntax: '<percentage>'; inherits: false; initial-value: 110%; }
+
+/* ── Keyframes ───────────────────────────────────────────── */
+
+@keyframes ds-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ds-word-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ds-underline-draw {
+  to { background-size: 100% 0.12em; }
+}
+
+@keyframes ds-mesh-drift {
+  to {
+    --ds-mesh-x1: 60%;
+    --ds-mesh-y1: 8%;
+    --ds-mesh-x2: 15%;
+    --ds-mesh-y2: 55%;
+    --ds-mesh-x3: 75%;
+    --ds-mesh-y3: 95%;
+  }
+}
+
+@keyframes ds-pulse-spring {
+  0%   { transform: scale(1); opacity: 0.45; }
+  18%  { transform: scale(1.45); opacity: 0.32; }
+  45%  { transform: scale(2.0); opacity: 0.12; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* ── Reusable animation utilities ────────────────────────── */
+
+.ds-rise {
+  animation: ds-rise var(--duration-slow) var(--ease-out) both;
+}
+.ds-rise-1 { animation-delay:  80ms; }
+.ds-rise-2 { animation-delay: 180ms; }
+.ds-rise-3 { animation-delay: 280ms; }
+.ds-rise-4 { animation-delay: 380ms; }
+.ds-rise-5 { animation-delay: 480ms; }
+.ds-rise-6 { animation-delay: 560ms; }
+.ds-rise-7 { animation-delay: 660ms; }
+
+.ds-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(28px);
+  animation: ds-word-rise 880ms var(--ease-out-soft) forwards;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-rise,
+  .ds-word {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
