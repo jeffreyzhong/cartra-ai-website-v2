@@ -1,10 +1,44 @@
+import {
+  Surface,
+  Mesh,
+  Section,
+  Container,
+  Display,
+  Body,
+  Eyebrow,
+  Button,
+  LogoPill,
+  Card,
+  StatGroup,
+  Rise,
+  Words,
+  type StatItem,
+} from '@repo/ui';
 import Navigation from './components/Navigation';
 import FAQ from './components/FAQ';
-import FadeIn from './components/FadeIn';
 import CalendlyButton from './components/CalendlyButton';
 import ContactLink from './components/ContactLink';
 import Link from 'next/link';
 import Image from 'next/image';
+
+const HEADLINE_WORDS = [
+  { text: 'Transform' },
+  { text: 'your' },
+  { text: 'operations' },
+  { text: 'with' },
+  { text: 'AI' },
+  { text: "that's" },
+  { text: 'customized', em: true },
+  { text: 'to' },
+  { text: 'your' },
+  { text: 'business.' },
+];
+
+const HERO_STATS: StatItem[] = [
+  { value: 60, inlineSuffix: '%', label: 'avg operational cost reduction' },
+  { value: 30, inlineSuffix: '%', label: 'fewer manual errors' },
+  { value: 6, unit: 'weeks', label: 'avg deploy time per agent system' },
+];
 
 function getQuarterAvailability() {
   const now = new Date();
@@ -25,95 +59,58 @@ export default function Home() {
   const { quarter, year, spots } = getQuarterAvailability();
 
   return (
-    <div className="min-h-screen text-gray-900">
+    <Surface className="text-gray-900">
+      <Mesh />
+
       <Navigation />
-      
-      {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <FadeIn delay={100}>
-              <div className="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-                AI Workforce For Your Business
-              </div>
-            </FadeIn>
-            <FadeIn delay={200}>
-              <div className="text-3xl md:text-5xl mb-6">
-                <p className="mb-2">Custom AI Agents To Power</p>
-                <p className="font-heading">The Future of Your Company.</p>
-              </div>
-            </FadeIn>
-            <FadeIn delay={300}>
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                Cut operational costs, improve productivity, and reduce human error by replacing manual, repetitive work with custom AI Agents tailored to your workflows and software stack.
-              </p>
-            </FadeIn>
-            <FadeIn delay={400}>
-              <div className="flex items-center justify-center gap-6 mb-12 flex-wrap">
-                <div className="flex flex-col">
-                  <CalendlyButton className="inline-block bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors cursor-pointer">
-                    Book a Free Consultation
-                  </CalendlyButton>
-                  <p className="text-sm text-gray-600 mt-2">or email us at <span className="underline">team@cartra.ai</span></p>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-700">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-                  </span>
-                  <span className="font-medium">Accepting {spots} more client{spots !== 1 ? 's' : ''} in Q{quarter} {year}</span>
-                </div>
-              </div>
-            </FadeIn>
-            <FadeIn delay={500}>
-              <div className="text-center mb-12">
-                <div className="flex items-center justify-center gap-4 mb-4">
-                  <Image src="/META.svg" alt="Meta" width={120} height={32} className="h-8 w-auto" />
-                  <span className="text-gray-400">&</span>
-                  <Image src="/GOOG.svg" alt="Google" width={120} height={32} className="h-8 w-auto" />
-                </div>
-                <p className="text-sm text-gray-600">Built by ex - Meta & Google engineers</p>
-              </div>
-            </FadeIn>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-6">
-              <FadeIn delay={600}>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-gray-200 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <p className="text-sm text-gray-600">60% avg cost savings</p>
-                </div>
-              </FadeIn>
-              <FadeIn delay={650}>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-gray-200 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  </div>
-                  <p className="text-sm text-gray-600">30% reduction in human error</p>
-                </div>
-              </FadeIn>
-              <FadeIn delay={700}>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-gray-200 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <p className="text-sm text-gray-600">Fully customized to your company</p>
-                </div>
-              </FadeIn>
+
+      {/* Hero */}
+      <Section id="home" padding="hero" className="overflow-hidden">
+        <Container size="lg" className="text-center">
+          <Display
+            as="h1"
+            size="xl"
+            align="center"
+            maxWidth="24ch"
+            className="mx-auto"
+          >
+            <Words words={HEADLINE_WORDS} />
+          </Display>
+
+          <Rise step={3}>
+            <Body size="lg" align="center" className="mt-8 mx-auto">
+              Cartra designs and deploys highly custom AI agents that run
+              operational workflows with the existing software and tools your
+              team already uses. 3x company productivity at a third of the cost
+              in just a few weeks.
+            </Body>
+          </Rise>
+
+          <Rise step={5} className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
+            <Button variant="ghost" as="a" href="#process">See our process</Button>
+          </Rise>
+
+          <Rise step={6} className="mt-14">
+            <StatGroup stats={HERO_STATS} />
+          </Rise>
+
+          <Rise step={7} className="mt-14 max-w-lg mx-auto">
+            <Eyebrow tone="muted">Founded by engineers from</Eyebrow>
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-2.5">
+              <LogoPill>
+                <Image src="/META.svg" alt="Meta" width={96} height={22} className="h-[18px] w-auto" />
+              </LogoPill>
+              <LogoPill>
+                <Image src="/GOOG.svg" alt="Google" width={96} height={22} className="h-[18px] w-auto" />
+              </LogoPill>
+              <span className="font-serif italic text-[0.8125rem] text-c-text-muted">
+                who&apos;ve scaled products to billions of users.
+              </span>
             </div>
-          </div>
-        </div>
-      </section>
+          </Rise>
+        </Container>
+      </Section>
 
       {/* What Are AI Agents Section
       <FadeIn delay={800}>
@@ -223,132 +220,103 @@ export default function Home() {
         </section>
       </FadeIn> */}
 
-      {/* Testimonials Section */}
-      <FadeIn delay={800}>
-        <section id="results" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-sm text-gray-600 uppercase tracking-wide mb-4">The Results</p>
-            <h2 className="text-3xl md:text-5xl mb-4 font-heading">Impact From Day 1.</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              While competitors debate AI strategy, our clients are already cutting costs and scaling operations-without adding headcount or complexity.
-            </p>
+      {/* Testimonials */}
+      <Section id="results">
+        <Container size="xl">
+          <div className="text-center mb-14">
+            <Eyebrow tone="muted" className="justify-center inline-flex">The Results</Eyebrow>
+            <Display as="h2" size="lg" align="center" className="mt-4 mx-auto" maxWidth="18ch">
+              Impact from day&nbsp;one.
+            </Display>
+            <Body size="md" align="center" className="mt-5 mx-auto">
+              While competitors debate AI strategy, our clients are already cutting costs and scaling operations — without adding headcount or complexity.
+            </Body>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-200 rounded-full mr-4 flex items-center justify-center">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-heading">8-Figure U.S. Freight Forwarder</h3>
-              </div>
-              <p className="text-gray-600">
-                Automated customs forms processing, multiple ERP workflows, and built a custom email-triaging AI which reduced manual entry errors by 30%, cut document handling time by 50%, and enabled the operations team to process more shipments without increasing headcount.
-              </p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-200 rounded-full mr-4 flex items-center justify-center">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-heading">250-Partner Law Firm</h3>
-              </div>
-              <p className="text-gray-600">
-                Eliminated $500k in annual software waste and billable hour leakage. Partners now have their hours auto-tracked and logged with real-time dashboards instead of spending hours on manual time-entry.
-              </p>
-            </div>
-          </div>
-          
-          <div className="bg-green-800 p-8 rounded-lg border border-green-700 shadow-sm mb-12">
-            <h3 className="text-2xl mb-4 font-heading text-green-100">Built by engineers who&apos;ve scaled billions.</h3>
-            <p className="text-white">
-              Our team comes equipped with decades of combined experience across Meta and Google where we have scaled products to billion of users. We bring enterprise-grade engineering to mid-market operational challenges-at a fraction of enterprise pricing.
-            </p>
-          </div>
-          
-          <div className="text-center">
-            <CalendlyButton className="inline-block bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors cursor-pointer">
-              Learn How We Can Help
-            </CalendlyButton>
-          </div>
-        </div>
-      </section>
-      </FadeIn>
 
-      {/* Problem Statement Section */}
-      <FadeIn delay={1000}>
-        <section id="opportunity" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-sm text-gray-600 uppercase tracking-wide mb-4">
-              The Opportunity
-            </p>
-            <h2 className="text-3xl md:text-5xl mb-4 font-heading">
-              Transform Your Company With AI.
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
+            <Card surface="frosted">
+              <h3 className="font-display text-c-text" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em' }}>
+                8-figure U.S. freight forwarder
+              </h3>
+              <Body size="md" className="mt-3">
+                Automated customs forms processing, multiple ERP workflows, and built a custom email-triaging agent that reduced manual entry errors by 30%, cut document handling time by 50%, and enabled the operations team to process more shipments without increasing headcount.
+              </Body>
+            </Card>
+
+            <Card surface="frosted">
+              <h3 className="font-display text-c-text" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em' }}>
+                250-partner law firm
+              </h3>
+              <Body size="md" className="mt-3">
+                Eliminated $500k in annual software waste and billable-hour leakage. Partners now have their hours auto-tracked and logged with real-time dashboards instead of spending hours on manual time-entry.
+              </Body>
+            </Card>
+          </div>
+
+          <Card surface="navy" className="mb-10">
+            <h3 className="font-display" style={{ fontSize: '1.5rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--c-on-dark)' }}>
+              Engineering depth from Meta and Google.
+            </h3>
+            <Body size="md" tone="on-dark-muted" className="mt-3" maxWidth="60ch">
+              Decades of combined experience scaling products to billions of users — brought to mid-market operational challenges at a fraction of enterprise pricing.
+            </Body>
+          </Card>
+
+          <div className="text-center">
+            <CalendlyButton trailingIcon="→">Learn how we can help</CalendlyButton>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Opportunity */}
+      <Section id="opportunity">
+        <Container size="xl">
+          <div className="text-center mb-14">
+            <Eyebrow tone="muted" className="justify-center inline-flex">The Opportunity</Eyebrow>
+            <Display as="h2" size="lg" align="center" className="mt-4 mx-auto" maxWidth="20ch">
+              Transform your company with&nbsp;AI.
+            </Display>
+            <Body size="md" align="center" className="mt-5 mx-auto">
               Unlock untapped potential within your company by deploying custom AI agents that work 24/7, don&apos;t make mistakes, and scale your operations without increasing costs or headcount.
-            </p>
+            </Body>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm">
-              <div className="w-12 h-12 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl mb-3 font-heading">Do More With Less</h3>
-              <p className="text-gray-600 text-sm">
-                Your current team can accomplish exponentially more when AI agents handle the repetitive tasks. Multiply output without multiplying headcount. Turn your existing workforce into a force multiplier.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm">
-              <div className="w-12 h-12 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl mb-3 font-heading">Edge Out Your Competitors</h3>
-              <p className="text-gray-600 text-sm">
-                While your competition struggles with manual bottlenecks and hiring constraints, you&apos;ll operate at speeds they can&apos;t match. Faster response times, lower costs, and superior service become your unfair advantage.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm">
-              <div className="w-12 h-12 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl mb-3 font-heading">Repetitive Work is History</h3>
-              <p className="text-gray-600 text-sm">
-                Data entry, form filling, report generation, email triage. All the mind-numbing tasks that drain your team&apos;s time and energy. Our agents handle them flawlessly, 24/7, so your people can focus on what actually moves the needle.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm">
-              <div className="w-12 h-12 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-              </div>
-              <h3 className="text-xl mb-3 font-heading">Grow Beyond Limits</h3>
-              <p className="text-gray-600 text-sm">
-                Scale to new markets, serve more clients, launch new products. All without the traditional constraints of headcount and operational overhead. What seemed impossible becomes your new normal.
-              </p>
-            </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                n: '01',
+                title: 'Do more with less',
+                body: 'Your current team can accomplish exponentially more when AI agents handle the repetitive tasks. Multiply output without multiplying headcount.',
+              },
+              {
+                n: '02',
+                title: 'Edge out your competitors',
+                body: "While your competition struggles with manual bottlenecks and hiring constraints, you operate at speeds they can't match. Lower costs and superior service become your unfair advantage.",
+              },
+              {
+                n: '03',
+                title: 'Repetitive work is history',
+                body: "Data entry, form filling, report generation, email triage. All the mind-numbing tasks that drain your team's time. Our agents handle them flawlessly, 24/7.",
+              },
+              {
+                n: '04',
+                title: 'Grow beyond limits',
+                body: 'Scale to new markets, serve more clients, launch new products. All without the traditional constraints of headcount and operational overhead.',
+              },
+            ].map((item) => (
+              <Card key={item.n} surface="frosted">
+                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.04em' }}>
+                  {item.n}
+                </span>
+                <h3 className="font-display mt-4 text-c-text" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
+                  {item.title}
+                </h3>
+                <Body size="sm" className="mt-3">{item.body}</Body>
+              </Card>
+            ))}
           </div>
-        </div>
-      </section>
-      </FadeIn>
+        </Container>
+      </Section>
 
       {/* Services Section
       <FadeIn delay={1300}>
@@ -447,120 +415,94 @@ export default function Home() {
       </section>
       </FadeIn> */}
 
-      {/* Industries Section */}
-      <FadeIn delay={1200}>
-        <section id="industries" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-sm text-gray-600 uppercase tracking-wide mb-4">
-              The Market
-            </p>
-            <h2 className="text-4xl md:text-5xl mb-4 font-heading">Built from the ground up for all industries.</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Every industry has it&apos;s own quircks, complexities, and requirements. We build for yours specifically.
-            </p>
+      {/* Industries */}
+      <Section id="industries">
+        <Container size="xl">
+          <div className="text-center mb-14">
+            <Eyebrow tone="muted" className="justify-center inline-flex">The Market</Eyebrow>
+            <Display as="h2" size="lg" align="center" className="mt-4 mx-auto" maxWidth="22ch">
+              Built from the ground up for every industry.
+            </Display>
+            <Body size="md" align="center" className="mt-5 mx-auto">
+              Every industry has its own quirks, complexities, and requirements. We build for yours specifically.
+            </Body>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm">
-              <div className="w-12 h-12 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-                </svg>
-              </div>
-              <h3 className="text-xl mb-3 font-heading">Logistics & Manufacturing</h3>
-              <p className="text-gray-600 text-sm">
-                Optimize production and streamline supply chains. Automate customs documentation, invoice reconciliation, inventory management, and shipment tracking while reducing manual entry errors by 30% and eliminating operational bottlenecks.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm">
-              <div className="w-12 h-12 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl mb-3 font-heading">Legal</h3>
-              <p className="text-gray-600 text-sm">
-                Streamline legal operations and reduce manual workload. Automate contract review, document analysis, compliance monitoring, and research tasks while maintaining confidentiality and regulatory standards, freeing legal teams to focus on strategic work.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm">
-              <div className="w-12 h-12 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl mb-3 font-heading">Finance</h3>
-              <p className="text-gray-600 text-sm">
-                Forecast faster and serve smarter. Automated reconciliations, real-time anomaly detection, and personalized client outreach strengthen compliance posture while freeing analysts from spreadsheet drudgery and manual data entry.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm">
-              <div className="w-12 h-12 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-xl mb-3 font-heading">Insurance</h3>
-              <p className="text-gray-600 text-sm">
-                Process claims faster and underwrite smarter. Automated policy reviews, fraud detection, and intelligent document extraction reduce processing time by 50% while improving accuracy and customer satisfaction, all within regulatory compliance.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      </FadeIn>
 
-      {/* Process Section */}
-      <FadeIn delay={1400}>
-        <section id="process" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-sm text-gray-600 uppercase tracking-wide mb-4">
-              The Process
-            </p>
-            <h2 className="text-4xl md:text-5xl mb-4 font-heading">
-              From analysis to<br />transformation in just weeks.
-            </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                title: 'Logistics & manufacturing',
+                body: 'Automate customs documentation, invoice reconciliation, inventory management, and shipment tracking. Reduce manual entry errors by 30% and eliminate operational bottlenecks.',
+              },
+              {
+                title: 'Legal',
+                body: 'Automate contract review, document analysis, compliance monitoring, and research while maintaining confidentiality and regulatory standards.',
+              },
+              {
+                title: 'Finance',
+                body: 'Automated reconciliations, real-time anomaly detection, and personalized client outreach strengthen compliance posture while freeing analysts from spreadsheet drudgery.',
+              },
+              {
+                title: 'Insurance',
+                body: 'Automated policy reviews, fraud detection, and intelligent document extraction reduce processing time by 50% while improving accuracy and customer satisfaction.',
+              },
+            ].map((item) => (
+              <Card key={item.title} surface="frosted">
+                <h3 className="font-display text-c-text" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
+                  {item.title}
+                </h3>
+                <Body size="sm" className="mt-3">{item.body}</Body>
+              </Card>
+            ))}
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h5 className="text-2xl mb-4 text-gray-400 font-heading">01</h5>
-              <h3 className="text-2xl mb-4 font-heading">Discover & Map</h3>
-              <p className="text-gray-600">
-                We meet with your team to identify your highest-cost manual processes. You&apos;ll receive a detailed ROI projection pinpointing exactly where to start for maximum immediate impact. No guesswork, just data-driven priorities.
-              </p>
-            </div>
-            
-            <div>
-              <h5 className="text-2xl mb-4 text-gray-400 font-heading">02</h5>
-              <h3 className="text-2xl mb-4 font-heading">Build & Deploy</h3>
-              <p className="text-gray-600">
-                Our ex-Meta/Google engineers build custom agents that integrate directly into your existing tech stack. Zero platform migration. Zero workflow disruption. Your team keeps working while we build the AI layer underneath, then deploy seamlessly.
-              </p>
-            </div>
-            
-            <div>
-              <h5 className="text-2xl mb-4 text-gray-400 font-heading">03</h5>
-              <h3 className="text-2xl mb-4 font-heading">Launch & Scale</h3>
-              <p className="text-gray-600">
-                Launch with real-time performance monitoring, a dedicated success manager, and an executive KPI dashboard. Watch cost savings, time recovered, and accuracy improvements live. Then replicate successful automations across your entire organization.
-              </p>
-            </div>
+        </Container>
+      </Section>
+
+      {/* Process */}
+      <Section id="process">
+        <Container size="xl">
+          <div className="text-center mb-14">
+            <Eyebrow tone="muted" className="justify-center inline-flex">The Process</Eyebrow>
+            <Display as="h2" size="lg" align="center" className="mt-4 mx-auto" maxWidth="20ch">
+              From analysis to transformation in weeks.
+            </Display>
           </div>
-          
+
+          <div className="grid md:grid-cols-3 gap-10 md:gap-8 mb-12">
+            {[
+              {
+                n: '01',
+                title: 'Discover & map',
+                body: 'We meet with your team to identify your highest-cost manual processes. You receive a detailed ROI projection pinpointing exactly where to start for maximum immediate impact. No guesswork, just data-driven priorities.',
+              },
+              {
+                n: '02',
+                title: 'Build & deploy',
+                body: 'Our engineers build custom agents that integrate directly into your existing tech stack. Zero platform migration. Zero workflow disruption. Your team keeps working while we build the AI layer underneath, then deploy seamlessly.',
+              },
+              {
+                n: '03',
+                title: 'Launch & scale',
+                body: 'Launch with real-time performance monitoring, a dedicated success manager, and an executive KPI dashboard. Watch cost savings, time recovered, and accuracy improvements live. Replicate successful automations across your organization.',
+              },
+            ].map((step) => (
+              <div key={step.n}>
+                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.04em' }}>
+                  {step.n}
+                </span>
+                <h3 className="font-display mt-3 text-c-text" style={{ fontSize: '1.5rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.15 }}>
+                  {step.title}
+                </h3>
+                <Body size="md" className="mt-4">{step.body}</Body>
+              </div>
+            ))}
+          </div>
+
           <div className="text-center">
-            <CalendlyButton className="inline-block bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors cursor-pointer">
-              Talk to us
-            </CalendlyButton>
+            <CalendlyButton trailingIcon="→">Talk to us</CalendlyButton>
           </div>
-        </div>
-      </section>
-      </FadeIn>
+        </Container>
+      </Section>
 
       {/* Security & Trust Section
       <FadeIn delay={1900}>
@@ -617,73 +559,66 @@ export default function Home() {
       </section>
       </FadeIn> */}
 
-      {/* FAQ Section */}
-      <FadeIn delay={1600}>
-        <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
+      {/* FAQ */}
+      <Section id="faq">
+        <Container size="md">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl mb-4 font-heading">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-gray-600">
-              Have questions? Our FAQ section has you covered with quick answers to the most common inquiries. For any further questions, email us at <span className="underline">team@cartra.ai</span> or just book a call.
-            </p>
+            <Display as="h2" size="lg" align="center" className="mx-auto" maxWidth="18ch">
+              Frequently asked questions.
+            </Display>
+            <Body size="md" align="center" className="mt-5 mx-auto">
+              Quick answers to the most common inquiries. For anything else, email us at{' '}
+              <a href="mailto:team@cartra.ai" className="underline underline-offset-4 text-c-text hover:text-c-accent transition-colors">
+                team@cartra.ai
+              </a>{' '}
+              or book a call.
+            </Body>
           </div>
-          
-          <FAQ />
-        </div>
-      </section>
-      </FadeIn>
 
-      {/* Final CTA Section */}
-      <FadeIn delay={1800}>
-        <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gray-50 p-12 rounded-lg border border-gray-200 shadow-sm">
-            <p className="text-sm text-gray-600 uppercase tracking-wide mb-4">
-              Get Started
-            </p>
-            <h3 className="text-3xl md:text-4xl mb-4 font-heading">
-              Let&apos;s get to know each other.
-            </h3>
-            <p className="text-lg text-gray-600 mb-8">
-              Book a 30-minute no-strings-attached strategy call where we&apos;ll get acquainted, discuss your company&apos;s situation, and you&apos;ll walk away with actionable advice and insights. This is completely free - no sales pitch, just genuine guidance you can use immediately.
-            </p>
-            {/* <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div key={i} className="w-10 h-10 bg-gray-200 rounded-full border-2 border-white"></div>
-                ))}
+          <FAQ />
+        </Container>
+      </Section>
+
+      {/* Final CTA */}
+      <Section id="contact">
+        <Container size="md" className="text-center">
+          <Card surface="frosted" className="text-left md:text-center">
+            <div className="md:px-4">
+              <Eyebrow tone="muted" className="md:justify-center md:inline-flex">Get Started</Eyebrow>
+              <Display as="h3" size="md" align="center" className="mt-4 mx-auto" maxWidth="20ch">
+                Let&apos;s get to know each other.
+              </Display>
+              <Body size="md" align="center" className="mt-5 mx-auto">
+                Book a 30-minute no-strings-attached strategy call. We&apos;ll get acquainted, discuss your company&apos;s situation, and you&apos;ll walk away with actionable advice and insights. Completely free — no sales pitch, just genuine guidance you can use immediately.
+              </Body>
+              <div className="mt-8 flex justify-center">
+                <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
               </div>
             </div>
-            <p className="text-gray-600 italic mb-8">
-              &quot;We replaced a SaaS that we paid $100,000 a year for with Cartra, and it does twice the job for cheaper.&quot; (CEO, 9-figure Online Retailer)
-            </p> */}
-            <CalendlyButton className="inline-block bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors cursor-pointer">
-              Book a Free Consultation
-            </CalendlyButton>
-          </div>
-          <p className="mt-6 text-sm text-gray-500">Limited Availability - Accepting {spots} More Client{spots !== 1 ? 's' : ''} in Q{quarter} {year}</p>
-        </div>
-      </section>
-      </FadeIn>
+          </Card>
+          <p className="mt-6 text-sm text-c-text-soft font-display">
+            Limited availability — accepting {spots} more client{spots !== 1 ? 's' : ''} in Q{quarter} {year}
+          </p>
+        </Container>
+      </Section>
 
       {/* Footer */}
-      <FadeIn delay={2000}>
-        <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-xl font-heading mb-2">Cartra AI</p>
-              <div className="text-sm text-gray-600 space-y-1">
+      <footer className="py-12 px-4 sm:px-6 lg:px-8" style={{ borderTop: '1px solid var(--c-border)' }}>
+        <Container size="2xl">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-0">
+            <div>
+              <p className="font-display text-c-text" style={{ fontSize: '1.25rem', fontWeight: 600, letterSpacing: '-0.02em' }}>
+                Cartra AI
+              </p>
+              <div className="mt-3 text-sm text-c-text-muted font-display space-y-1">
                 <p className="flex items-center gap-2">
                   <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   team@cartra.ai
                 </p>
-                <p className="flex items-center gap-2 pt-1">
-                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <p className="flex items-start gap-2 pt-1">
+                  <svg className="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -691,18 +626,16 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap gap-6 text-sm text-gray-600">
-              <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
-              {/* <Link href="/hiring" className="hover:text-gray-900 transition-colors">Join Us</Link> */}
-              <ContactLink className="hover:text-gray-900 transition-colors" />
+            <div className="flex flex-wrap gap-6 text-sm font-display text-c-text-muted">
+              <Link href="/" className="hover:text-c-text transition-colors">Home</Link>
+              <ContactLink className="hover:text-c-text transition-colors" />
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
+          <div className="mt-10 pt-8 text-center text-sm font-display text-c-text-soft" style={{ borderTop: '1px solid var(--c-border)' }}>
             <p>&copy; {new Date().getFullYear()} Cartra. All rights reserved.</p>
           </div>
-        </div>
+        </Container>
       </footer>
-      </FadeIn>
-    </div>
+    </Surface>
   );
 }
