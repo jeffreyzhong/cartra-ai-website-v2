@@ -1,0 +1,15 @@
+/**
+ * Cartra Design System — CSS Entry Point
+ *
+ * Apps consuming the design system import this file once to get all
+ * tokens, motion utilities, and component styles in a single import:
+ *
+ *   import '@repo/ui/styles';
+ *
+ * Order matters: tokens establish the variable foundation, motion
+ * registers @property declarations, components reference both.
+ */
+
+@import './tokens.css';
+@import './motion.css';
+@import './components.css';
