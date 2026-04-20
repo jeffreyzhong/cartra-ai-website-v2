@@ -92,20 +92,29 @@
   align-items: center;
   gap: var(--space-xs);
   padding: var(--space-sm) calc(var(--space-md) + var(--space-2xs));
+  min-height: 40px;
   border-radius: var(--radius-pill);
   border: 0;
   white-space: nowrap;
   cursor: pointer;
   text-decoration: none;
-  transition:
-    transform var(--duration-medium) var(--ease-out-soft),
-    background var(--duration-base) var(--ease-out-soft),
-    color var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-medium) var(--ease-out-soft);
+  transition-property: transform, background-color, color, box-shadow;
+  transition-duration: var(--duration-base);
+  transition-timing-function: var(--ease-out-soft);
 }
 
 .ds-btn:hover {
-  transform: scale(1.015);
+  transform: translateY(-1px);
+}
+
+.ds-btn:active {
+  transform: scale(0.96);
+  transition-duration: var(--duration-fast);
+}
+
+.ds-btn:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
 }
 
 .ds-btn-primary {
@@ -116,7 +125,7 @@
   background: var(--c-navy-2);
   box-shadow:
     inset 0 1px 0 0 color-mix(in oklab, white 14%, transparent),
-    0 8px 24px -10px color-mix(in oklab, var(--c-navy) 70%, transparent);
+    0 10px 28px -12px color-mix(in oklab, var(--c-navy) 70%, transparent);
 }
 
 .ds-btn-ghost {
@@ -126,6 +135,14 @@
 .ds-btn-ghost:hover {
   background: var(--c-surface);
   color: var(--c-text);
+}
+
+.ds-btn .ds-btn-icon {
+  display: inline-flex;
+  transition: transform var(--duration-base) var(--ease-out-soft);
+}
+.ds-btn:hover .ds-btn-icon {
+  transform: translateX(2px);
 }
 
 /* ── Logo pill ─────────────────────────────────────────── */
@@ -138,6 +155,9 @@
   border-radius: var(--radius-md);
   background: var(--c-surface);
   border: 1px solid var(--c-border);
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, white 60%, transparent) inset,
+    0 1px 2px -1px color-mix(in oklab, var(--c-text) 12%, transparent);
   transition: transform var(--duration-base) var(--ease-out);
 }
 .ds-logo-pill:hover {

@@ -52,7 +52,7 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(function Button(
     <>
       {children}
       {trailingIcon && (
-        <span aria-hidden style={{ display: 'inline-flex' }}>
+        <span aria-hidden className="ds-btn-icon">
           {trailingIcon}
         </span>
       )}

@@ -596,7 +596,7 @@ export default function Home() {
               </div>
             </div>
           </Card>
-          <p className="mt-6 text-sm text-c-text-soft font-display">
+          <p className="mt-6 text-sm text-c-text-soft font-display tabular-nums">
             Limited availability — accepting {spots} more client{spots !== 1 ? 's' : ''} in Q{quarter} {year}
           </p>
         </Container>
@@ -626,12 +626,12 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap gap-6 text-sm font-display text-c-text-muted">
-              <Link href="/" className="hover:text-c-text transition-colors">Home</Link>
-              <ContactLink className="hover:text-c-text transition-colors" />
+            <div className="flex flex-wrap gap-4 text-sm font-display text-c-text-muted">
+              <Link href="/" className="inline-flex items-center h-10 px-1 hover:text-c-text transition-colors">Home</Link>
+              <ContactLink className="inline-flex items-center h-10 px-1 hover:text-c-text transition-colors cursor-pointer" />
             </div>
           </div>
-          <div className="mt-10 pt-8 text-center text-sm font-display text-c-text-soft" style={{ borderTop: '1px solid var(--c-border)' }}>
+          <div className="mt-10 pt-8 text-center text-sm font-display text-c-text-soft tabular-nums" style={{ borderTop: '1px solid var(--c-border)' }}>
             <p>&copy; {new Date().getFullYear()} Cartra. All rights reserved.</p>
           </div>
         </Container>
