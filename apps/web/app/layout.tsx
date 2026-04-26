@@ -54,8 +54,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: LOGO_PATH, type: 'image/svg+xml' },
+      { url: LOGO_PATH, type: 'image/png' },
     ],
+    apple: LOGO_PATH,
     shortcut: LOGO_PATH,
   },
   openGraph: {

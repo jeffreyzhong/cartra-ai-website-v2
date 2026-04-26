@@ -5,7 +5,7 @@ import { FAQS, type FAQItem } from '../content/faqs';
 export const SITE_URL = 'https://www.cartra.ai';
 export const SITE_NAME = 'Cartra';
 export const SITE_EMAIL = 'team@cartra.ai';
-export const LOGO_PATH = '/cartra-geometric-logo.svg';
+export const LOGO_PATH = '/cartra_geometric_logo_round.png';
 export const OG_IMAGE_PATH = '/opengraph-image';
 
 export const DEFAULT_DESCRIPTION =
