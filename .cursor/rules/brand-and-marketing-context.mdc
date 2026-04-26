@@ -1,0 +1,18 @@
+---
+description: Where to find Cartra brand, marketing, and SEO context
+alwaysApply: true
+---
+
+# Brand And Marketing Context
+
+Before working on Cartra brand, homepage copy, marketing pages, SEO, schema, analytics, Ahrefs, GSC, or favicon/logo assets, read:
+
+`docs/marketing-context.md`
+
+Key rules:
+
+- Treat `docs/marketing-context.md` as the neutral source of truth for reusable marketing and SEO context.
+- Do not replace, redraw, generate, or reinterpret brand assets without explicit approval.
+- Use `apps/web/public/cartra_geometric_logo_round.png` as the approved logo/favicon unless a new approved brand asset is provided.
+- Preserve brand-led homepage messaging unless the user explicitly asks for SEO-focused copy changes.
+- When using Ahrefs data, check whether the latest crawl happened after the relevant deployment before treating audit findings as current.
