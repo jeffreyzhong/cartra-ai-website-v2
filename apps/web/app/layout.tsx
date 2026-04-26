@@ -6,6 +6,17 @@ import "@repo/ui/tokens.css";
 import "@repo/ui/motion.css";
 import "@repo/ui/components.css";
 import "./globals.css";
+import JsonLd from "./components/JsonLd";
+import Analytics from "./components/Analytics";
+import {
+  DEFAULT_DESCRIPTION,
+  LOGO_PATH,
+  OG_IMAGE_PATH,
+  SITE_NAME,
+  SITE_URL,
+  createOrganizationJsonLd,
+  createWebsiteJsonLd,
+} from "./lib/seo";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -23,16 +34,50 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Cartra | Custom AI Agents",
-  description:
-    "Custom AI Agents That Bring Efficiency & Productivity to Your Business. Cut operational costs by replacing manual processes with customized AI Agents tailored to your company.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Cartra | Custom AI Agents",
+    template: "%s | Cartra",
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: [
-      { url: '/cartra_geometric_logo_round.png', sizes: 'any' },
-      { url: '/cartra_geometric_logo_round.png', type: 'image/png' },
+      { url: LOGO_PATH, type: 'image/svg+xml' },
     ],
-    apple: '/cartra_geometric_logo_round.png',
-    shortcut: '/cartra_geometric_logo_round.png',
+    shortcut: LOGO_PATH,
+  },
+  openGraph: {
+    title: "Cartra | Custom AI Agents",
+    description: DEFAULT_DESCRIPTION,
+    url: "/",
+    siteName: SITE_NAME,
+    type: "website",
+    images: [
+      {
+        url: OG_IMAGE_PATH,
+        width: 1200,
+        height: 630,
+        alt: "Cartra custom AI agents for workflow automation",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cartra | Custom AI Agents",
+    description: DEFAULT_DESCRIPTION,
+    images: [OG_IMAGE_PATH],
   },
 };
 
@@ -44,6 +89,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geist.variable} ${sourceSerif.variable} antialiased`}>
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [createOrganizationJsonLd(), createWebsiteJsonLd()],
+          }}
+        />
+        <Analytics />
         <CalendlyScripts />
         {children}
         <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />

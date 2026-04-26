@@ -16,22 +16,33 @@ import {
 } from '@repo/ui';
 import Navigation from './components/Navigation';
 import FAQ from './components/FAQ';
+import AgentSystems from './components/AgentSystems';
 import CalendlyButton from './components/CalendlyButton';
 import ContactLink from './components/ContactLink';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+import JsonLd from './components/JsonLd';
+import { createFaqPageJsonLd, createPageMetadata } from './lib/seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Custom AI Agents for Workflow Automation | Cartra',
+  description:
+    'Cartra builds custom AI agents for workflow automation, document processing, finance operations, and mid-market teams that need production systems in weeks.',
+  path: '/',
+});
 
 const HEADLINE_WORDS = [
-  { text: 'Transform' },
-  { text: 'your' },
-  { text: 'operations' },
-  { text: 'with' },
+  { text: 'Custom' },
   { text: 'AI' },
-  { text: "that's" },
-  { text: 'customized', em: true },
-  { text: 'to' },
+  { text: 'agents' },
+  { text: 'for' },
+  { text: 'workflow' },
+  { text: 'automation' },
   { text: 'your' },
-  { text: 'business.' },
+  { text: 'business' },
+  { text: 'can' },
+  { text: 'trust.', em: true },
 ];
 
 const HERO_STATS: StatItem[] = [
@@ -59,6 +70,8 @@ export default function Home() {
   const { quarter, year, spots } = getQuarterAvailability();
 
   return (
+    <>
+    <JsonLd data={createFaqPageJsonLd()} />
     <Surface className="text-gray-900">
       <Mesh />
 
@@ -79,10 +92,10 @@ export default function Home() {
 
           <Rise step={3}>
             <Body size="lg" align="center" className="mt-8 mx-auto">
-              Cartra designs and deploys highly custom AI agents that run
-              operational workflows with the existing software and tools your
-              team already uses. 3x company productivity at a third of the cost
-              in just a few weeks.
+              Cartra designs and deploys custom AI agents for business
+              operations: document processing, email triage, reconciliation,
+              ERP workflows, and the repetitive handoffs your team already runs.
+              Get production AI workflow automation in weeks, not quarters.
             </Body>
           </Rise>
 
@@ -96,7 +109,7 @@ export default function Home() {
           </Rise>
 
           <Rise step={7} className="mt-14 max-w-lg mx-auto">
-            <Eyebrow tone="muted">Founded by engineers from</Eyebrow>
+            <Eyebrow tone="muted">Founded by AI engineers from</Eyebrow>
             <div className="mt-3 flex flex-wrap items-center justify-center gap-2.5">
               <LogoPill>
                 <Image src="/META.svg" alt="Meta" width={96} height={22} className="h-[18px] w-auto" />
@@ -109,6 +122,21 @@ export default function Home() {
               </span>
             </div>
           </Rise>
+        </Container>
+      </Section>
+
+      {/* Wedge */}
+      <Section padding="tight">
+        <Container size="md" className="text-center">
+          <Eyebrow tone="muted" className="justify-center inline-flex">What we build</Eyebrow>
+          <Display as="h2" size="md" align="center" className="mt-4 mx-auto" maxWidth="22ch">
+            Not a platform. Not a prompt. A production system your ops team can trust.
+          </Display>
+          <Body size="md" align="center" className="mt-5 mx-auto" maxWidth="58ch">
+            Off-the-shelf AI gets you a demo. Agent systems built for your
+            workflow, deployed into your stack, and maintained by our team
+            get you an operating-leverage shift. That&apos;s what we build.
+          </Body>
         </Container>
       </Section>
 
@@ -229,27 +257,43 @@ export default function Home() {
               Impact from day&nbsp;one.
             </Display>
             <Body size="md" align="center" className="mt-5 mx-auto">
-              While competitors debate AI strategy, our clients are already cutting costs and scaling operations — without adding headcount or complexity.
+              Agent systems are repeatable patterns, not one-off experiments. Here&apos;s how two of our clients put them into production, and what it unlocked.
             </Body>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             <Card surface="frosted">
-              <h3 className="font-display text-c-text" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em' }}>
+              <Eyebrow tone="accent">Customs &amp; Document Agent System</Eyebrow>
+              <h3 className="font-display text-c-text mt-3" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em' }}>
                 8-figure U.S. freight forwarder
               </h3>
               <Body size="md" className="mt-3">
-                Automated customs forms processing, multiple ERP workflows, and built a custom email-triaging agent that reduced manual entry errors by 30%, cut document handling time by 50%, and enabled the operations team to process more shipments without increasing headcount.
+                Automated customs filings, multi-ERP document workflows, and a custom email-triage agent. Manual-entry errors fell 30%, document handling moved 50% faster, and the operations team absorbed higher shipment volume without a new hire.
               </Body>
+              <Link
+                href="/agent-systems/customs-document-ops"
+                className="mt-5 inline-flex font-display text-c-accent"
+                style={{ fontSize: '0.8125rem', fontWeight: 600 }}
+              >
+                See the customs document agent system →
+              </Link>
             </Card>
 
             <Card surface="frosted">
-              <h3 className="font-display text-c-text" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em' }}>
-                250-partner law firm
+              <Eyebrow tone="accent">Procurement &amp; Knowledge Agent System</Eyebrow>
+              <h3 className="font-display text-c-text mt-3" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em' }}>
+                $150M+ industrial manufacturer
               </h3>
               <Body size="md" className="mt-3">
-                Eliminated $500k in annual software waste and billable-hour leakage. Partners now have their hours auto-tracked and logged with real-time dashboards instead of spending hours on manual time-entry.
+                Automated the end-to-end purchase-order pipeline and stood up a company-wide knowledge base now powering customer service, operations, and marketing from a single source of truth. Cross-department coordination collapsed into one agent-driven workflow.
               </Body>
+              <Link
+                href="/agent-systems/procurement-vendor-ops"
+                className="mt-5 inline-flex font-display text-c-accent"
+                style={{ fontSize: '0.8125rem', fontWeight: 600 }}
+              >
+                See the procurement agent system →
+              </Link>
             </Card>
           </div>
 
@@ -258,7 +302,7 @@ export default function Home() {
               Engineering depth from Meta and Google.
             </h3>
             <Body size="md" tone="on-dark-muted" className="mt-3" maxWidth="60ch">
-              Decades of combined experience scaling products to billions of users — brought to mid-market operational challenges at a fraction of enterprise pricing.
+              Decades of combined experience scaling products to billions of users, brought to mid-market operational challenges at a fraction of enterprise pricing.
             </Body>
           </Card>
 
@@ -268,16 +312,19 @@ export default function Home() {
         </Container>
       </Section>
 
+      {/* Agent Systems */}
+      <AgentSystems />
+
       {/* Opportunity */}
       <Section id="opportunity">
         <Container size="xl">
           <div className="text-center mb-14">
             <Eyebrow tone="muted" className="justify-center inline-flex">The Opportunity</Eyebrow>
-            <Display as="h2" size="lg" align="center" className="mt-4 mx-auto" maxWidth="20ch">
-              Transform your company with&nbsp;AI.
+            <Display as="h2" size="lg" align="center" className="mt-4 mx-auto" maxWidth="22ch">
+              What operating leverage actually looks like.
             </Display>
             <Body size="md" align="center" className="mt-5 mx-auto">
-              Unlock untapped potential within your company by deploying custom AI agents that work 24/7, don&apos;t make mistakes, and scale your operations without increasing costs or headcount.
+              Four shifts every client sees when agent systems move from pilot to production, each one grounded in a real deployment.
             </Body>
           </div>
 
@@ -285,23 +332,23 @@ export default function Home() {
             {[
               {
                 n: '01',
-                title: 'Do more with less',
-                body: 'Your current team can accomplish exponentially more when AI agents handle the repetitive tasks. Multiply output without multiplying headcount.',
+                title: 'Headcount-neutral scale',
+                body: 'The freight forwarder absorbed higher shipment volume without a single ops hire. Agent systems let you take on the next tier of customers without rebuilding your org chart.',
               },
               {
                 n: '02',
-                title: 'Edge out your competitors',
-                body: "While your competition struggles with manual bottlenecks and hiring constraints, you operate at speeds they can't match. Lower costs and superior service become your unfair advantage.",
+                title: 'A lower error floor, permanently',
+                body: 'The customs agent cut manual-entry errors by 30% on day one and keeps improving as its decision logic is tuned against live data. Compounding accuracy, not a one-time dip.',
               },
               {
                 n: '03',
-                title: 'Repetitive work is history',
-                body: "Data entry, form filling, report generation, email triage. All the mind-numbing tasks that drain your team's time. Our agents handle them flawlessly, 24/7.",
+                title: 'Senior hours, returned',
+                body: 'Your analysts, coordinators, and partners stop doing data entry, triage, and reconciliation. They go back to the judgment work you hired them for.',
               },
               {
                 n: '04',
-                title: 'Grow beyond limits',
-                body: 'Scale to new markets, serve more clients, launch new products. All without the traditional constraints of headcount and operational overhead.',
+                title: 'One system of record, not twelve',
+                body: 'The $150M manufacturer replaced a patchwork of spreadsheets, vendor portals, and inboxes with one coordinated workflow, and a knowledge base now serving ops, customer service, and marketing.',
               },
             ].map((item) => (
               <Card key={item.n} surface="frosted">
@@ -421,30 +468,65 @@ export default function Home() {
           <div className="text-center mb-14">
             <Eyebrow tone="muted" className="justify-center inline-flex">The Market</Eyebrow>
             <Display as="h2" size="lg" align="center" className="mt-4 mx-auto" maxWidth="22ch">
-              Built from the ground up for every industry.
+              Built for the industries that run the real economy.
             </Display>
             <Body size="md" align="center" className="mt-5 mx-auto">
-              Every industry has its own quirks, complexities, and requirements. We build for yours specifically.
+              The backbone industries: the ones that move goods, produce,
+              insure, finance, and build. Each has its own workflows, regulators,
+              and systems. We build for yours specifically.
             </Body>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="mb-10 text-center">
+            <Eyebrow tone="muted" className="justify-center inline-flex">Or start with a department</Eyebrow>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+              {['Finance Ops', 'Revenue Ops', 'Legal Ops', 'Supply Chain Ops'].map((label) => (
+                <span
+                  key={label}
+                  className="font-display text-c-text-muted px-3 py-1.5 rounded-full"
+                  style={{
+                    fontSize: '0.8125rem',
+                    fontWeight: 500,
+                    letterSpacing: '-0.005em',
+                    border: '1px solid var(--c-border)',
+                    background: 'var(--c-surface)',
+                  }}
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               {
-                title: 'Logistics & manufacturing',
-                body: 'Automate customs documentation, invoice reconciliation, inventory management, and shipment tracking. Reduce manual entry errors by 30% and eliminate operational bottlenecks.',
+                title: 'Logistics',
+                body: 'Customs filings, freight documentation, multi-ERP reconciliation, and exception triage. The backbone of our freight-forwarder deployment.',
               },
               {
-                title: 'Legal',
-                body: 'Automate contract review, document analysis, compliance monitoring, and research while maintaining confidentiality and regulatory standards.',
+                title: 'Manufacturing',
+                body: 'Purchase-order pipelines, supplier coordination, and company-wide knowledge bases that turn tribal knowledge into an operating asset.',
               },
               {
                 title: 'Finance',
-                body: 'Automated reconciliations, real-time anomaly detection, and personalized client outreach strengthen compliance posture while freeing analysts from spreadsheet drudgery.',
+                body: 'Reconciliations, anomaly detection, and client-outreach workflows that strengthen compliance posture while freeing analysts from spreadsheet drudgery.',
+              },
+              {
+                title: 'Healthcare',
+                body: 'Prior-auth, intake, and clinical-documentation workflows handled inside HIPAA-ready deployments that respect existing EHR permissions.',
               },
               {
                 title: 'Insurance',
-                body: 'Automated policy reviews, fraud detection, and intelligent document extraction reduce processing time by 50% while improving accuracy and customer satisfaction.',
+                body: 'Policy review, fraud-signal detection, and claims-document extraction that compress cycle times without sacrificing accuracy.',
+              },
+              {
+                title: 'Software',
+                body: 'RevOps hygiene, renewal motions, and support-ticket triage built into your existing CRM and helpdesk. No new tooling to adopt.',
+              },
+              {
+                title: 'Skilled Trades',
+                body: 'Quoting, scheduling, invoicing, and field-to-office handoffs automated inside the dispatch and accounting systems your team already runs.',
               },
             ].map((item) => (
               <Card key={item.title} surface="frosted">
@@ -468,6 +550,22 @@ export default function Home() {
             </Display>
           </div>
 
+          <Card surface="frosted" className="mb-10">
+            <div className="md:flex md:items-start md:gap-8">
+              <div className="shrink-0 md:w-48">
+                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.04em' }}>
+                  00
+                </span>
+                <h3 className="font-display mt-3 text-c-text" style={{ fontSize: '1.25rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                  What we need from you
+                </h3>
+              </div>
+              <Body size="md" className="mt-4 md:mt-0 md:flex-1">
+                About fifteen hours of your team&apos;s time across six weeks, mostly in discovery and stakeholder reviews. No internal AI team required. No tooling migration.
+              </Body>
+            </div>
+          </Card>
+
           <div className="grid md:grid-cols-3 gap-10 md:gap-8 mb-12">
             {[
               {
@@ -478,7 +576,7 @@ export default function Home() {
               {
                 n: '02',
                 title: 'Build & deploy',
-                body: 'Our engineers build custom agents that integrate directly into your existing tech stack. Zero platform migration. Zero workflow disruption. Your team keeps working while we build the AI layer underneath, then deploy seamlessly.',
+                body: 'Our engineers build custom agent systems that deploy into the stack you already run: Salesforce, NetSuite, HubSpot, QuickBooks, SAP, Zendesk, Slack, and custom internal tools. Zero platform migration. Zero workflow disruption.',
               },
               {
                 n: '03',
@@ -559,6 +657,48 @@ export default function Home() {
       </section>
       </FadeIn> */}
 
+      {/* Trust & Security */}
+      <Section id="trust" padding="tight">
+        <Container size="xl">
+          <div className="text-center mb-10">
+            <Eyebrow tone="muted" className="justify-center inline-flex">Trust &amp; Security</Eyebrow>
+            <Display as="h2" size="md" align="center" className="mt-4 mx-auto" maxWidth="22ch">
+              Built to pass your security review.
+            </Display>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 md:gap-10">
+            {[
+              {
+                n: '01',
+                title: 'Your permissions, your data',
+                body: 'Agents operate within existing user and role permissions. No shadow access, no data exfiltration, nothing your stack doesn\u2019t already allow.',
+              },
+              {
+                n: '02',
+                title: 'Enterprise-grade posture',
+                body: 'SOC 2 Type II in progress. HIPAA-ready deployments available. GDPR-aligned by default. Signed MSAs and NDAs on every engagement.',
+              },
+              {
+                n: '03',
+                title: 'Owned by you',
+                body: 'All prompts, logic, and training artifacts are your property. No lock-in, no vendor-held secrets, no data used to train third-party models.',
+              },
+            ].map((item) => (
+              <div key={item.n}>
+                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.04em' }}>
+                  {item.n}
+                </span>
+                <h3 className="font-display mt-3 text-c-text" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
+                  {item.title}
+                </h3>
+                <Body size="sm" className="mt-3">{item.body}</Body>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
       {/* FAQ */}
       <Section id="faq">
         <Container size="md">
@@ -589,7 +729,7 @@ export default function Home() {
                 Let&apos;s get to know each other.
               </Display>
               <Body size="md" align="center" className="mt-5 mx-auto">
-                Book a 30-minute no-strings-attached strategy call. We&apos;ll get acquainted, discuss your company&apos;s situation, and you&apos;ll walk away with actionable advice and insights. Completely free — no sales pitch, just genuine guidance you can use immediately.
+                Book a 30-minute no-strings-attached strategy call. We&apos;ll get acquainted, discuss your company&apos;s situation, and you&apos;ll walk away with actionable advice and insights. Completely free. No sales pitch, just genuine guidance you can use immediately.
               </Body>
               <div className="mt-8 flex justify-center">
                 <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
@@ -597,7 +737,7 @@ export default function Home() {
             </div>
           </Card>
           <p className="mt-6 text-sm text-c-text-soft font-display tabular-nums">
-            Limited availability — accepting {spots} more client{spots !== 1 ? 's' : ''} in Q{quarter} {year}
+            Limited availability. Accepting {spots} more client{spots !== 1 ? 's' : ''} in Q{quarter} {year}
           </p>
         </Container>
       </Section>
@@ -628,6 +768,8 @@ export default function Home() {
             </div>
             <div className="flex flex-wrap gap-4 text-sm font-display text-c-text-muted">
               <Link href="/" className="inline-flex items-center h-10 px-1 hover:text-c-text transition-colors">Home</Link>
+              <Link href="/agent-systems" className="inline-flex items-center h-10 px-1 hover:text-c-text transition-colors">Agent Systems</Link>
+              <Link href="/case-studies" className="inline-flex items-center h-10 px-1 hover:text-c-text transition-colors">Case Studies</Link>
               <ContactLink className="inline-flex items-center h-10 px-1 hover:text-c-text transition-colors cursor-pointer" />
             </div>
           </div>
@@ -637,5 +779,6 @@ export default function Home() {
         </Container>
       </footer>
     </Surface>
+    </>
   );
 }

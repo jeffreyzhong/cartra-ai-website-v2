@@ -22,13 +22,15 @@ type CountUpProps = {
  */
 function CountUp({ value, startDelay = 0, duration = 1500 }: CountUpProps) {
   const reduced = useReducedMotion();
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
     if (reduced) {
       setDisplay(value);
       return;
     }
+
+    setDisplay(0);
 
     let raf = 0;
     let started = false;
