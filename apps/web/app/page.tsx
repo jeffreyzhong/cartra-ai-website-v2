@@ -33,16 +33,17 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const HEADLINE_WORDS = [
-  { text: 'Custom' },
-  { text: 'AI' },
-  { text: 'agents' },
-  { text: 'for' },
-  { text: 'workflow' },
-  { text: 'automation' },
+  { text: 'We' },
+  { text: 'transform' },
   { text: 'your' },
   { text: 'business' },
-  { text: 'can' },
-  { text: 'trust.', em: true },
+  { text: 'with' },
+  { text: 'AI' },
+  { text: 'customized', em: true },
+  { text: 'to' },
+  { text: 'how' },
+  { text: 'you' },
+  { text: 'work.' },
 ];
 
 const HERO_STATS: StatItem[] = [
@@ -92,10 +93,9 @@ export default function Home() {
 
           <Rise step={3}>
             <Body size="lg" align="center" className="mt-8 mx-auto">
-              Cartra designs and deploys custom AI agents for business
-              operations: document processing, email triage, reconciliation,
-              ERP workflows, and the repetitive handoffs your team already runs.
-              Get production AI workflow automation in weeks, not quarters.
+              Cartra designs and deploys custom AI agents that run operational
+              workflows on top of the software your team already uses. Multiply
+              productivity, reduce manual work, and launch in weeks.
             </Body>
           </Rise>
 
