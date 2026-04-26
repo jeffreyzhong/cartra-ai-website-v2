@@ -11,6 +11,7 @@ import {
 } from '@repo/ui';
 import Navigation from './Navigation';
 import CalendlyButton from './CalendlyButton';
+import SeoInternalLinks from './SeoInternalLinks';
 import type { CommercialPage } from '../content/commercial-pages';
 import { getAgentSystem } from '../content/agent-systems';
 import JsonLd from './JsonLd';
@@ -44,6 +45,7 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
       <Surface className="text-gray-900">
         <Mesh />
         <Navigation />
+        <main>
 
         <Section padding="hero">
           <Container size="lg" className="text-center">
@@ -237,6 +239,8 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
             </Card>
           </Container>
         </Section>
+        <SeoInternalLinks currentSlug={page.slug} />
+        </main>
       </Surface>
     </>
   );

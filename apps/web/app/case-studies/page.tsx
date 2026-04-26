@@ -12,6 +12,7 @@ import {
 } from '@repo/ui';
 import Navigation from '../components/Navigation';
 import CalendlyButton from '../components/CalendlyButton';
+import SeoInternalLinks from '../components/SeoInternalLinks';
 import JsonLd from '../components/JsonLd';
 import { CASE_STUDIES } from '../content/case-studies';
 import { getAgentSystem } from '../content/agent-systems';
@@ -50,6 +51,7 @@ export default function CaseStudiesPage() {
       <Surface className="text-gray-900">
         <Mesh />
         <Navigation />
+        <main>
 
         <Section padding="hero">
           <Container size="lg" className="text-center">
@@ -115,6 +117,8 @@ export default function CaseStudiesPage() {
             </Card>
           </Container>
         </Section>
+        <SeoInternalLinks />
+        </main>
       </Surface>
     </>
   );

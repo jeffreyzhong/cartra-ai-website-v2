@@ -26,8 +26,8 @@
 
   /* Text — navy-tinted, single-hue derivation system */
   --c-text: oklch(22% 0.03 255);           /* #1C2A44 — primary text */
-  --c-text-muted: color-mix(in oklab, var(--c-text) 58%, transparent);
-  --c-text-soft: color-mix(in oklab, var(--c-text) 38%, transparent);
+  --c-text-muted: color-mix(in oklab, var(--c-text) 68%, transparent);
+  --c-text-soft: color-mix(in oklab, var(--c-text) 62%, transparent);
   --c-border: color-mix(in oklab, var(--c-text) 10%, transparent);
   --c-border-strong: color-mix(in oklab, var(--c-text) 18%, transparent);
 

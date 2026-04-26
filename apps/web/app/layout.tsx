@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Source_Serif_4 } from "next/font/google";
-import Script from "next/script";
-import CalendlyScripts from "./components/CalendlyScripts";
 import "@repo/ui/tokens.css";
 import "@repo/ui/motion.css";
 import "@repo/ui/components.css";
@@ -97,9 +95,7 @@ export default function RootLayout({
           }}
         />
         <Analytics />
-        <CalendlyScripts />
         {children}
-        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
       </body>
     </html>
   );

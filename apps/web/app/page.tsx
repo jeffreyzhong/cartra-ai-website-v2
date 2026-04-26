@@ -19,6 +19,7 @@ import FAQ from './components/FAQ';
 import AgentSystems from './components/AgentSystems';
 import CalendlyButton from './components/CalendlyButton';
 import ContactLink from './components/ContactLink';
+import SeoInternalLinks from './components/SeoInternalLinks';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
@@ -77,6 +78,7 @@ export default function Home() {
       <Mesh />
 
       <Navigation />
+      <main>
 
       {/* Hero */}
       <Section id="home" padding="hero" className="overflow-hidden">
@@ -741,6 +743,8 @@ export default function Home() {
           </p>
         </Container>
       </Section>
+      <SeoInternalLinks />
+      </main>
 
       {/* Footer */}
       <footer className="py-12 px-4 sm:px-6 lg:px-8" style={{ borderTop: '1px solid var(--c-border)' }}>
@@ -766,11 +770,24 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap gap-4 text-sm font-display text-c-text-muted">
-              <Link href="/" className="inline-flex items-center h-10 px-1 hover:text-c-text transition-colors">Home</Link>
-              <Link href="/agent-systems" className="inline-flex items-center h-10 px-1 hover:text-c-text transition-colors">Agent Systems</Link>
-              <Link href="/case-studies" className="inline-flex items-center h-10 px-1 hover:text-c-text transition-colors">Case Studies</Link>
-              <ContactLink className="inline-flex items-center h-10 px-1 hover:text-c-text transition-colors cursor-pointer" />
+            <div className="grid sm:grid-cols-2 gap-8 text-sm font-display text-c-text-muted">
+              <div>
+                <p className="text-c-text font-semibold">Company</p>
+                <div className="mt-3 flex flex-col gap-2">
+                  <Link href="/" className="inline-flex items-center h-8 hover:text-c-text transition-colors">Home</Link>
+                  <Link href="/agent-systems" className="inline-flex items-center h-8 hover:text-c-text transition-colors">Agent Systems</Link>
+                  <Link href="/case-studies" className="inline-flex items-center h-8 hover:text-c-text transition-colors">Case Studies</Link>
+                  <ContactLink className="inline-flex items-center h-8 hover:text-c-text transition-colors cursor-pointer" />
+                </div>
+              </div>
+              <div>
+                <p className="text-c-text font-semibold">AI Services</p>
+                <div className="mt-3 flex flex-col gap-2">
+                  <Link href="/ai-agent-development-company" className="inline-flex items-center h-8 hover:text-c-text transition-colors">AI Agent Development Company</Link>
+                  <Link href="/ai-automation-agency" className="inline-flex items-center h-8 hover:text-c-text transition-colors">AI Automation Agency</Link>
+                  <Link href="/ai-workflow-automation" className="inline-flex items-center h-8 hover:text-c-text transition-colors">AI Workflow Automation</Link>
+                </div>
+              </div>
             </div>
           </div>
           <div className="mt-10 pt-8 text-center text-sm font-display text-c-text-soft tabular-nums" style={{ borderTop: '1px solid var(--c-border)' }}>

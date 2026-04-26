@@ -13,6 +13,7 @@ import {
 } from '@repo/ui';
 import Navigation from '../../components/Navigation';
 import CalendlyButton from '../../components/CalendlyButton';
+import SeoInternalLinks from '../../components/SeoInternalLinks';
 import JsonLd from '../../components/JsonLd';
 import { AGENT_SYSTEMS, getAgentSystem } from '../../content/agent-systems';
 import {
@@ -60,6 +61,7 @@ export default async function AgentSystemDetail(
     <Surface className="text-gray-900">
       <Mesh />
       <Navigation />
+      <main>
 
       <Section padding="hero">
         <Container size="lg" className="text-center">
@@ -244,6 +246,8 @@ export default async function AgentSystemDetail(
           </Card>
         </Container>
       </Section>
+      <SeoInternalLinks />
+      </main>
     </Surface>
     </>
   );

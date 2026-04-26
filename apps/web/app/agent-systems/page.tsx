@@ -12,6 +12,7 @@ import {
 } from '@repo/ui';
 import Navigation from '../components/Navigation';
 import CalendlyButton from '../components/CalendlyButton';
+import SeoInternalLinks from '../components/SeoInternalLinks';
 import JsonLd from '../components/JsonLd';
 import { AGENT_SYSTEMS } from '../content/agent-systems';
 import { createBreadcrumbJsonLd, createPageMetadata } from '../lib/seo';
@@ -35,6 +36,7 @@ export default function AgentSystemsIndex() {
     <Surface className="text-gray-900">
       <Mesh />
       <Navigation />
+      <main>
 
       <Section padding="hero">
         <Container size="lg" className="text-center">
@@ -104,6 +106,8 @@ export default function AgentSystemsIndex() {
           </Card>
         </Container>
       </Section>
+      <SeoInternalLinks />
+      </main>
     </Surface>
     </>
   );
