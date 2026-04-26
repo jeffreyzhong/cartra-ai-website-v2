@@ -56,7 +56,7 @@ export function Words({
         <Fragment key={`${w.text}-${i}`}>
           {i > 0 && ' '}
           <span
-            className={`ds-word ${className}`}
+            className={`ds-word${w.em ? ' ds-word-em' : ''}${className ? ` ${className}` : ''}`}
             style={{ animationDelay: `${baseDelay + i * stagger}ms` }}
           >
             {w.em ? <em>{w.text}</em> : w.text}

@@ -33,6 +33,12 @@
   animation: ds-underline-draw var(--duration-slow) var(--ease-out) 1180ms forwards;
 }
 
+.ds-word-em {
+  margin-inline: -0.08em;
+  padding-inline: 0.08em;
+  overflow: visible;
+}
+
 /* ── Body paragraph ────────────────────────────────────── */
 
 .ds-body {
