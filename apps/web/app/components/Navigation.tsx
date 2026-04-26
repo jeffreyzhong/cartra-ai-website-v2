@@ -15,7 +15,7 @@ export default function Navigation() {
             style={{ fontSize: '1.375rem', fontWeight: 600, letterSpacing: '-0.03em' }}
           >
             <Image
-              src="/cartra-geometric-logo.svg"
+              src="/cartra_geometric_logo_round.png"
               alt="Cartra Logo"
               width={28}
               height={28}
