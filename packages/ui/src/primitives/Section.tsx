@@ -1,10 +1,10 @@
 import { type HTMLAttributes } from 'react';
 
 const PAD = {
-  hero: 'pt-32 md:pt-36 pb-20 md:pb-28',
-  loose: 'py-24 md:py-32',
-  default: 'py-20 md:py-24',
-  tight: 'py-14 md:py-16',
+  hero: 'pt-32 md:pt-36 pb-8 md:pb-12',
+  loose: 'py-20 md:py-28',
+  default: 'py-16 md:py-20',
+  tight: 'py-10 md:py-12',
 } as const;
 
 type Padding = keyof typeof PAD;

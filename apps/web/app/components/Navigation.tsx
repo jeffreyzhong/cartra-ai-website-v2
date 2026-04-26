@@ -15,7 +15,7 @@ export default function Navigation() {
             style={{ fontSize: '1.375rem', fontWeight: 600, letterSpacing: '-0.03em' }}
           >
             <Image
-              src="/cartra_geometric_logo_round.png"
+              src="/cartra-geometric-logo.svg"
               alt="Cartra Logo"
               width={28}
               height={28}
@@ -27,19 +27,31 @@ export default function Navigation() {
 
           <div className="flex items-center gap-6">
             <Link
-              href="#results"
+              href="/#results"
               className="hidden md:inline-flex items-center h-10 font-display text-sm font-medium text-c-text-muted hover:text-c-text transition-colors"
             >
               Results
             </Link>
             <Link
-              href="#process"
+              href="/agent-systems"
+              className="hidden md:inline-flex items-center h-10 font-display text-sm font-medium text-c-text-muted hover:text-c-text transition-colors"
+            >
+              Agent Systems
+            </Link>
+            <Link
+              href="/case-studies"
+              className="hidden lg:inline-flex items-center h-10 font-display text-sm font-medium text-c-text-muted hover:text-c-text transition-colors"
+            >
+              Case Studies
+            </Link>
+            <Link
+              href="/#process"
               className="hidden md:inline-flex items-center h-10 font-display text-sm font-medium text-c-text-muted hover:text-c-text transition-colors"
             >
               Process
             </Link>
             <Link
-              href="#faq"
+              href="/#faq"
               className="hidden md:inline-flex items-center h-10 font-display text-sm font-medium text-c-text-muted hover:text-c-text transition-colors"
             >
               FAQ

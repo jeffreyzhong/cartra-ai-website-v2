@@ -1,0 +1,67 @@
+export const SEO_BASELINE_DATE = '2026-04-24';
+
+export const SEO_BASELINE_KEYWORDS = [
+  {
+    keyword: 'cartra',
+    page: '/',
+    currentPosition: 4,
+    usVolume: 80,
+    priority: 'branded',
+  },
+  {
+    keyword: 'ai agent development company',
+    page: '/ai-agent-development-company',
+    currentPosition: null,
+    usVolume: 1100,
+    keywordDifficulty: 7,
+    priority: 'commercial',
+  },
+  {
+    keyword: 'ai automation agency',
+    page: '/ai-automation-agency',
+    currentPosition: null,
+    usVolume: 1900,
+    keywordDifficulty: 31,
+    priority: 'commercial',
+  },
+  {
+    keyword: 'ai workflow automation',
+    page: '/ai-workflow-automation',
+    currentPosition: null,
+    usVolume: 2800,
+    keywordDifficulty: 49,
+    priority: 'commercial',
+  },
+  {
+    keyword: 'custom ai agents',
+    page: '/',
+    currentPosition: null,
+    usVolume: 1000,
+    keywordDifficulty: 65,
+    priority: 'commercial',
+  },
+  {
+    keyword: 'document processing ai',
+    page: '/agent-systems/customs-document-ops',
+    currentPosition: null,
+    usVolume: 200,
+    keywordDifficulty: 46,
+    priority: 'use-case',
+  },
+  {
+    keyword: 'legal ai agents',
+    page: '/agent-systems/company-knowledge-base',
+    currentPosition: null,
+    usVolume: 100,
+    keywordDifficulty: null,
+    priority: 'industry',
+  },
+  {
+    keyword: 'ai agents for logistics',
+    page: '/agent-systems/customs-document-ops',
+    currentPosition: null,
+    usVolume: 70,
+    keywordDifficulty: 1,
+    priority: 'industry',
+  },
+] as const;
