@@ -61,6 +61,7 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(function Button(
 
   if (rest.as === 'a') {
     const { as: _as, ...anchorRest } = rest;
+    void _as;
     return (
       <a
         className={cls}
@@ -73,6 +74,7 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(function Button(
   }
 
   const { as: _asBtn, ...buttonRest } = rest as ButtonAsButton;
+  void _asBtn;
   return (
     <button
       className={cls}

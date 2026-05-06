@@ -75,3 +75,11 @@ When auditing with Ahrefs:
 - Preserve brand-led homepage copy unless explicitly asked to optimize copy for SEO.
 - Keep SEO improvements in metadata, schema, internal links, and dedicated landing pages before making homepage copy feel keyword-stuffed.
 - Favor the approved PNG logo for favicon/navigation unless a real brand-approved SVG is provided.
+
+## Public Copy Safety
+
+- Raw SEO research is planning input only. Do not render Ahrefs data, search-volume metrics, keyword difficulty, CPC, target-keyword labels, or research notes in public page UI.
+- When removing exposed internal copy, replace it with context-specific customer-facing copy. Do not leave a page section hollow or abrupt.
+- Keep draft status, future-content plans, outreach strategy, partner-mention notes, and content-brief language out of app-rendered pages.
+- Metadata and schema may be SEO-aware, but visible text must read naturally to customers.
+- Run `pnpm check:public-copy` before merging website-copy changes.

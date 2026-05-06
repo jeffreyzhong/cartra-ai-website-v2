@@ -25,6 +25,7 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
   const relatedAgents = page.relatedAgentSlugs
     .map((slug) => getAgentSystem(slug))
     .filter(Boolean);
+  const highlightAccentColors = ['var(--c-accent)', 'var(--c-orange)', 'var(--c-accent)'];
 
   return (
     <>
@@ -38,7 +39,7 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
       <JsonLd data={createServiceJsonLd({
         name: page.h1,
         description: page.seoDescription,
-        serviceType: page.primaryKeyword,
+        serviceType: page.eyebrow,
         path: `/${page.slug}`,
         category: page.eyebrow,
       })} />
@@ -71,16 +72,15 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
         <Section padding="tight">
           <Container size="xl">
             <div className="grid md:grid-cols-3 gap-5">
-              {[
-                { label: 'Search demand', value: page.ahrefs.volume },
-                { label: 'Difficulty', value: page.ahrefs.difficulty },
-                { label: 'Paid intent', value: page.ahrefs.cpc },
-              ].map((stat) => (
-                <Card key={stat.label} surface="frosted">
-                  <Eyebrow tone="muted">{stat.label}</Eyebrow>
-                  <p className="font-display mt-3 text-c-text" style={{ fontSize: '1.35rem', fontWeight: 600, letterSpacing: '-0.02em' }}>
-                    {stat.value}
-                  </p>
+              {page.highlights.map((highlight, index) => (
+                <Card key={highlight.label} surface="frosted">
+                  <span
+                    aria-hidden
+                    className="block h-px w-10 mb-4"
+                    style={{ background: highlightAccentColors[index % highlightAccentColors.length] }}
+                  />
+                  <Eyebrow tone="accent">{highlight.label}</Eyebrow>
+                  <Body size="sm" className="mt-3">{highlight.body}</Body>
                 </Card>
               ))}
             </div>

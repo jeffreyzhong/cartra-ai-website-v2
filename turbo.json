@@ -10,6 +10,9 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
+    "check:public-copy": {
+      "dependsOn": ["^check:public-copy"]
+    },
     "check-types": {
       "dependsOn": ["^check-types"]
     },

@@ -60,7 +60,7 @@ export default function CaseStudiesPage() {
               Proof from operational AI agents in production.
             </Display>
             <Body size="lg" align="center" className="mt-8 mx-auto" maxWidth="60ch">
-              A starting library of Cartra deployments that can support outreach, partner mentions, and future deeper case-study pages.
+              See how Cartra agent systems reduce manual work, improve throughput, and give operations teams cleaner handoffs inside the tools they already use.
             </Body>
           </Container>
         </Section>
