@@ -129,7 +129,7 @@ export function createAgentServiceJsonLd(agent: AgentSystem) {
     '@type': 'Service',
     '@id': absoluteUrl(`/agent-systems/${agent.slug}#service`),
     name: agent.seoTitle,
-    serviceType: agent.primaryKeyword,
+    serviceType: agent.name,
     category: agent.category,
     description: agent.seoDescription,
     url: absoluteUrl(`/agent-systems/${agent.slug}`),

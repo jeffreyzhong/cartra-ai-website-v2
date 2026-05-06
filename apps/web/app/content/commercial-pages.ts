@@ -7,12 +7,10 @@ export type CommercialPage = {
   eyebrow: string;
   h1: string;
   intro: string;
-  primaryKeyword: string;
-  ahrefs: {
-    volume: string;
-    difficulty: string;
-    cpc: string;
-  };
+  highlights: Array<{
+    label: string;
+    body: string;
+  }>;
   fit: string[];
   workflows: string[];
   proof: string;
@@ -35,12 +33,20 @@ export const COMMERCIAL_PAGES: CommercialPage[] = [
     h1: 'Custom AI agent development for operational workflows.',
     intro:
       'Cartra designs, builds, deploys, and maintains custom AI agents for mid-market companies that need production workflow automation inside the tools they already use.',
-    primaryKeyword: 'ai agent development company',
-    ahrefs: {
-      volume: '1,100 US searches/mo',
-      difficulty: 'KD 7',
-      cpc: '$9 CPC',
-    },
+    highlights: [
+      {
+        label: 'Built for',
+        body: 'Operational workflows with clear rules, volume, and measurable outcomes.',
+      },
+      {
+        label: 'Deploys into',
+        body: 'ERPs, CRMs, inboxes, spreadsheets, portals, and internal tools.',
+      },
+      {
+        label: 'Launch model',
+        body: 'Discovery, build, deployment, monitoring, and ongoing optimization.',
+      },
+    ],
     fit: [
       'You have repetitive operational work with clear volume and clear rules.',
       'Your team lives across ERPs, CRMs, inboxes, spreadsheets, and portals.',
@@ -101,12 +107,20 @@ export const COMMERCIAL_PAGES: CommercialPage[] = [
     h1: 'An AI automation agency for the workflows slowing down your team.',
     intro:
       'Cartra helps mid-market operations teams replace repetitive manual work with custom AI automation that runs inside their existing systems.',
-    primaryKeyword: 'ai automation agency',
-    ahrefs: {
-      volume: '1,900 US searches/mo',
-      difficulty: 'KD 31',
-      cpc: '$3 CPC',
-    },
+    highlights: [
+      {
+        label: 'Best first workflows',
+        body: 'Manual handoffs, document processing, approvals, reconciliation, and CRM updates.',
+      },
+      {
+        label: 'Delivery model',
+        body: 'Strategy, implementation, integrations, exception handling, and KPI visibility.',
+      },
+      {
+        label: 'Operating goal',
+        body: 'Fewer manual touches, faster throughput, and clearer ownership.',
+      },
+    ],
     fit: [
       'Your backlog comes from manual handoffs, not strategy gaps.',
       'You need automation across multiple tools, teams, and approval paths.',
@@ -167,12 +181,20 @@ export const COMMERCIAL_PAGES: CommercialPage[] = [
     h1: 'AI workflow automation built into the systems you already run.',
     intro:
       'Cartra builds agent systems that take repetitive workflows from intake to decision to output, with human review only where judgment is actually needed.',
-    primaryKeyword: 'ai workflow automation',
-    ahrefs: {
-      volume: '2,800 US searches/mo',
-      difficulty: 'KD 49',
-      cpc: '$0.70 CPC',
-    },
+    highlights: [
+      {
+        label: 'Workflow shape',
+        body: 'Repeated inputs, defined decision rules, and measurable outputs.',
+      },
+      {
+        label: 'Agent role',
+        body: 'Classify, check context, take action, and route exceptions.',
+      },
+      {
+        label: 'Leadership view',
+        body: 'Throughput, accuracy, exceptions, and time recovered.',
+      },
+    ],
     fit: [
       'Your workflow has repeated inputs, clear decision rules, and measurable outputs.',
       'The process touches several tools and creates manual re-entry.',

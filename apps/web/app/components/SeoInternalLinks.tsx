@@ -30,8 +30,9 @@ export default function SeoInternalLinks({
               Explore the services behind the agent systems.
             </Display>
             <Body size="md" className="mt-5" maxWidth="54ch">
-              Start with the search intent closest to your buying motion, then
-              follow the related agent systems for concrete workflow examples.
+              Start with the service area closest to the workflow you want to
+              improve, then follow the related agent systems for concrete
+              examples.
             </Body>
           </div>
 
@@ -43,7 +44,7 @@ export default function SeoInternalLinks({
                 className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-c-accent rounded-2xl"
               >
                 <Card surface="frosted" className="h-full transition-transform group-hover:-translate-y-0.5 group-active:scale-[0.995]">
-                  <Eyebrow tone="accent">{page.primaryKeyword}</Eyebrow>
+                  <Eyebrow tone="accent">Service</Eyebrow>
                   <h3
                     className="font-display mt-3 text-c-text"
                     style={{

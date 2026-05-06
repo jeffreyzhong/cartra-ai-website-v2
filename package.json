@@ -5,6 +5,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "check:public-copy": "turbo run check:public-copy",
+    "validate": "pnpm check:public-copy && pnpm lint && pnpm check-types && pnpm build",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
   },

@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --max-warnings 0",
+    "check:public-copy": "node scripts/check-public-copy.mjs",
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
