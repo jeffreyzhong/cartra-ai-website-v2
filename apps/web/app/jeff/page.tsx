@@ -97,29 +97,6 @@ export default function JeffPage() {
 
                 <div>
                   <dt>
-                    <Eyebrow tone="muted">WhatsApp</Eyebrow>
-                  </dt>
-                  <dd className="mt-3">
-                    <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-                      <div className="rounded-xl bg-white p-3 ring-1 ring-c-border">
-                        <Image
-                          src={WHATSAPP_QR_IMAGE}
-                          alt="WhatsApp QR code"
-                          width={144}
-                          height={144}
-                        />
-                      </div>
-                      <Body size="sm" tone="muted">
-                        Open WhatsApp, tap the{' '}
-                        <span className="text-c-text">Camera</span> icon in
-                        chats, then point at the code.
-                      </Body>
-                    </div>
-                  </dd>
-                </div>
-
-                <div>
-                  <dt>
                     <Eyebrow tone="muted">WeChat</Eyebrow>
                   </dt>
                   <dd className="mt-3">
@@ -167,6 +144,57 @@ export default function JeffPage() {
                               <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
                             </svg>
                             <span>Open WeChat</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </dd>
+                </div>
+
+                <div>
+                  <dt>
+                    <Eyebrow tone="muted">WhatsApp</Eyebrow>
+                  </dt>
+                  <dd className="mt-3">
+                    <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+                      <div className="rounded-xl bg-white p-3 ring-1 ring-c-border">
+                        <Image
+                          src={WHATSAPP_QR_IMAGE}
+                          alt="WhatsApp QR code"
+                          width={144}
+                          height={144}
+                        />
+                      </div>
+                      <div className="space-y-3">
+                        <Body size="sm" tone="muted">
+                          Open WhatsApp, tap the{' '}
+                          <span className="text-c-text">Camera</span> icon in
+                          chats, then point at the code.
+                        </Body>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <a
+                            href="https://wa.me/19094385867"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={PILL_LINK_CLASS}
+                            style={PILL_LINK_STYLE}
+                          >
+                            <svg
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              aria-hidden
+                            >
+                              <path d="M14 3h7v7" />
+                              <path d="M10 14 21 3" />
+                              <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+                            </svg>
+                            <span>Open WhatsApp</span>
                           </a>
                         </div>
                       </div>
