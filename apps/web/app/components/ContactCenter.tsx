@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useState, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { Button, Eyebrow } from '@repo/ui';
 import CopyButton from './CopyButton';
 
@@ -238,44 +239,46 @@ function Modal({
     };
   }, [open, onClose]);
 
-  if (!open) return null;
+  if (!open || typeof document === 'undefined') return null;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/35 backdrop-blur-sm"
+      className="fixed inset-0 z-[60] overflow-y-auto bg-black/35 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label={title}
       style={{ animation: 'jeff-modal-fade 180ms ease-out both' }}
     >
-      <div
-        className="relative w-full max-w-[400px] rounded-2xl bg-white p-7 shadow-2xl ring-1 ring-c-border"
-        onClick={(e) => e.stopPropagation()}
-        style={{ animation: 'jeff-modal-pop 200ms cubic-bezier(0.22, 1, 0.36, 1) both' }}
-      >
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close"
-          className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-c-text-muted transition-colors hover:bg-c-surface hover:text-c-text"
+      <div className="flex min-h-full items-center justify-center p-4">
+        <div
+          className="relative w-full max-w-[400px] rounded-2xl bg-white p-7 shadow-2xl ring-1 ring-c-border"
+          onClick={(e) => e.stopPropagation()}
+          style={{ animation: 'jeff-modal-pop 200ms cubic-bezier(0.22, 1, 0.36, 1) both' }}
         >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close"
+            className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-c-text-muted transition-colors hover:bg-c-surface hover:text-c-text"
           >
-            <path d="M18 6 6 18" />
-            <path d="m6 6 12 12" />
-          </svg>
-        </button>
-        {children}
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+          {children}
+        </div>
       </div>
       <style>{`
         @keyframes jeff-modal-fade {
@@ -287,6 +290,7 @@ function Modal({
           to { opacity: 1; transform: translateY(0) scale(1) }
         }
       `}</style>
-    </div>
+    </div>,
+    document.body
   );
 }
