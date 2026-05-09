@@ -24,9 +24,9 @@ const WHATSAPP_URL = 'https://wa.me/19094385867';
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    title: 'Jeffrey Zhong, Founder & CEO at Cartra AI',
+    title: 'Jeff Zhong, Founder & CEO at Cartra AI',
     description:
-      'Direct contact for Jeffrey Zhong, Founder & CEO of Cartra AI.',
+      'Direct contact for Jeff Zhong, Founder & CEO of Cartra AI.',
     path: '/jeff',
   }),
   robots: { index: false, follow: false },
@@ -45,7 +45,7 @@ export default function JeffPage() {
                 <div className="relative h-32 w-32 overflow-hidden rounded-full ring-1 ring-c-border shadow-sm">
                   <Image
                     src={PROFILE_IMAGE}
-                    alt="Jeffrey Zhong"
+                    alt="Jeff Zhong"
                     fill
                     sizes="128px"
                     className="object-cover object-top"
@@ -55,7 +55,7 @@ export default function JeffPage() {
               </div>
 
               <Display as="h1" size="md" align="center" className="mt-6">
-                Jeffrey Zhong
+                Jeff Zhong
               </Display>
 
               <div className="mt-3 flex flex-col items-center gap-1.5">
