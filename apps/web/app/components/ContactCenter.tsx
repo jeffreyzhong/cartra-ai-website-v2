@@ -91,7 +91,7 @@ export default function ContactCenter({
         </p>
         <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
           <CopyButton value={wechatId} label="Copy ID" />
-          <Button as="a" href="weixin://" variant="ghost">
+          <Button as="a" href="weixin://">
             Open WeChat
           </Button>
         </div>
