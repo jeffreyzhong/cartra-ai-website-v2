@@ -41,6 +41,10 @@ export default function ContactCenter({
           <BrandGlyph src="/whatsapp-logo.svg" />
           <span>WhatsApp</span>
         </PillButton>
+        <PillButton href="/" dark>
+          <span>Visit cartra.ai</span>
+          <span aria-hidden>&rarr;</span>
+        </PillButton>
       </div>
 
       <Modal open={active === 'email'} onClose={close} title="Email">
@@ -143,23 +147,43 @@ export default function ContactCenter({
   );
 }
 
+const PILL_BASE_CLASS =
+  'inline-flex items-center gap-2 rounded-full px-3.5 py-2 font-display transition-all active:scale-[0.97]';
+const PILL_FILLED_CLASS =
+  'bg-white text-c-text shadow-sm ring-1 ring-c-border hover:ring-c-accent';
+const PILL_DARK_CLASS =
+  'bg-c-text text-white shadow-sm hover:bg-c-navy';
+const PILL_STYLE = {
+  fontSize: '0.875rem',
+  fontWeight: 500,
+  letterSpacing: '-0.005em',
+} as const;
+
 function PillButton({
   onClick,
+  href,
+  dark,
   children,
 }: {
-  onClick: () => void;
+  onClick?: () => void;
+  href?: string;
+  dark?: boolean;
   children: ReactNode;
 }) {
+  const className = `${PILL_BASE_CLASS} ${dark ? PILL_DARK_CLASS : PILL_FILLED_CLASS}`;
+  if (href) {
+    return (
+      <a href={href} className={className} style={PILL_STYLE}>
+        {children}
+      </a>
+    );
+  }
   return (
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2 font-display text-c-text shadow-sm ring-1 ring-c-border transition-all hover:ring-c-accent active:scale-[0.97]"
-      style={{
-        fontSize: '0.875rem',
-        fontWeight: 500,
-        letterSpacing: '-0.005em',
-      }}
+      className={className}
+      style={PILL_STYLE}
     >
       {children}
     </button>

@@ -9,7 +9,6 @@ import {
   Display,
   Body,
   Eyebrow,
-  Button,
 } from '@repo/ui';
 import Navigation from '../components/Navigation';
 import ContactCenter from '../components/ContactCenter';
@@ -109,14 +108,6 @@ export default function JeffPage() {
                   </span>
                 </figcaption>
               </figure>
-
-              <hr className="mt-10 border-0 border-t border-c-border" />
-
-              <div className="mt-8 flex justify-center">
-                <Button as="a" href="/" trailingIcon="→">
-                  Visit cartra.ai
-                </Button>
-              </div>
             </Card>
           </Container>
         </Section>
