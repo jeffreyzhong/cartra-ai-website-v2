@@ -1,6 +1,5 @@
 import {
   Surface,
-  Mesh,
   Section,
   Container,
   Display,
@@ -12,6 +11,7 @@ import {
   StatGroup,
   Rise,
   Words,
+  AgentMockup,
   type StatItem,
 } from '@repo/ui';
 import Navigation from './components/Navigation';
@@ -74,9 +74,7 @@ export default function Home() {
   return (
     <>
     <JsonLd data={createFaqPageJsonLd()} />
-    <Surface className="text-gray-900">
-      <Mesh />
-
+    <Surface>
       <Navigation />
       <main>
 
@@ -106,12 +104,18 @@ export default function Home() {
             <Button variant="ghost" as="a" href="#process">See our process</Button>
           </Rise>
 
-          <Rise step={6} className="mt-14">
-            <StatGroup stats={HERO_STATS} />
+          <Rise step={6} className="mt-14 mx-auto max-w-3xl">
+            <AgentMockup />
           </Rise>
+        </Container>
+      </Section>
 
-          <Rise step={7} className="mt-14 max-w-lg mx-auto">
-            <Eyebrow tone="muted">Founded by AI engineers from</Eyebrow>
+      {/* Trust band — stats + founders (below first viewport) */}
+      <Section padding="tight" id="trust-band">
+        <Container size="lg" className="text-center">
+          <StatGroup stats={HERO_STATS} />
+          <div className="mt-12 max-w-lg mx-auto">
+            <Eyebrow tone="muted" className="justify-center inline-flex">Founded by AI engineers from</Eyebrow>
             <div className="mt-3 flex flex-wrap items-center justify-center gap-2.5">
               <LogoPill>
                 <Image src="/META.svg" alt="Meta" width={96} height={22} className="h-[18px] w-auto" />
@@ -119,11 +123,11 @@ export default function Home() {
               <LogoPill>
                 <Image src="/GOOG.svg" alt="Google" width={96} height={22} className="h-[18px] w-auto" />
               </LogoPill>
-              <span className="font-serif italic text-[0.8125rem] text-c-text-muted">
+              <span className="font-display text-[0.8125rem] text-c-text-muted">
                 who&apos;ve scaled products to billions of users.
               </span>
             </div>
-          </Rise>
+          </div>
         </Container>
       </Section>
 
@@ -264,9 +268,9 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-10">
-            <Card surface="frosted">
+            <Card>
               <Eyebrow tone="accent">Customs &amp; Document Agent System</Eyebrow>
-              <h3 className="font-display text-c-text mt-3" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em' }}>
+              <h3 className="font-display text-c-text mt-3" style={{ fontSize: '1.125rem', fontWeight: 500, letterSpacing: '-0.015em' }}>
                 8-figure U.S. freight forwarder
               </h3>
               <Body size="md" className="mt-3">
@@ -274,16 +278,16 @@ export default function Home() {
               </Body>
               <Link
                 href="/agent-systems/customs-document-ops"
-                className="mt-5 inline-flex font-display text-c-accent"
-                style={{ fontSize: '0.8125rem', fontWeight: 600 }}
+                className="mt-5 inline-flex font-display text-c-primary"
+                style={{ fontSize: '0.8125rem', fontWeight: 500 }}
               >
                 See the customs document agent system →
               </Link>
             </Card>
 
-            <Card surface="frosted">
+            <Card>
               <Eyebrow tone="accent">Procurement &amp; Knowledge Agent System</Eyebrow>
-              <h3 className="font-display text-c-text mt-3" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em' }}>
+              <h3 className="font-display text-c-text mt-3" style={{ fontSize: '1.125rem', fontWeight: 500, letterSpacing: '-0.015em' }}>
                 $150M+ industrial manufacturer
               </h3>
               <Body size="md" className="mt-3">
@@ -291,16 +295,16 @@ export default function Home() {
               </Body>
               <Link
                 href="/agent-systems/procurement-vendor-ops"
-                className="mt-5 inline-flex font-display text-c-accent"
-                style={{ fontSize: '0.8125rem', fontWeight: 600 }}
+                className="mt-5 inline-flex font-display text-c-primary"
+                style={{ fontSize: '0.8125rem', fontWeight: 500 }}
               >
                 See the procurement agent system →
               </Link>
             </Card>
           </div>
 
-          <Card surface="navy" className="mb-10">
-            <h3 className="font-display" style={{ fontSize: '1.5rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--c-on-dark)' }}>
+          <Card surface="featured" className="mb-10">
+            <h3 className="font-display" style={{ fontSize: '1.5rem', fontWeight: 500, letterSpacing: '-0.02em', color: 'var(--c-on-dark)' }}>
               Engineering depth from Meta and Google.
             </h3>
             <Body size="md" tone="on-dark-muted" className="mt-3" maxWidth="60ch">
@@ -353,11 +357,11 @@ export default function Home() {
                 body: 'The $150M manufacturer replaced a patchwork of spreadsheets, vendor portals, and inboxes with one coordinated workflow, and a knowledge base now serving ops, customer service, and marketing.',
               },
             ].map((item) => (
-              <Card key={item.n} surface="frosted">
-                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.04em' }}>
+              <Card key={item.n}>
+                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.04em' }}>
                   {item.n}
                 </span>
-                <h3 className="font-display mt-4 text-c-text" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
+                <h3 className="font-display mt-4 text-c-text" style={{ fontSize: '1.125rem', fontWeight: 500, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
                   {item.title}
                 </h3>
                 <Body size="sm" className="mt-3">{item.body}</Body>
@@ -531,8 +535,8 @@ export default function Home() {
                 body: 'Quoting, scheduling, invoicing, and field-to-office handoffs automated inside the dispatch and accounting systems your team already runs.',
               },
             ].map((item) => (
-              <Card key={item.title} surface="frosted">
-                <h3 className="font-display text-c-text" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
+              <Card key={item.title}>
+                <h3 className="font-display text-c-text" style={{ fontSize: '1.125rem', fontWeight: 500, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
                   {item.title}
                 </h3>
                 <Body size="sm" className="mt-3">{item.body}</Body>
@@ -552,13 +556,13 @@ export default function Home() {
             </Display>
           </div>
 
-          <Card surface="frosted" className="mb-10">
+          <Card className="mb-10">
             <div className="md:flex md:items-start md:gap-8">
               <div className="shrink-0 md:w-48">
-                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.04em' }}>
+                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.04em' }}>
                   00
                 </span>
-                <h3 className="font-display mt-3 text-c-text" style={{ fontSize: '1.25rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                <h3 className="font-display mt-3 text-c-text" style={{ fontSize: '1.25rem', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1.2 }}>
                   What we need from you
                 </h3>
               </div>
@@ -587,10 +591,10 @@ export default function Home() {
               },
             ].map((step) => (
               <div key={step.n}>
-                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.04em' }}>
+                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.04em' }}>
                   {step.n}
                 </span>
-                <h3 className="font-display mt-3 text-c-text" style={{ fontSize: '1.5rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.15 }}>
+                <h3 className="font-display mt-3 text-c-text" style={{ fontSize: '1.5rem', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1.15 }}>
                   {step.title}
                 </h3>
                 <Body size="md" className="mt-4">{step.body}</Body>
@@ -688,10 +692,10 @@ export default function Home() {
               },
             ].map((item) => (
               <div key={item.n}>
-                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.04em' }}>
+                <span className="font-display text-c-orange tabular-nums" style={{ fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.04em' }}>
                   {item.n}
                 </span>
-                <h3 className="font-display mt-3 text-c-text" style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
+                <h3 className="font-display mt-3 text-c-text" style={{ fontSize: '1.125rem', fontWeight: 500, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
                   {item.title}
                 </h3>
                 <Body size="sm" className="mt-3">{item.body}</Body>
@@ -710,7 +714,7 @@ export default function Home() {
             </Display>
             <Body size="md" align="center" className="mt-5 mx-auto">
               Quick answers to the most common inquiries. For anything else, email us at{' '}
-              <a href="mailto:team@cartra.ai" className="underline underline-offset-4 text-c-text hover:text-c-accent transition-colors">
+              <a href="mailto:team@cartra.ai" className="underline underline-offset-4 text-c-text hover:text-c-primary transition-colors">
                 team@cartra.ai
               </a>{' '}
               or book a call.
@@ -724,7 +728,7 @@ export default function Home() {
       {/* Final CTA */}
       <Section id="contact">
         <Container size="md" className="text-center">
-          <Card surface="frosted" className="text-left md:text-center">
+          <Card className="text-left md:text-center">
             <div className="md:px-4">
               <Eyebrow tone="muted" className="md:justify-center md:inline-flex">Get Started</Eyebrow>
               <Display as="h3" size="md" align="center" className="mt-4 mx-auto" maxWidth="20ch">
@@ -751,7 +755,7 @@ export default function Home() {
         <Container size="2xl">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-0">
             <div>
-              <p className="font-display text-c-text" style={{ fontSize: '1.25rem', fontWeight: 600, letterSpacing: '-0.02em' }}>
+              <p className="font-display text-c-text" style={{ fontSize: '1.25rem', fontWeight: 400, letterSpacing: '-0.02em' }}>
                 Cartra AI
               </p>
               <div className="mt-3 text-sm text-c-text-muted font-display space-y-1">

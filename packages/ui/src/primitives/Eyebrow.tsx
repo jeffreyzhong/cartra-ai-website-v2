@@ -10,20 +10,15 @@ type EyebrowProps = {
 };
 
 /**
- * Eyebrow — small uppercase tracked label, sits above headings to give
- * sections a category tag.
+ * Eyebrow — caption-uppercase section label (DESIGN.md).
  *
- * Tones (legacy Retell-inspired tokens; DESIGN.md is canonical —
- * see docs/ui-design-plan.md):
- *   accent → legacy cobalt with a leading dot (default for prominent eyebrows)
- *   muted  → subtle text-soft, no dot (for trust labels and footnotes)
- *   soft   → very subtle, no dot
- *
- * @example
- *   <Eyebrow tone="muted">Founded by engineers from</Eyebrow>
+ * Tones:
+ *   accent → ink (optional leading dot)
+ *   muted  → muted text (default for most sections)
+ *   soft   → muted-soft
  */
 export function Eyebrow({
-  tone = 'accent',
+  tone = 'muted',
   withDot,
   className = '',
   children,

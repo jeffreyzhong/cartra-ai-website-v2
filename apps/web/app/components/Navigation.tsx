@@ -6,13 +6,13 @@ import CalendlyButton from './CalendlyButton';
 
 export default function Navigation() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-c-bg/95 border-b border-c-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link
             href="/"
-            className="flex items-center gap-2.5 font-display text-c-text h-10 -my-1 active:scale-[0.96] transition-transform"
-            style={{ fontSize: '1.375rem', fontWeight: 600, letterSpacing: '-0.03em' }}
+            className="flex items-center gap-2.5 font-display text-c-text h-10 -my-1"
+            style={{ fontSize: '1.125rem', fontWeight: 500, letterSpacing: '-0.02em' }}
           >
             <Image
               src="/cartra_geometric_logo_round.png"
@@ -20,7 +20,7 @@ export default function Navigation() {
               width={28}
               height={28}
               className="object-contain rounded-full"
-              style={{ outline: '1px solid rgba(0, 0, 0, 0.1)', outlineOffset: '-1px' }}
+              style={{ outline: '1px solid var(--c-border)', outlineOffset: '-1px' }}
             />
             Cartra
           </Link>

@@ -1,6 +1,6 @@
 # Cartra UI Update Plan (DESIGN.md)
 
-**Status:** Plan only — no visual implementation in this PR.  
+**Status:** Implemented — live tokens, primitives, and marketing routes follow `DESIGN.md`.  
 **Source of truth:** [`DESIGN.md`](../DESIGN.md) (installed via `npx getdesign@latest add cursor`, adapted for Cartra).  
 **Governance:** All future UI work must read and follow `DESIGN.md` before writing UI (see `.cursor/rules/design-system.mdc`).
 
@@ -8,9 +8,7 @@
 
 ## Why this plan exists
 
-Cartra’s live system (`packages/ui`) still encodes the older Retell-inspired direction: cool off-white, cobalt primary, navy CTAs, peach/navy statement panels, frosted cards with shadows, and heavier display weights. `DESIGN.md` defines a different system: warm cream canvas, warm ink, **single orange CTA voltage**, display at **weight 400**, **hairline-only depth**, and 80px section rhythm.
-
-This plan maps that gap and sequences the work so tokens move first, then primitives, then pages — without breaking brand copy or the approved logo.
+Cartra’s design system in `packages/ui` and marketing surfaces in `apps/web` now follow `DESIGN.md`: warm cream canvas, warm ink, **single orange CTA voltage**, display at **weight 400**, **hairline-only depth**, and 80px section rhythm. This document records the migration that got us here.
 
 ---
 

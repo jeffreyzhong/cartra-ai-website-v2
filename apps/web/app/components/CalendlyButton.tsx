@@ -6,7 +6,7 @@ import { trackEvent } from '../lib/analytics';
 
 type CalendlyButtonProps = {
   children: ReactNode;
-  variant?: 'primary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'ghost';
   trailingIcon?: ReactNode;
   className?: string;
   eventLocation?: string;

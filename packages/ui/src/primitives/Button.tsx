@@ -7,7 +7,7 @@ import {
   forwardRef,
 } from 'react';
 
-type Variant = 'primary' | 'ghost';
+type Variant = 'primary' | 'secondary' | 'ghost';
 
 type CommonProps = {
   variant?: Variant;
@@ -30,19 +30,12 @@ type ButtonAsAnchor = CommonProps &
 type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 
 /**
- * Button — primary interactive element.
+ * Button — primary interactive element (DESIGN.md).
  *
- * Variants (current CSS is legacy Retell-inspired; DESIGN.md is canonical —
- * see docs/ui-design-plan.md):
- *   primary → navy fill, white text today; migrates to orange CTA voltage
- *   ghost   → transparent, text-color, hovers to surface tint (secondary CTAs)
- *
- * Renders as `<button>` by default, or `<a>` when `as="a"` is passed
- * (with `href` required). Both forms accept a `trailingIcon` slot.
- *
- * @example
- *   <Button trailingIcon="→">Book a free consultation</Button>
- *   <Button variant="ghost" as="a" href="#process">See our process</Button>
+ * Variants:
+ *   primary   → orange CTA (#f54e00)
+ *   secondary → white + hairline border
+ *   ghost     → tertiary text link style
  */
 export const Button = forwardRef<HTMLElement, ButtonProps>(function Button(
   { variant = 'primary', trailingIcon, className = '', children, ...rest },

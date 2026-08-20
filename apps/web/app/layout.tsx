@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Source_Serif_4 } from "next/font/google";
+import { Geist, JetBrains_Mono, Source_Serif_4 } from "next/font/google";
 import "@repo/ui/tokens.css";
 import "@repo/ui/motion.css";
 import "@repo/ui/components.css";
@@ -29,6 +29,13 @@ const sourceSerif = Source_Serif_4({
   display: "swap",
   weight: ["400", "500"],
   style: ["normal", "italic"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -87,7 +94,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geist.variable} ${sourceSerif.variable} antialiased`}>
+      <body className={`${geist.variable} ${sourceSerif.variable} ${jetbrainsMono.variable} antialiased`}>
         <JsonLd
           data={{
             "@context": "https://schema.org",

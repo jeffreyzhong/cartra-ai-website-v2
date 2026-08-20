@@ -1,9 +1,9 @@
 import { type HTMLAttributes } from 'react';
 
 const PAD = {
-  hero: 'pt-32 md:pt-36 pb-8 md:pb-12',
-  loose: 'py-20 md:py-28',
-  default: 'py-16 md:py-20',
+  hero: 'pt-32 md:pt-36 pb-10 md:pb-14',
+  loose: 'py-[var(--space-section)] md:py-24',
+  default: 'py-[var(--space-section)]',
   tight: 'py-10 md:py-12',
 } as const;
 
@@ -14,20 +14,13 @@ type SectionProps = HTMLAttributes<HTMLElement> & {
 };
 
 /**
- * Section — top-level page section with consistent vertical padding.
+ * Section — top-level page section with ~80px vertical rhythm (DESIGN.md).
  *
  * Padding variants:
  *   hero    → extra top padding to clear the fixed nav
- *   loose   → generous spacing for headline-only sections (CTAs)
- *   default → standard content sections
- *   tight   → compact sections (between heavy content blocks)
- *
- * Wrap children in a `Container` to constrain content width.
- *
- * @example
- *   <Section id="results" padding="default">
- *     <Container size="xl">...</Container>
- *   </Section>
+ *   loose   → CTA / headline bands
+ *   default → standard content sections (80px)
+ *   tight   → compact between heavy blocks
  */
 export function Section({
   padding = 'default',

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import {
   Surface,
-  Mesh,
   Section,
   Container,
   Display,
@@ -44,7 +43,6 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
         category: page.eyebrow,
       })} />
       <Surface className="text-gray-900">
-        <Mesh />
         <Navigation />
         <main>
 
@@ -73,7 +71,7 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
           <Container size="xl">
             <div className="grid md:grid-cols-3 gap-5">
               {page.highlights.map((highlight, index) => (
-                <Card key={highlight.label} surface="frosted">
+                <Card key={highlight.label}>
                   <span
                     aria-hidden
                     className="block h-px w-10 mb-4"
@@ -98,7 +96,7 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
               </div>
               <div className="grid md:grid-cols-3 gap-5">
                 {page.fit.map((item) => (
-                  <Card key={item} surface="frosted">
+                  <Card key={item}>
                     <Body size="sm">{item}</Body>
                   </Card>
                 ))}
@@ -117,7 +115,7 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {page.workflows.map((workflow) => (
-                <Card key={workflow} surface="frosted">
+                <Card key={workflow}>
                   <Body size="sm">{workflow}</Body>
                 </Card>
               ))}
@@ -129,8 +127,8 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
           <Container size="xl">
             <div className="grid md:grid-cols-3 gap-5">
               {page.sections.map((section) => (
-                <Card key={section.title} surface="frosted">
-                  <h2 className="font-display text-c-text" style={{ fontSize: '1.25rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                <Card key={section.title}>
+                  <h2 className="font-display text-c-text" style={{ fontSize: '1.25rem', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1.2 }}>
                     {section.title}
                   </h2>
                   <Body size="sm" className="mt-3">{section.body}</Body>
@@ -142,7 +140,7 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
 
         <Section padding="tight">
           <Container size="md">
-            <Card surface="navy">
+            <Card surface="featured">
               <Eyebrow tone="muted">Proof</Eyebrow>
               <Body size="lg" tone="on-dark-muted" className="mt-4" maxWidth="60ch">
                 {page.proof}
@@ -167,9 +165,9 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
                     href={`/agent-systems/${agent.slug}`}
                     className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-c-accent rounded-2xl"
                   >
-                    <Card surface="frosted" className="h-full transition-transform group-hover:-translate-y-0.5">
+                    <Card className="h-full transition-colors group-hover:border-c-border-strong">
                       <Eyebrow tone="accent">{agent.category}</Eyebrow>
-                      <h3 className="font-display mt-3 text-c-text" style={{ fontSize: '1.1rem', fontWeight: 600, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
+                      <h3 className="font-display mt-3 text-c-text" style={{ fontSize: '1.1rem', fontWeight: 500, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
                         {agent.name}
                       </h3>
                       <Body size="sm" className="mt-3">{agent.tagline}</Body>
@@ -188,12 +186,10 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
               {page.integrations.map((integration) => (
                 <span
                   key={integration}
-                  className="font-display text-c-text px-3 py-1.5 rounded-full"
+                  className="font-display text-c-text px-3 py-1.5 rounded-c-md border border-c-border bg-c-surface"
                   style={{
                     fontSize: '0.8125rem',
                     fontWeight: 500,
-                    border: '1px solid var(--c-border)',
-                    background: 'var(--c-surface)',
                   }}
                 >
                   {integration}
@@ -212,8 +208,8 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
             </div>
             <div className="space-y-3">
               {page.faqs.map((faq) => (
-                <Card key={faq.question} surface="frosted">
-                  <h3 className="font-display text-c-text" style={{ fontSize: '1.0625rem', fontWeight: 600, letterSpacing: '-0.01em' }}>
+                <Card key={faq.question}>
+                  <h3 className="font-display text-c-text" style={{ fontSize: '1.0625rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
                     {faq.question}
                   </h3>
                   <Body size="sm" className="mt-3">{faq.answer}</Body>
@@ -225,7 +221,7 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
 
         <Section>
           <Container size="md" className="text-center">
-            <Card surface="frosted" className="text-left md:text-center">
+            <Card className="text-left md:text-center">
               <Eyebrow tone="muted" className="md:justify-center md:inline-flex">Get started</Eyebrow>
               <Display as="h2" size="md" align="center" className="mt-4 mx-auto" maxWidth="22ch">
                 Find the first workflow worth automating.

@@ -2,7 +2,6 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import {
   Surface,
-  Mesh,
   Section,
   Container,
   Display,
@@ -49,7 +48,6 @@ export default function CaseStudiesPage() {
         }}
       />
       <Surface className="text-gray-900">
-        <Mesh />
         <Navigation />
         <main>
 
@@ -71,9 +69,9 @@ export default function CaseStudiesPage() {
               {CASE_STUDIES.map((study) => {
                 const agent = getAgentSystem(study.relatedAgentSlug);
                 return (
-                  <Card key={study.slug} surface="frosted" className="h-full">
+                  <Card key={study.slug} className="h-full">
                     <Eyebrow tone="accent">{study.industry}</Eyebrow>
-                    <h2 className="font-display mt-3 text-c-text" style={{ fontSize: '1.35rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.15 }}>
+                    <h2 className="font-display mt-3 text-c-text" style={{ fontSize: '1.35rem', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1.15 }}>
                       {study.headline}
                     </h2>
                     <Body size="md" className="mt-4">{study.summary}</Body>
@@ -89,7 +87,7 @@ export default function CaseStudiesPage() {
                       <Link
                         href={`/agent-systems/${agent.slug}`}
                         className="mt-6 inline-flex font-display text-c-accent"
-                        style={{ fontSize: '0.8125rem', fontWeight: 600 }}
+                        style={{ fontSize: '0.8125rem', fontWeight: 500 }}
                       >
                         See related agent system →
                       </Link>
@@ -103,7 +101,7 @@ export default function CaseStudiesPage() {
 
         <Section>
           <Container size="md" className="text-center">
-            <Card surface="frosted" className="text-left md:text-center">
+            <Card className="text-left md:text-center">
               <Eyebrow tone="muted" className="md:justify-center md:inline-flex">Build your own result</Eyebrow>
               <Display as="h2" size="md" align="center" className="mt-4 mx-auto" maxWidth="22ch">
                 Start with the workflow costing you the most time.

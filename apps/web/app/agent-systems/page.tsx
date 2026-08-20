@@ -2,7 +2,6 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import {
   Surface,
-  Mesh,
   Section,
   Container,
   Display,
@@ -34,7 +33,6 @@ export default function AgentSystemsIndex() {
       ])}
     />
     <Surface className="text-gray-900">
-      <Mesh />
       <Navigation />
       <main>
 
@@ -63,18 +61,18 @@ export default function AgentSystemsIndex() {
                 href={`/agent-systems/${agent.slug}`}
                 className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-c-accent rounded-2xl"
               >
-                <Card surface="frosted" className="h-full transition-transform group-hover:-translate-y-0.5 group-active:scale-[0.995]">
+                <Card className="h-full transition-colors group-hover:border-c-border-strong">
                   <Eyebrow tone="accent">{agent.category}</Eyebrow>
                   <h2
                     className="font-display mt-3 text-c-text"
-                    style={{ fontSize: '1.25rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.2 }}
+                    style={{ fontSize: '1.25rem', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1.2 }}
                   >
                     {agent.name}
                   </h2>
                   <Body size="sm" className="mt-3">{agent.tagline}</Body>
                   <span
                     className="mt-5 inline-flex items-center gap-1.5 font-display text-c-accent"
-                    style={{ fontSize: '0.8125rem', fontWeight: 600, letterSpacing: '-0.005em' }}
+                    style={{ fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '-0.005em' }}
                   >
                     See how it works
                     <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
@@ -88,7 +86,7 @@ export default function AgentSystemsIndex() {
 
       <Section>
         <Container size="md" className="text-center">
-          <Card surface="frosted" className="text-left md:text-center">
+          <Card className="text-left md:text-center">
             <div className="md:px-4">
               <Eyebrow tone="muted" className="md:justify-center md:inline-flex">Don&apos;t see yours?</Eyebrow>
               <Display as="h2" size="md" align="center" className="mt-4 mx-auto" maxWidth="22ch">

@@ -1,6 +1,6 @@
 import { type HTMLAttributes, type ReactNode } from 'react';
 
-type Surface = 'frosted' | 'panel' | 'navy';
+type Surface = 'default' | 'panel' | 'frosted' | 'featured' | 'navy';
 
 type CardProps = HTMLAttributes<HTMLDivElement> & {
   surface?: Surface;
@@ -8,28 +8,29 @@ type CardProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 /**
- * Card — content container with consistent surface treatment.
+ * Card — white hairline container on cream canvas (DESIGN.md).
  *
- * Surfaces (legacy Retell-inspired; frosted is not a DESIGN.md brand
- * signature — DESIGN.md is canonical; see docs/ui-design-plan.md):
- *   frosted → semi-transparent lavender with backdrop-blur (default today)
- *   panel   → solid surface tint, no blur (use when the card sits on a
- *             plain background where blur isn't needed)
- *   navy    → deep midnight navy panel with light text on dark
- *             (legacy statement emphasis; retiring per DESIGN.md)
- *
- * @example
- *   <Card surface="frosted">...</Card>
- *   <Card surface="navy">...</Card>
+ * Surfaces:
+ *   default / panel / frosted → white card + 1px hairline (frosted is an alias)
+ *   featured / navy           → ink-inverted featured card (use rarely)
  */
 export function Card({
-  surface = 'frosted',
+  surface = 'default',
   className = '',
   children,
   ...rest
 }: CardProps) {
+  const surfaceClass =
+    surface === 'navy'
+      ? 'ds-card-featured'
+      : surface === 'featured'
+        ? 'ds-card-featured'
+        : surface === 'frosted' || surface === 'panel'
+          ? `ds-card-${surface}`
+          : 'ds-card-default';
+
   return (
-    <div className={`ds-card ds-card-${surface} ${className}`} {...rest}>
+    <div className={`ds-card ${surfaceClass} ${className}`} {...rest}>
       {children}
     </div>
   );

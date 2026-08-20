@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
   Surface,
-  Mesh,
   Section,
   Container,
   Display,
@@ -59,7 +58,6 @@ export default async function AgentSystemDetail(
     />
     <JsonLd data={createAgentServiceJsonLd(agent)} />
     <Surface className="text-gray-900">
-      <Mesh />
       <Navigation />
       <main>
 
@@ -118,16 +116,16 @@ export default async function AgentSystemDetail(
                 { n: '03', label: 'Outputs', items: agent.howItWorks.outputs },
               ] as const
             ).map((col) => (
-              <Card key={col.n} surface="frosted" className="h-full">
+              <Card key={col.n} className="h-full">
                 <span
                   className="font-display text-c-orange tabular-nums"
-                  style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.04em' }}
+                  style={{ fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.04em' }}
                 >
                   {col.n}
                 </span>
                 <h3
                   className="font-display mt-3 text-c-text"
-                  style={{ fontSize: '1.125rem', fontWeight: 600, letterSpacing: '-0.015em', lineHeight: 1.2 }}
+                  style={{ fontSize: '1.125rem', fontWeight: 500, letterSpacing: '-0.015em', lineHeight: 1.2 }}
                 >
                   {col.label}
                 </h3>
@@ -165,25 +163,22 @@ export default async function AgentSystemDetail(
             {agent.integrations.map((label) => (
               <span
                 key={label}
-                className="font-display text-c-text px-3 py-1.5 rounded-full"
+                className="font-display text-c-text px-3 py-1.5 rounded-c-md border border-c-border bg-c-surface"
                 style={{
                   fontSize: '0.8125rem',
                   fontWeight: 500,
                   letterSpacing: '-0.005em',
-                  border: '1px solid var(--c-border)',
-                  background: 'var(--c-surface)',
                 }}
               >
                 {label}
               </span>
             ))}
             <span
-              className="font-display text-c-text-muted px-3 py-1.5 rounded-full"
+              className="font-display text-c-text-muted px-3 py-1.5 rounded-c-md border border-dashed border-c-border"
               style={{
                 fontSize: '0.8125rem',
                 fontWeight: 500,
                 letterSpacing: '-0.005em',
-                border: '1px dashed var(--c-border)',
               }}
             >
               …and your custom internal tools
@@ -204,16 +199,16 @@ export default async function AgentSystemDetail(
           </Body>
 
           {agent.caseStudy && (
-            <Card surface="navy" className="mt-10">
+            <Card surface="featured" className="mt-10">
               <span
                 className="font-display uppercase tracking-widest text-c-on-dark-muted"
-                style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.12em' }}
+                style={{ fontSize: '0.7rem', fontWeight: 500, letterSpacing: '0.12em' }}
               >
                 Case study
               </span>
               <h3
                 className="font-display mt-3"
-                style={{ fontSize: '1.5rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--c-on-dark)' }}
+                style={{ fontSize: '1.5rem', fontWeight: 500, letterSpacing: '-0.02em', color: 'var(--c-on-dark)' }}
               >
                 {agent.caseStudy.label}
               </h3>
@@ -228,7 +223,7 @@ export default async function AgentSystemDetail(
       {/* Final CTA */}
       <Section>
         <Container size="md" className="text-center">
-          <Card surface="frosted" className="text-left md:text-center">
+          <Card className="text-left md:text-center">
             <div className="md:px-4">
               <Eyebrow tone="muted" className="md:justify-center md:inline-flex">Get started</Eyebrow>
               <Display as="h2" size="md" align="center" className="mt-4 mx-auto" maxWidth="24ch">

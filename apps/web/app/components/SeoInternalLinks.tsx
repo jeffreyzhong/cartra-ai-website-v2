@@ -43,13 +43,13 @@ export default function SeoInternalLinks({
                 href={`/${page.slug}`}
                 className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-c-accent rounded-2xl"
               >
-                <Card surface="frosted" className="h-full transition-transform group-hover:-translate-y-0.5 group-active:scale-[0.995]">
+                <Card className="h-full transition-colors group-hover:border-c-border-strong">
                   <Eyebrow tone="accent">Service</Eyebrow>
                   <h3
                     className="font-display mt-3 text-c-text"
                     style={{
                       fontSize: '1.1rem',
-                      fontWeight: 600,
+                      fontWeight: 500,
                       letterSpacing: '-0.015em',
                       lineHeight: 1.2,
                     }}
@@ -59,7 +59,7 @@ export default function SeoInternalLinks({
                   <Body size="sm" className="mt-3">{page.seoDescription}</Body>
                   <span
                     className="mt-5 inline-flex items-center gap-1.5 font-display text-c-accent"
-                    style={{ fontSize: '0.8125rem', fontWeight: 600, letterSpacing: '-0.005em' }}
+                    style={{ fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '-0.005em' }}
                   >
                     Learn more
                     <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>

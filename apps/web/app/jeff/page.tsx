@@ -2,7 +2,6 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import {
   Surface,
-  Mesh,
   Section,
   Container,
   Card,
@@ -33,15 +32,14 @@ export const metadata: Metadata = {
 
 export default function JeffPage() {
   return (
-    <Surface className="text-gray-900">
-      <Mesh />
+    <Surface>
       <Navigation />
       <main>
         <Section padding="hero">
           <Container size="sm">
-            <Card surface="frosted">
+            <Card>
               <div className="flex justify-center">
-                <div className="relative h-32 w-32 overflow-hidden rounded-full ring-1 ring-c-border shadow-sm">
+                <div className="relative h-32 w-32 overflow-hidden rounded-full ring-1 ring-c-border">
                   <Image
                     src={PROFILE_IMAGE}
                     alt="Jeff Zhong"

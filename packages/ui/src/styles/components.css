@@ -1,22 +1,17 @@
 /**
  * Cartra Design System — Component Styles
  *
- * CSS classes that back the primitive components. Apps import this
- * once and the components reference these class names.
- *
+ * Visual source of truth: root DESIGN.md.
  * Naming: `.ds-{component}[-{variant}]`
- *
- * Values below are legacy Retell-inspired (navy primary CTAs, frosted
- * cards, cobalt accents). DESIGN.md is canonical — see docs/ui-design-plan.md.
  */
 
 /* ── Display headline ──────────────────────────────────── */
 
 .ds-display {
   font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  font-weight: 600;
-  line-height: 0.98;
-  letter-spacing: -0.028em;
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display-xl);
   color: var(--c-text);
   text-wrap: balance;
 }
@@ -29,8 +24,8 @@
   color: var(--c-text);
   position: relative;
   padding: 0 0.04em;
-  background-image: linear-gradient(to right, var(--c-orange), var(--c-orange));
-  background-size: 0% 0.12em;
+  background-image: linear-gradient(to right, var(--c-primary), var(--c-primary));
+  background-size: 0% 0.08em;
   background-position: 0 92%;
   background-repeat: no-repeat;
   animation: ds-underline-draw var(--duration-slow) var(--ease-out) 1180ms forwards;
@@ -48,6 +43,7 @@
   font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
   font-weight: 400;
   line-height: var(--leading-normal);
+  color: var(--c-body);
   max-width: 52ch;
   text-wrap: pretty;
 }
@@ -56,35 +52,33 @@
 
 .ds-eyebrow {
   font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  font-weight: 500;
-  font-size: var(--text-body-xs);
-  letter-spacing: var(--tracking-wide);
+  font-weight: 600;
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-loose);
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  color: var(--c-text-muted);
 }
 
 .ds-eyebrow-accent {
-  color: var(--c-accent);
+  color: var(--c-text);
 }
 
 .ds-eyebrow-muted {
-  color: var(--c-text-soft);
-  font-size: var(--text-caption);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-loose);
+  color: var(--c-text-muted);
 }
 
 .ds-eyebrow-soft {
   color: var(--c-text-soft);
-  font-size: var(--text-caption);
 }
 
 .ds-eyebrow[data-with-dot="true"]::before {
   content: '';
   display: inline-block;
-  width: 0.4rem;
-  height: 0.4rem;
+  width: 0.35rem;
+  height: 0.35rem;
   border-radius: var(--radius-pill);
   background: currentColor;
 }
@@ -94,47 +88,57 @@
 .ds-btn {
   font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
   font-size: var(--text-body-sm);
-  line-height: var(--leading-snug);
+  line-height: 1;
   font-weight: 500;
-  letter-spacing: var(--tracking-snug);
+  letter-spacing: 0;
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
-  padding: var(--space-sm) calc(var(--space-md) + var(--space-2xs));
+  padding: 10px 18px;
+  height: 40px;
   min-height: 40px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   border: 0;
   white-space: nowrap;
   cursor: pointer;
   text-decoration: none;
-  transition-property: transform, background-color, color, box-shadow;
+  transition-property: background-color, color, border-color;
   transition-duration: var(--duration-base);
   transition-timing-function: var(--ease-out-soft);
 }
 
 .ds-btn:hover {
-  transform: translateY(-1px);
+  transform: none;
 }
 
 .ds-btn:active {
-  transform: scale(0.96);
-  transition-duration: var(--duration-fast);
+  transform: none;
 }
 
 .ds-btn:focus-visible {
-  outline: 2px solid var(--c-accent);
+  outline: 2px solid var(--c-primary);
   outline-offset: 2px;
 }
 
 .ds-btn-primary {
-  background: var(--c-navy);
-  color: var(--c-on-dark);
+  background: var(--c-primary);
+  color: #ffffff;
 }
 .ds-btn-primary:hover {
-  background: var(--c-navy-2);
-  box-shadow:
-    inset 0 1px 0 0 color-mix(in oklab, white 14%, transparent),
-    0 10px 28px -12px color-mix(in oklab, var(--c-navy) 70%, transparent);
+  background: var(--c-primary-active);
+}
+.ds-btn-primary:active {
+  background: var(--c-primary-active);
+}
+
+.ds-btn-secondary {
+  background: var(--c-surface-card);
+  color: var(--c-text);
+  border: 1px solid var(--c-border-strong);
+  padding: 9px 17px;
+}
+.ds-btn-secondary:hover {
+  background: var(--c-surface);
 }
 
 .ds-btn-ghost {
@@ -142,8 +146,8 @@
   color: var(--c-text);
 }
 .ds-btn-ghost:hover {
-  background: var(--c-surface);
-  color: var(--c-text);
+  background: transparent;
+  color: var(--c-text-muted);
 }
 
 .ds-btn .ds-btn-icon {
@@ -162,47 +166,36 @@
   justify-content: center;
   padding: var(--space-xs) calc(var(--space-md) - 0.15rem);
   border-radius: var(--radius-md);
-  background: var(--c-surface);
+  background: var(--c-surface-strong);
   border: 1px solid var(--c-border);
-  box-shadow:
-    0 1px 0 0 color-mix(in oklab, white 60%, transparent) inset,
-    0 1px 2px -1px color-mix(in oklab, var(--c-text) 12%, transparent);
-  transition: transform var(--duration-base) var(--ease-out);
-}
-.ds-logo-pill:hover {
-  transform: translateY(-1px);
 }
 
 /* ── Card ──────────────────────────────────────────────── */
 
 .ds-card {
-  border-radius: var(--radius-xl);
-  padding: clamp(1.25rem, 3vw, 2rem);
-}
-
-.ds-card-frosted {
-  background: color-mix(in oklab, var(--c-surface) 55%, transparent);
-  backdrop-filter: blur(14px) saturate(120%);
-  -webkit-backdrop-filter: blur(14px) saturate(120%);
-  border: 1px solid color-mix(in oklab, var(--c-text) 7%, transparent);
-  box-shadow:
-    0 1px 0 0 color-mix(in oklab, white 60%, transparent) inset,
-    0 12px 32px -16px color-mix(in oklab, var(--c-text) 14%, transparent);
-}
-
-.ds-card-panel {
-  background: var(--c-surface);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  background: var(--c-surface-card);
   border: 1px solid var(--c-border);
+  color: var(--c-text);
 }
 
+.ds-card-default,
+.ds-card-panel,
+.ds-card-frosted {
+  background: var(--c-surface-card);
+  border: 1px solid var(--c-border);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+
+.ds-card-featured,
 .ds-card-navy {
-  background: var(--c-navy);
+  background: var(--c-text);
   color: var(--c-on-dark);
-  border: 1px solid color-mix(in oklab, white 6%, transparent);
-  box-shadow:
-    0 1px 0 0 color-mix(in oklab, white 8%, transparent) inset,
-    0 30px 60px -30px color-mix(in oklab, var(--c-navy) 80%, transparent),
-    0 8px 20px -12px color-mix(in oklab, var(--c-text) 60%, transparent);
+  border: 1px solid var(--c-text);
+  box-shadow: none;
 }
 
 /* ── Stat group + Stat ─────────────────────────────────── */
@@ -213,15 +206,13 @@
   gap: clamp(1rem, 3vw, 2.25rem);
   max-width: 40rem;
   margin: 0 auto;
-  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 4vw, 2.5rem);
-  background: color-mix(in oklab, var(--c-surface) 55%, transparent);
-  backdrop-filter: blur(14px) saturate(120%);
-  -webkit-backdrop-filter: blur(14px) saturate(120%);
-  border: 1px solid color-mix(in oklab, var(--c-text) 7%, transparent);
-  border-radius: var(--radius-xl);
-  box-shadow:
-    0 1px 0 0 color-mix(in oklab, white 60%, transparent) inset,
-    0 12px 32px -16px color-mix(in oklab, var(--c-text) 14%, transparent);
+  padding: 24px;
+  background: var(--c-surface-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .ds-stat {
@@ -242,7 +233,7 @@
 
 .ds-stat-num {
   font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: clamp(1.75rem, 3.2vw, 2.625rem);
   line-height: 1;
   letter-spacing: var(--tracking-tight);
@@ -261,7 +252,7 @@
   font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
   font-size: var(--text-body-xs);
   line-height: 1.35;
-  color: var(--c-text-muted);
+  color: var(--c-body);
   max-width: 18ch;
 }
 
@@ -270,6 +261,117 @@
     grid-template-columns: 1fr;
     gap: var(--space-lg);
     max-width: 22rem;
-    padding: var(--space-lg) var(--space-lg);
+    padding: var(--space-lg);
   }
+}
+
+/* ── Agent mockup (hero product visual) ────────────────── */
+
+.ds-agent-mockup {
+  background: var(--c-surface-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-align: left;
+}
+
+.ds-agent-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-canvas-soft);
+}
+
+.ds-agent-mockup-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--c-border-strong);
+}
+
+.ds-agent-mockup-title {
+  font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: var(--tracking-loose);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  margin-left: 4px;
+}
+
+.ds-agent-mockup-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media (min-width: 640px) {
+  .ds-agent-mockup-body {
+    grid-template-columns: 1fr 1.2fr;
+  }
+}
+
+.ds-agent-pane {
+  padding: 16px;
+  background: var(--c-canvas-soft);
+  border-right: 1px solid var(--c-border);
+  min-height: 180px;
+}
+
+.ds-agent-pane:last-child {
+  border-right: 0;
+  background: var(--c-surface-card);
+}
+
+.ds-agent-timeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.ds-timeline-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: var(--tracking-loose);
+  text-transform: uppercase;
+  color: var(--c-text);
+  line-height: 1.4;
+}
+
+.ds-timeline-pill-thinking { background: var(--c-timeline-thinking); }
+.ds-timeline-pill-grep { background: var(--c-timeline-grep); }
+.ds-timeline-pill-read { background: var(--c-timeline-read); }
+.ds-timeline-pill-edit { background: var(--c-timeline-edit); }
+.ds-timeline-pill-done {
+  background: var(--c-timeline-done);
+  color: #ffffff;
+}
+
+.ds-agent-code {
+  font-family: var(--font-mono), 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--c-body);
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.ds-agent-code-line {
+  display: block;
+}
+
+.ds-agent-code-muted {
+  color: var(--c-text-soft);
+}
+
+.ds-agent-code-ink {
+  color: var(--c-text);
 }

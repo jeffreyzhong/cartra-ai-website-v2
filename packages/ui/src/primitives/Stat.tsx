@@ -101,16 +101,8 @@ type StatGroupProps = {
 };
 
 /**
- * StatGroup — renders a row of `Stat` items inside a frosted card
- * (legacy surface; DESIGN.md is canonical — see docs/ui-design-plan.md).
+ * StatGroup — renders a row of `Stat` items inside a hairline card (DESIGN.md).
  * Coordinates the count-up choreography across stats.
- *
- * @example
- *   <StatGroup stats={[
- *     { value: 60, inlineSuffix: '%', label: 'avg cost reduction' },
- *     { value: 30, inlineSuffix: '%', label: 'fewer errors' },
- *     { value: 6, unit: 'weeks', label: 'avg deploy time' },
- *   ]} />
  */
 export function StatGroup({
   stats,

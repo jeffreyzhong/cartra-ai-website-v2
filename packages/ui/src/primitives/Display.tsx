@@ -7,6 +7,13 @@ const SIZES = {
   sm: 'var(--text-display-sm)',
 } as const;
 
+const TRACKING = {
+  xl: 'var(--tracking-display-xl)',
+  lg: 'var(--tracking-display-lg)',
+  md: 'var(--tracking-display-md)',
+  sm: 'var(--tracking-display-sm)',
+} as const;
+
 type Size = keyof typeof SIZES;
 
 type DisplayProps = {
@@ -20,20 +27,13 @@ type DisplayProps = {
 };
 
 /**
- * Display — large heading typography.
+ * Display — large heading typography (DESIGN.md weight 400).
  *
  * Sizes (fluid via clamp):
- *   xl → headlines (max 4.5rem)
- *   lg → primary section headings (max 3.75rem)
- *   md → secondary headings (max 2.875rem)
- *   sm → tertiary (max 2.25rem)
- *
- * Wrap an emphasized word in `<em>` to get the orange underline treatment.
- *
- * @example
- *   <Display as="h1" size="lg">
- *     Transform your operations with AI that's <em>customized</em> to your business.
- *   </Display>
+ *   xl → homepage hero
+ *   lg → section heads
+ *   md → sub-section heads
+ *   sm → card group titles
  */
 export function Display({
   as: Tag = 'h1',
@@ -49,6 +49,7 @@ export function Display({
       className={`ds-display ${className}`}
       style={{
         fontSize: SIZES[size],
+        letterSpacing: TRACKING[size],
         textAlign: align,
         maxWidth,
         ...style,

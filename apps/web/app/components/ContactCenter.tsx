@@ -51,7 +51,7 @@ export default function ContactCenter({
         <ModalHeader glyph={<EmailGlyph size={28} />} label="Email" />
         <a
           href={`mailto:${email}`}
-          className="mt-5 block break-all font-display text-c-text transition-colors hover:text-c-accent"
+          className="mt-5 block break-all font-display text-c-text transition-colors hover:text-c-primary"
           style={{
             fontSize: '1.25rem',
             fontWeight: 500,
@@ -74,7 +74,7 @@ export default function ContactCenter({
           label="WeChat"
         />
         <div className="mt-5 flex justify-center">
-          <div className="rounded-xl bg-white p-3 ring-1 ring-c-border">
+          <div className="rounded-c-lg bg-c-surface-card p-3 border border-c-border">
             <Image
               src={wechatQr}
               alt={`WeChat QR code for ${wechatId}`}
@@ -115,7 +115,7 @@ export default function ContactCenter({
           label="WhatsApp"
         />
         <div className="mt-5 flex justify-center">
-          <div className="rounded-xl bg-white p-3 ring-1 ring-c-border">
+          <div className="rounded-c-lg bg-c-surface-card p-3 border border-c-border">
             <Image
               src={whatsappQr}
               alt="WhatsApp QR code"
@@ -148,11 +148,11 @@ export default function ContactCenter({
 }
 
 const PILL_BASE_CLASS =
-  'inline-flex items-center gap-2 rounded-full px-3.5 py-2 font-display transition-all active:scale-[0.97]';
+  'inline-flex items-center gap-2 rounded-c-md px-3.5 py-2 font-display transition-colors';
 const PILL_FILLED_CLASS =
-  'bg-white text-c-text shadow-sm ring-1 ring-c-border hover:ring-c-accent';
+  'bg-c-surface-card text-c-text border border-c-border-strong hover:bg-c-surface';
 const PILL_DARK_CLASS =
-  'bg-c-text text-white shadow-sm hover:bg-c-navy';
+  'bg-c-text text-c-on-dark border border-c-text hover:bg-c-navy-2';
 const PILL_STYLE = {
   fontSize: '0.875rem',
   fontWeight: 500,
@@ -267,7 +267,7 @@ function Modal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[60] overflow-y-auto bg-black/35 backdrop-blur-sm"
+      className="fixed inset-0 z-[60] overflow-y-auto bg-black/35"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -276,7 +276,7 @@ function Modal({
     >
       <div className="flex min-h-full items-center justify-center p-4">
         <div
-          className="relative w-full max-w-[400px] rounded-2xl bg-white p-7 shadow-2xl ring-1 ring-c-border"
+          className="relative w-full max-w-[400px] rounded-c-lg bg-c-surface-card p-7 border border-c-border"
           onClick={(e) => e.stopPropagation()}
           style={{ animation: 'jeff-modal-pop 200ms cubic-bezier(0.22, 1, 0.36, 1) both' }}
         >
@@ -284,7 +284,7 @@ function Modal({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-c-text-muted transition-colors hover:bg-c-surface hover:text-c-text"
+            className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-c-md text-c-text-muted transition-colors hover:bg-c-surface hover:text-c-text"
           >
             <svg
               width="16"

@@ -1,24 +1,8 @@
 /**
  * Cartra Design System — Motion
  *
- * Keyframe animations and animation classes used by primitive components.
- * Easing tokens come from tokens.css (--ease-out, --ease-out-soft, etc).
- *
- * The `Rise` component uses `.ds-rise` + `.ds-rise-N` for staggered entrances.
- * The `Word` component uses `.ds-word` for headline word reveals.
- * The `Mesh` component uses `@property` registrations to drift gradients.
+ * Keyframe animations used by Rise / Words. Mesh drift removed (DESIGN.md).
  */
-
-/* ── Animated property registrations ─────────────────────── */
-
-@property --ds-mesh-x1 { syntax: '<percentage>'; inherits: false; initial-value: 85%; }
-@property --ds-mesh-y1 { syntax: '<percentage>'; inherits: false; initial-value: -10%; }
-@property --ds-mesh-x2 { syntax: '<percentage>'; inherits: false; initial-value: -10%; }
-@property --ds-mesh-y2 { syntax: '<percentage>'; inherits: false; initial-value: 30%; }
-@property --ds-mesh-x3 { syntax: '<percentage>'; inherits: false; initial-value: 50%; }
-@property --ds-mesh-y3 { syntax: '<percentage>'; inherits: false; initial-value: 110%; }
-
-/* ── Keyframes ───────────────────────────────────────────── */
 
 @keyframes ds-rise {
   from { opacity: 0; transform: translateY(14px); }
@@ -33,18 +17,7 @@
 }
 
 @keyframes ds-underline-draw {
-  to { background-size: 100% 0.12em; }
-}
-
-@keyframes ds-mesh-drift {
-  to {
-    --ds-mesh-x1: 60%;
-    --ds-mesh-y1: 8%;
-    --ds-mesh-x2: 15%;
-    --ds-mesh-y2: 55%;
-    --ds-mesh-x3: 75%;
-    --ds-mesh-y3: 95%;
-  }
+  to { background-size: 100% 0.08em; }
 }
 
 @keyframes ds-pulse-spring {
@@ -53,8 +26,6 @@
   45%  { transform: scale(2.0); opacity: 0.12; }
   100% { transform: scale(2.5); opacity: 0; }
 }
-
-/* ── Reusable animation utilities ────────────────────────── */
 
 .ds-rise {
   animation: ds-rise var(--duration-slow) var(--ease-out) both;

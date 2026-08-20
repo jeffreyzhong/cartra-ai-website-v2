@@ -11,8 +11,8 @@ type Size = keyof typeof SIZES;
 type Tone = 'default' | 'muted' | 'soft' | 'on-dark' | 'on-dark-muted';
 
 const TONES: Record<Tone, string> = {
-  default: 'var(--c-text)',
-  muted: 'var(--c-text-muted)',
+  default: 'var(--c-body)',
+  muted: 'var(--c-body)',
   soft: 'var(--c-text-soft)',
   'on-dark': 'var(--c-on-dark)',
   'on-dark-muted': 'var(--c-on-dark-muted)',
@@ -29,17 +29,11 @@ type BodyProps = {
 };
 
 /**
- * Body — paragraph text.
- *
- * Sizes:    lg / md / sm / xs (fixed rem, not fluid)
- * Tones:    default / muted / soft / on-dark / on-dark-muted
- *
- * Body text auto-caps line length at 52ch via the `.ds-body` class for
- * comfortable reading. Override with `maxWidth` if needed.
+ * Body — paragraph text (DESIGN.md body #5a5852).
  */
 export function Body({
   size = 'md',
-  tone = 'muted',
+  tone = 'default',
   align = 'left',
   maxWidth,
   className = '',

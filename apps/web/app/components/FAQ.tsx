@@ -12,7 +12,7 @@ export default function FAQ() {
       {FAQS.map((faq, index) => {
         const isOpen = openIndex === index;
         return (
-          <Card key={index} surface="frosted">
+          <Card key={index}>
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}
               className="w-full flex items-center justify-between text-left min-h-[28px]"
@@ -20,7 +20,7 @@ export default function FAQ() {
             >
               <span
                 className="font-display text-c-text pr-4"
-                style={{ fontSize: '1.0625rem', fontWeight: 600, letterSpacing: '-0.01em', textWrap: 'balance' }}
+                style={{ fontSize: '1.0625rem', fontWeight: 500, letterSpacing: '-0.01em', textWrap: 'balance' }}
               >
                 {faq.question}
               </span>
@@ -56,7 +56,7 @@ export default function FAQ() {
             >
               <div className="overflow-hidden">
                 <p
-                  className="font-display mt-4 pt-4 text-c-text-muted"
+                  className="font-display mt-4 pt-4 text-c-body"
                   style={{
                     fontSize: '0.95rem',
                     lineHeight: 1.55,

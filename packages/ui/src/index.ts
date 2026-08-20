@@ -1,6 +1,8 @@
 /**
  * @repo/ui — Cartra Design System
  *
+ * Visual source of truth: root DESIGN.md.
+ *
  * Public exports. Components import via:
  *   import { Button, Display, Section } from '@repo/ui';
  *
@@ -17,6 +19,7 @@
 
 // Layout primitives
 export { Surface } from './primitives/Surface';
+/** @deprecated No-op. Cream canvas only — do not use as page atmosphere. */
 export { Mesh } from './primitives/Mesh';
 export { Section } from './primitives/Section';
 export { Container } from './primitives/Container';
@@ -36,6 +39,7 @@ export { Stat, StatGroup } from './primitives/Stat';
 export type { StatItem } from './primitives/Stat';
 export { Rise } from './primitives/Rise';
 export { Words } from './primitives/Word';
+export { AgentMockup } from './primitives/AgentMockup';
 
 // Hooks
 export { useReducedMotion } from './hooks/useReducedMotion';
