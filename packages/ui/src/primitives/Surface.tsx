@@ -3,13 +3,13 @@ import { type HTMLAttributes } from 'react';
 type SurfaceProps = HTMLAttributes<HTMLDivElement>;
 
 /**
- * Surface — outermost page wrapper. Establishes the warm-cool off-white
- * palette + isolation context so the drifting `Mesh` can sit at z-index -1
- * without escaping behind the document root.
+ * Surface — outermost page wrapper. Sets page background/text from tokens
+ * (`--c-bg` / `--c-text`) and isolation so optional legacy `Mesh` can sit
+ * at z-index -1. Visual target is cream canvas + ink from DESIGN.md
+ * (token remap pending — see docs/ui-design-plan.md).
  *
  * @example
  *   <Surface>
- *     <Mesh />
  *     <Navigation />
  *     <Section>...</Section>
  *   </Surface>

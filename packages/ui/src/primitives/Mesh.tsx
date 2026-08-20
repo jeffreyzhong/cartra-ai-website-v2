@@ -1,5 +1,8 @@
 /**
- * Mesh — drifting cobalt + orange ambient gradient layer.
+ * Mesh — drifting ambient gradient layer (legacy cobalt + orange).
+ *
+ * Legacy Retell-inspired backdrop; DESIGN.md is canonical —
+ * see docs/ui-design-plan.md.
  *
  * Position: fixed (covers viewport, scrolls with the user). Three radial
  * gradients with positions animated via @property-registered custom

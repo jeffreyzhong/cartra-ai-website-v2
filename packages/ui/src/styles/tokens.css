@@ -1,8 +1,11 @@
 /**
- * Cartra Design System — Canonical Token Source
+ * Cartra Design System — Token Source (CSS custom properties)
  *
- * All design tokens live here as CSS custom properties.
- * Components reference these via `var(--c-*)`.
+ * Visual source of truth is root DESIGN.md (not this file’s current values).
+ * These vars are legacy Retell-inspired tokens; DESIGN.md is canonical —
+ * see docs/ui-design-plan.md for the migration plan.
+ *
+ * Components reference tokens via `var(--c-*)`.
  * Tailwind utilities are exposed via the tailwind-preset.
  *
  * Naming convention:
@@ -10,43 +13,44 @@
  *     bg, surface, surface-2 → background surfaces
  *     text, text-muted, text-soft → text colors
  *     border, border-strong → border colors
- *     navy, navy-2 → statement panel surfaces
- *     accent, accent-ink, accent-soft, accent-wash → cobalt (primary brand)
- *     orange, orange-bright, orange-ink → warm accent (emphasis)
+ *     navy, navy-2 → statement panel surfaces (legacy; retiring per DESIGN.md)
+ *     accent, accent-ink, accent-soft, accent-wash → legacy cobalt accent
+ *       (DESIGN.md primary CTA voltage is orange — remap in Phase 1)
+ *     orange, orange-bright, orange-ink → warm accent (maps toward DESIGN.md primary)
  *     on-dark, on-dark-muted, on-dark-soft → text used on dark surfaces
  */
 
 :root {
   /* ─── Color Tokens ─────────────────────────────────────── */
 
-  /* Neutral surfaces — warm-cool off-white system */
-  --c-bg: oklch(99% 0.003 260);            /* #FCFCFE — primary page bg */
-  --c-surface: oklch(96% 0.007 270);       /* #F5F5FA — secondary surface */
-  --c-surface-2: oklch(92% 0.01 265);      /* deeper lavender for layered cards */
+  /* Neutral surfaces — LEGACY cool off-white (target: DESIGN.md canvas #f7f7f4) */
+  --c-bg: oklch(99% 0.003 260);            /* legacy #FCFCFE — target #f7f7f4 */
+  --c-surface: oklch(96% 0.007 270);       /* legacy #F5F5FA */
+  --c-surface-2: oklch(92% 0.01 265);      /* legacy lavender layer */
 
-  /* Text — navy-tinted, single-hue derivation system */
-  --c-text: oklch(22% 0.03 255);           /* #1C2A44 — primary text */
+  /* Text — LEGACY navy-tinted (target: DESIGN.md ink #26251e / body #5a5852) */
+  --c-text: oklch(22% 0.03 255);           /* legacy #1C2A44 — target #26251e */
   --c-text-muted: color-mix(in oklab, var(--c-text) 68%, transparent);
   --c-text-soft: color-mix(in oklab, var(--c-text) 62%, transparent);
   --c-border: color-mix(in oklab, var(--c-text) 10%, transparent);
   --c-border-strong: color-mix(in oklab, var(--c-text) 18%, transparent);
 
-  /* Statement surfaces — dramatic dark + warm-block panels */
-  --c-navy: oklch(19% 0.04 255);           /* #00122E — deep midnight */
-  --c-navy-2: oklch(24% 0.045 255);        /* #12233D — sub-surface on navy */
+  /* Statement surfaces — LEGACY; retiring (DESIGN.md: no navy brand panels) */
+  --c-navy: oklch(19% 0.04 255);           /* legacy #00122E */
+  --c-navy-2: oklch(24% 0.045 255);        /* legacy #12233D */
 
-  /* Warm accent — Cursor-inspired orange, used for emphasis */
-  --c-orange: oklch(66% 0.19 42);          /* ≈#F15A24 */
-  --c-orange-bright: oklch(72% 0.18 42);   /* lifted variant for dark bgs */
-  --c-orange-ink: oklch(52% 0.17 38);      /* deeper for pressed/hover */
+  /* Warm accent — align toward DESIGN.md primary #f54e00 / active #d04200 */
+  --c-orange: oklch(66% 0.19 42);          /* ≈#F15A24 — target #f54e00 */
+  --c-orange-bright: oklch(72% 0.18 42);
+  --c-orange-ink: oklch(52% 0.17 38);      /* pressed ≈ #d04200 */
 
-  /* Primary accent — electric cobalt */
-  --c-accent: oklch(54% 0.19 262);         /* #3E6AEF — cobalt */
-  --c-accent-ink: oklch(44% 0.17 262);     /* pressed state */
+  /* LEGACY cobalt — not DESIGN.md CTA voltage (Phase 1 remap) */
+  --c-accent: oklch(54% 0.19 262);         /* legacy #3E6AEF */
+  --c-accent-ink: oklch(44% 0.17 262);
   --c-accent-soft: color-mix(in oklab, var(--c-accent) 14%, transparent);
-  --c-accent-wash: oklch(95% 0.03 262);    /* very light cobalt tint */
+  --c-accent-wash: oklch(95% 0.03 262);
 
-  /* On-dark text — for navy panels */
+  /* On-dark text — only for leftover legacy dark panels */
   --c-on-dark: oklch(99% 0.003 260);
   --c-on-dark-muted: color-mix(in oklab, var(--c-on-dark) 65%, transparent);
   --c-on-dark-soft: color-mix(in oklab, var(--c-on-dark) 40%, transparent);

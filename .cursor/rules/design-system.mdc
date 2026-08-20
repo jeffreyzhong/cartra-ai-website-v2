@@ -1,0 +1,23 @@
+---
+description: All UI work must follow DESIGN.md
+alwaysApply: true
+---
+
+# Design System (DESIGN.md)
+
+Before writing, editing, or restyling any UI (components, tokens, layouts, pages, CSS, Tailwind classes), read:
+
+`DESIGN.md`
+
+Also read `docs/ui-design-plan.md` when changing the marketing design system or migrating surfaces.
+
+Key rules:
+
+- Treat `DESIGN.md` as the canonical visual source of truth (colors, type, spacing, radius, elevation, components, do/don’t).
+- Do not introduce a second brand action color. Primary CTA voltage is `{colors.primary}` (`#f54e00`).
+- Keep display weight at 400 with negative letter-spacing; do not bold display headings.
+- Use hairline borders for depth; do not add drop shadows.
+- Use timeline pastel tokens only inside in-product agent visualizations — never as page accents.
+- Font substitute for CursorGothic: Geist or Inter at weight 400. JetBrains Mono on code / agent-pane surfaces.
+- Brand copy, SEO, and logo rules still come from `docs/marketing-context.md`. Do not replace the approved logo.
+- Audience / JTBD / personality in `.impeccable.md` still apply for tone only. Do not follow any leftover aesthetic guidance outside `DESIGN.md`. If comments in `packages/ui` say “legacy Retell”, treat those values as pending migration — do not extend that palette.

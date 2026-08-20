@@ -8,6 +8,9 @@
  *
  * Order matters: tokens establish the variable foundation, motion
  * registers @property declarations, components reference both.
+ *
+ * Visual source of truth: root DESIGN.md. Current package CSS is legacy
+ * Retell-inspired pending migration — see docs/ui-design-plan.md.
  */
 
 @import './tokens.css';

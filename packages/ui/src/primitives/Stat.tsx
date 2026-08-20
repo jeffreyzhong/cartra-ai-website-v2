@@ -101,7 +101,8 @@ type StatGroupProps = {
 };
 
 /**
- * StatGroup — renders a row of `Stat` items inside a frosted card.
+ * StatGroup — renders a row of `Stat` items inside a frosted card
+ * (legacy surface; DESIGN.md is canonical — see docs/ui-design-plan.md).
  * Coordinates the count-up choreography across stats.
  *
  * @example
