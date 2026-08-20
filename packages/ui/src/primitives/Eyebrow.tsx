@@ -13,8 +13,9 @@ type EyebrowProps = {
  * Eyebrow — small uppercase tracked label, sits above headings to give
  * sections a category tag.
  *
- * Tones:
- *   accent → cobalt blue with a leading dot (default for prominent eyebrows)
+ * Tones (legacy Retell-inspired tokens; DESIGN.md is canonical —
+ * see docs/ui-design-plan.md):
+ *   accent → legacy cobalt with a leading dot (default for prominent eyebrows)
  *   muted  → subtle text-soft, no dot (for trust labels and footnotes)
  *   soft   → very subtle, no dot
  *

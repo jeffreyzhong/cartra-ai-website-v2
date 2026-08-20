@@ -5,6 +5,9 @@
  * once and the components reference these class names.
  *
  * Naming: `.ds-{component}[-{variant}]`
+ *
+ * Values below are legacy Retell-inspired (navy primary CTAs, frosted
+ * cards, cobalt accents). DESIGN.md is canonical — see docs/ui-design-plan.md.
  */
 
 /* ── Display headline ──────────────────────────────────── */

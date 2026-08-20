@@ -20,4 +20,4 @@ Key rules:
 - Use timeline pastel tokens only inside in-product agent visualizations — never as page accents.
 - Font substitute for CursorGothic: Geist or Inter at weight 400. JetBrains Mono on code / agent-pane surfaces.
 - Brand copy, SEO, and logo rules still come from `docs/marketing-context.md`. Do not replace the approved logo.
-- Audience / JTBD / personality in `.impeccable.md` still apply; its aesthetic/palette sections are superseded by `DESIGN.md`.
+- Audience / JTBD / personality in `.impeccable.md` still apply for tone only. Do not follow any leftover aesthetic guidance outside `DESIGN.md`. If comments in `packages/ui` say “legacy Retell”, treat those values as pending migration — do not extend that palette.

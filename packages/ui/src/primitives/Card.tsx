@@ -10,13 +10,13 @@ type CardProps = HTMLAttributes<HTMLDivElement> & {
 /**
  * Card — content container with consistent surface treatment.
  *
- * Surfaces:
- *   frosted → semi-transparent lavender with backdrop-blur (default —
- *             reads against the drifting Mesh as a frosted-glass card)
+ * Surfaces (legacy Retell-inspired; frosted is not a DESIGN.md brand
+ * signature — DESIGN.md is canonical; see docs/ui-design-plan.md):
+ *   frosted → semi-transparent lavender with backdrop-blur (default today)
  *   panel   → solid surface tint, no blur (use when the card sits on a
  *             plain background where blur isn't needed)
  *   navy    → deep midnight navy panel with light text on dark
- *             (statement / "our solution" style emphasis)
+ *             (legacy statement emphasis; retiring per DESIGN.md)
  *
  * @example
  *   <Card surface="frosted">...</Card>

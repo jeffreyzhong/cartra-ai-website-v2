@@ -72,7 +72,8 @@ This plan maps that gap and sequences the work so tokens move first, then primit
 - [x] Cartra application notes in `DESIGN.md`
 - [x] Cursor rule: future UI must follow `DESIGN.md`
 - [x] This plan document
-- [ ] Mark `.impeccable.md` aesthetic sections as superseded (pointer to `DESIGN.md`)
+- [x] Mark `.impeccable.md` aesthetic sections as superseded (pointer to `DESIGN.md`)
+- [x] Resolve directive conflicts: strip Retell/Ramp pixel mandates from `.impeccable.md`; mark `packages/ui` comments as legacy pending Phase 1–2
 
 ### Phase 1 — Token remap (`packages/ui`)
 

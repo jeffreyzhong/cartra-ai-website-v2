@@ -32,8 +32,9 @@ type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 /**
  * Button — primary interactive element.
  *
- * Variants:
- *   primary → navy fill, white text (highest-priority CTAs)
+ * Variants (current CSS is legacy Retell-inspired; DESIGN.md is canonical —
+ * see docs/ui-design-plan.md):
+ *   primary → navy fill, white text today; migrates to orange CTA voltage
  *   ghost   → transparent, text-color, hovers to surface tint (secondary CTAs)
  *
  * Renders as `<button>` by default, or `<a>` when `as="a"` is passed
