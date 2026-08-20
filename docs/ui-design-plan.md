@@ -73,69 +73,45 @@ Cartra’s design system in `packages/ui` and marketing surfaces in `apps/web` n
 - [x] Mark `.impeccable.md` aesthetic sections as superseded (pointer to `DESIGN.md`)
 - [x] Resolve directive conflicts: strip Retell/Ramp pixel mandates from `.impeccable.md`; mark `packages/ui` comments as legacy pending Phase 1–2
 
-### Phase 1 — Token remap (`packages/ui`)
+### Phase 1 — Token remap (`packages/ui`) — done
 
 Single source: `packages/ui/src/styles/tokens.css` (+ `tailwind-preset.ts`).
 
-1. Remap semantic CSS vars to DESIGN.md hex (or equivalent oklch):
-   - `--c-bg` → canvas `#f7f7f4`
-   - `--c-text` → ink `#26251e`
-   - Body/muted/hairline tokens aligned to `colors.body`, `muted`, `hairline*`
-   - `--c-accent` / primary CTA → `#f54e00` / `#d04200` (retire cobalt as primary)
-2. Add timeline pastel tokens (scoped; unused until Phase 4 mockups).
-3. Align radius scale to DESIGN.md (`md` 8px CTAs, `lg` 12px cards); stop using pill radius for primary buttons.
-4. Align spacing with 4px base; expose `--space-section: 80px`.
-5. Remove or neutralize shadow tokens/utilities used by components.
+1. [x] Remap semantic CSS vars to DESIGN.md hex
+2. [x] Add timeline pastel tokens (used in AgentMockup)
+3. [x] Align radius scale to DESIGN.md (`md` 8px CTAs, `lg` 12px cards)
+4. [x] Align spacing with 4px base; `--space-section: 80px`
+5. [x] Remove shadows from component styles
 
-**Exit criteria:** Token file documents DESIGN.md mapping; no cobalt/navy/peach as required brand accents.
+### Phase 2 — Primitive restyle (`packages/ui` CSS + components) — done
 
-### Phase 2 — Primitive restyle (`packages/ui` CSS + components)
+1. [x] Button — orange primary, secondary hairline, ghost tertiary
+2. [x] Display — weight 400
+3. [x] Eyebrow — caption-uppercase muted/ink
+4. [x] Card — white hairline; featured ink inversion
+5. [x] Body / LogoPill / Stat — body color + soft chips
+6. [x] Mesh — no-op deprecated
+7. [x] JetBrains Mono + AgentMockup
 
-Update `components.css` and primitives without changing page IA:
+### Phase 3 — Marketing surfaces (`apps/web`) — done
 
-1. **Button** — `primary` = orange CTA; add secondary (white + hairline); keep ghost as tertiary text. Height 40px, padding 10×18, radius 8px. No hover shadow.
-2. **Display** — weight 400; tracking per size; drop bold section titles.
-3. **Eyebrow** — uppercase caption tracking (`caption-uppercase`); ink/muted, not cobalt.
-4. **Card** — default white + hairline; deprecate frosted blur and navy statement surfaces (or map navy → ink-inverted featured card only where needed).
-5. **Body / LogoPill / Stat** — body color `#5a5852`; logo pills as soft surface-strong chips, not competing accents.
-6. **Mesh** — remove from marketing pages or replace with cream-only `Surface` (no aurora mesh as brand floor).
-7. Load **JetBrains Mono** for `.ds-code` / agent panes when introduced.
+1. [x] Homepage hero + AgentMockup; stats/logos below fold
+2. [x] Navigation, FAQ, contact chrome
+3. [x] CommercialLandingPage + SEO landings
+4. [x] Agent systems list + detail + AgentSystems
+5. [x] Case studies, jeff
 
-**Exit criteria:** Story-level primitives match DESIGN.md do/don’t (scarce orange, no shadows, weight 400 display).
+### Phase 4 — Signature agent visuals — done
 
-### Phase 3 — Marketing surfaces (`apps/web`)
-
-Order by traffic / SEO importance:
-
-1. Homepage (`app/page.tsx`) — tokens via primitives; then hero composition (move stats / founder strip out of first viewport).
-2. Shared chrome — `Navigation`, footer, global CTA bands.
-3. Commercial landings — `CommercialLandingPage`, SEO pages (`ai-agent-development-company`, etc.).
-4. Agent systems — list + `[slug]` + `AgentSystems`.
-5. Supporting — FAQ, case studies, jeff, contact components.
-
-**Rules while migrating:**
-
-- Follow `DESIGN.md` component recipes (`hero-band`, `feature-card`, `cta-band`, `testimonial-card`).
-- Do not invent a second accent.
-- Preserve copy and logo per marketing context.
-- Prefer one job per section; avoid card-for-decoration.
-
-**Exit criteria:** Visual QA checklist pass on desktop + mobile breakpoints from DESIGN.md.
-
-### Phase 4 — Signature agent visuals (optional, high impact)
-
-Where Cartra shows how agents work:
-
-1. Build light “agent pane” mockups (`ide-mockup-card` / `ide-pane` analogues) using cream-soft panes + JetBrains Mono.
-2. Use timeline pastel pills **only** inside those visualizations.
-3. Prefer real workflow UI over abstract illustration.
+1. [x] AgentMockup with cream-soft panes + JetBrains Mono
+2. [x] Timeline pastel pills scoped inside mockup only
 
 ### Phase 5 — Cleanup & docs
 
-1. Delete unused cobalt/navy/peach paths once pages no longer reference them.
-2. Trim `.impeccable.md` aesthetic tables or replace with “see DESIGN.md”.
-3. Update README / UI package docs to point at `DESIGN.md`.
-4. Smoke: lint, typecheck, homepage + one SEO landing + one agent-system page.
+1. [x] Accent aliases point to primary; navy aliases to ink for featured only
+2. [x] `.impeccable.md` aesthetics removed earlier
+3. [x] This plan marked implemented
+4. [ ] Smoke: lint, typecheck, key pages
 
 ---
 
