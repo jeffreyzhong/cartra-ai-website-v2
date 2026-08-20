@@ -111,7 +111,7 @@ Single source: `packages/ui/src/styles/tokens.css` (+ `tailwind-preset.ts`).
 1. [x] Accent aliases point to primary; navy aliases to ink for featured only
 2. [x] `.impeccable.md` aesthetics removed earlier
 3. [x] This plan marked implemented
-4. [ ] Smoke: lint, typecheck, key pages
+4. [x] Smoke: lint, typecheck, production build (all routes)
 
 ---
 
