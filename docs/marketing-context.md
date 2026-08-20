@@ -75,6 +75,7 @@ When auditing with Ahrefs:
 - Preserve brand-led homepage copy unless explicitly asked to optimize copy for SEO.
 - Keep SEO improvements in metadata, schema, internal links, and dedicated landing pages before making homepage copy feel keyword-stuffed.
 - Favor the approved PNG logo for favicon/navigation unless a real brand-approved SVG is provided.
+- **UI / visual system:** follow root [`DESIGN.md`](../DESIGN.md) and [`docs/ui-design-plan.md`](ui-design-plan.md). Do not invent competing accents or shadow elevation.
 
 ## Public Copy Safety
 
