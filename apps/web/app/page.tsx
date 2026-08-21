@@ -82,11 +82,11 @@ export default function Home() {
       <Section
         id="home"
         padding="hero"
-        className="overflow-hidden min-h-[calc(100svh-4rem)] flex items-center"
+        className="overflow-hidden lg:min-h-[calc(100svh-4rem)] lg:flex lg:items-center"
       >
         <Container size="2xl" className="w-full">
-          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,32rem)_1fr] xl:grid-cols-[minmax(0,36rem)_1fr] xl:gap-16">
-            <div className="flex flex-col items-start text-left">
+          <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-10 xl:grid-cols-[minmax(0,36rem)_minmax(0,1fr)] xl:gap-12">
+            <div className="flex flex-col items-start text-left min-w-0">
               <Display as="h1" size="xl" maxWidth="24ch">
                 <Words words={HEADLINE_WORDS} />
               </Display>
@@ -107,7 +107,7 @@ export default function Home() {
               </Rise>
             </div>
 
-            <HeroAgentAnimation className="hidden lg:block" />
+            <HeroAgentAnimation className="flex w-full min-w-0 lg:self-stretch" />
           </div>
         </Container>
       </Section>
@@ -134,10 +134,10 @@ export default function Home() {
       </Section>
 
       {/* Wedge */}
-      <Section padding="tight">
-        <Container size="md" className="text-center">
+      <Section>
+        <Container size="xl" className="text-center">
           <Eyebrow tone="muted" className="justify-center inline-flex">What we build</Eyebrow>
-          <Display as="h2" size="md" align="center" className="mt-4 mx-auto" maxWidth="22ch">
+          <Display as="h2" size="lg" align="center" className="mt-4 mx-auto" maxWidth="22ch">
             Not a platform. Not a prompt. A production system your ops team can trust.
           </Display>
           <Body size="md" align="center" className="mt-5 mx-auto" maxWidth="58ch">
