@@ -39,7 +39,7 @@ const HEADLINE_WORDS = [
   { text: 'behind' },
   { text: 'in' },
   { text: 'the' },
-  { text: 'AI', em: true },
+  { text: 'AI' },
   { text: 'era.' },
 ];
 
