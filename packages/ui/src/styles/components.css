@@ -510,6 +510,8 @@
 
 .ds-hero-agent-body {
   position: relative;
+  display: flex;
+  flex-direction: column;
   flex: 1;
   min-height: 18rem;
   padding: 20px;
@@ -517,7 +519,9 @@
 
 .ds-hero-agent-scene {
   position: absolute;
-  inset: 20px;
+  top: 20px;
+  left: 20px;
+  right: 20px;
   opacity: 0;
   transform: translateY(8px);
   pointer-events: none;
@@ -527,11 +531,13 @@
     transform var(--duration-medium) var(--ease-out-soft);
 }
 
-.ds-hero-agent-scene.has-metric {
-  padding-bottom: 5.75rem;
-}
-
 .ds-hero-agent-scene.is-active {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  flex: 1 1 auto;
+  min-width: 0;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -721,10 +727,10 @@
 }
 
 .ds-hero-metric {
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
+  position: relative;
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: 12px;
   opacity: 0;
   transform: translateY(6px);
   pointer-events: none;
@@ -737,6 +743,10 @@
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+.ds-hero-metric:not(.is-visible) {
+  display: none;
 }
 
 .ds-hero-metric-head {
@@ -897,7 +907,7 @@
 
 .ds-hero-voice-task {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 10px;
   padding: 10px 14px;
