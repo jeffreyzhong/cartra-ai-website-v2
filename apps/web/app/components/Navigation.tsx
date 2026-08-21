@@ -56,7 +56,7 @@ export default function Navigation() {
             >
               FAQ
             </Link>
-            <CalendlyButton trailingIcon="→">Book a call</CalendlyButton>
+            <CalendlyButton>Book a call</CalendlyButton>
           </div>
         </div>
       </div>

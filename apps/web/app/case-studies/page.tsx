@@ -110,7 +110,7 @@ export default function CaseStudiesPage() {
                 Book a 30-minute call and we will map the highest-leverage agent system for your operation.
               </Body>
               <div className="mt-8 flex justify-center">
-                <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
+                <CalendlyButton>Book a free consultation</CalendlyButton>
               </div>
             </Card>
           </Container>

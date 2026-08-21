@@ -56,7 +56,7 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
               {page.intro}
             </Body>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
+              <CalendlyButton>Book a free consultation</CalendlyButton>
               <Link
                 href="/agent-systems"
                 className="inline-flex items-center h-11 px-4 font-display text-sm font-semibold text-c-text-muted hover:text-c-text transition-colors"
@@ -230,7 +230,7 @@ export default function CommercialLandingPage({ page }: { page: CommercialPage }
                 Book a 30-minute call and we will map your highest-cost manual workflow, estimate the return, and tell you whether an agent system is a fit.
               </Body>
               <div className="mt-8 flex justify-center">
-                <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
+                <CalendlyButton>Book a free consultation</CalendlyButton>
               </div>
             </Card>
           </Container>

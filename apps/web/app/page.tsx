@@ -95,7 +95,7 @@ export default function Home() {
             step={5}
             className="mt-10 flex flex-wrap items-center justify-center gap-3"
           >
-            <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
+            <CalendlyButton>Book a free consultation</CalendlyButton>
             <Button variant="ghost" as="a" href="#process">See our process</Button>
           </Rise>
         </Container>
@@ -729,7 +729,7 @@ export default function Home() {
                 Book a 30-minute no-strings-attached strategy call. We&apos;ll get acquainted, discuss your company&apos;s situation, and you&apos;ll walk away with actionable advice and insights. Completely free. No sales pitch, just genuine guidance you can use immediately.
               </Body>
               <div className="mt-8 flex justify-center">
-                <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
+                <CalendlyButton>Book a free consultation</CalendlyButton>
               </div>
             </div>
           </Card>

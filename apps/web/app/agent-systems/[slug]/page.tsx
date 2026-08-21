@@ -80,7 +80,7 @@ export default async function AgentSystemDetail(
             {agent.tagline}
           </Body>
           <div className="mt-10 flex justify-center">
-            <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
+            <CalendlyButton>Book a free consultation</CalendlyButton>
           </div>
         </Container>
       </Section>
@@ -235,7 +235,7 @@ export default async function AgentSystemDetail(
                 share a realistic ROI projection. No pitch, no pressure.
               </Body>
               <div className="mt-8 flex justify-center">
-                <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
+                <CalendlyButton>Book a free consultation</CalendlyButton>
               </div>
             </div>
           </Card>
