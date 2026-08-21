@@ -456,6 +456,21 @@ The system uses **hairline-only depth**. No drop shadows, no elevation tiers. Ca
 
 **`ide-pane`** — Individual IDE pane inside the mockup. Background `{colors.canvas-soft}`, text `{colors.body}` in `{typography.code}` (JetBrains Mono 13px), rounded `{rounded.md}` (8px), padding 16px.
 
+### Hero Agent Animation (homepage)
+
+**`hero-agent-panel`** — White card (`{colors.surface-card}`) with hairline border, rounded `{rounded.lg}`. Desktop-only (`lg+`) beside hero copy. Timeline pastels scoped to in-panel pills only.
+
+**Tab bar** — Two auto-cycling tabs: **Workflow Agents** and **Voice Agents**. Tabs sit above the panel header; active tab uses card surface + hairline border (no shadow). Tabs advance automatically after each demo completes one full loop (~11.8s). Respects `prefers-reduced-motion` (static final frame, no auto-cycle).
+
+| Tab | Demo name | Story |
+|---|---|---|
+| Workflow Agents | AP intake | SOP customization → Slack chat with tool chips → learning metrics + accuracy bar |
+| Voice Agents | Front desk booking | Incoming call → live transcript → task rows (calendar, slot, confirmation) → booked appointment card |
+
+**Visual reference:** Task-row and transcript patterns inspired by [beautifului.dev](https://www.beautifului.dev) (Task Rows, Approval Card, Chat primitives). Keep animations hairline-only — no shadows, no extra brand colors beyond timeline pastels.
+
+**Implementation:** `packages/ui/src/primitives/HeroAgentAnimation.tsx` (orchestrator), `hero/HeroWorkflowAgentDemo.tsx`, `hero/HeroVoiceAgentDemo.tsx`. Styles: `.ds-hero-agent-*`, `.ds-hero-voice-*` in `components.css`.
+
 ### Cards
 
 **`feature-card`** — Background `{colors.surface-card}`, text `{colors.ink}`, type `{typography.title-md}`, rounded `{rounded.lg}`, padding 24px. 1px `{colors.hairline}` border.

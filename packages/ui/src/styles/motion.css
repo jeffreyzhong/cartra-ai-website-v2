@@ -36,6 +36,11 @@
   }
 }
 
+@keyframes ds-hero-voice-wave {
+  0%, 100% { transform: scaleY(0.55); opacity: 0.45; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
 .ds-rise {
   animation: ds-rise var(--duration-slow) var(--ease-out) both;
 }
@@ -77,5 +82,20 @@
     animation: none;
     opacity: 1;
     transform: none;
+  }
+
+  .ds-hero-voice-line,
+  .ds-hero-voice-task,
+  .ds-hero-voice-slot,
+  .ds-hero-voice-confirmed {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .ds-hero-voice-call-icon,
+  .ds-hero-voice-wave span,
+  .ds-hero-voice-task.is-running .ds-hero-voice-task-status {
+    animation: none;
   }
 }
