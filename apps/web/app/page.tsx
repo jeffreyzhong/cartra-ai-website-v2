@@ -34,6 +34,7 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const HEADLINE_WORDS = [
+  { text: 'Custom' },
   { text: 'AI' },
   { text: 'agents' },
   { text: 'to' },
@@ -86,15 +87,14 @@ export default function Home() {
         <Container size="2xl" className="w-full">
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,32rem)_1fr] xl:grid-cols-[minmax(0,36rem)_1fr] xl:gap-16">
             <div className="flex flex-col items-start text-left">
-              <Display as="h1" size="xl" maxWidth="22ch">
+              <Display as="h1" size="xl" maxWidth="24ch">
                 <Words words={HEADLINE_WORDS} />
               </Display>
 
               <Rise step={3} className="w-full">
                 <Body size="lg" className="mt-8" maxWidth="52ch">
                   Don&apos;t fall behind in the AI era. Transform your company with AI
-                  that&apos;s fully customized to your operations and procedures
-                  specifically.
+                  that&apos;s fully tailored to your specific operations and procedures.
                 </Body>
               </Rise>
 
