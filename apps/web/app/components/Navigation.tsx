@@ -8,10 +8,10 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-c-bg/95">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center h-16">
           <Link
             href="/"
-            className="flex items-center gap-2.5 font-display text-c-text h-10 -my-1"
+            className="flex items-center gap-2.5 font-display text-c-text h-10 -my-1 justify-self-start"
             style={{ fontSize: '1.125rem', fontWeight: 500, letterSpacing: '-0.02em' }}
           >
             <Image
@@ -25,7 +25,7 @@ export default function Navigation() {
             Cartra
           </Link>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 justify-self-center">
             <Link
               href="/#results"
               className="hidden md:inline-flex items-center h-10 font-display text-sm font-medium text-c-text-muted hover:text-c-text transition-colors"
@@ -56,6 +56,9 @@ export default function Navigation() {
             >
               FAQ
             </Link>
+          </div>
+
+          <div className="flex items-center justify-self-end">
             <CalendlyButton>Book a call</CalendlyButton>
           </div>
         </div>
