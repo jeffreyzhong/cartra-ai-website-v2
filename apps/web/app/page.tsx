@@ -33,13 +33,16 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const HEADLINE_WORDS = [
-  { text: "Don't" },
-  { text: 'fall' },
-  { text: 'behind' },
-  { text: 'in' },
-  { text: 'the' },
   { text: 'AI' },
-  { text: 'era.' },
+  { text: 'agents' },
+  { text: 'to' },
+  { text: 'power' },
+  { text: 'the' },
+  { text: 'next' },
+  { text: 'decade' },
+  { text: 'of' },
+  { text: 'your' },
+  { text: 'business.' },
 ];
 
 const HERO_STATS: StatItem[] = [
@@ -80,14 +83,15 @@ export default function Home() {
         className="overflow-hidden min-h-[calc(100svh-4rem)] flex items-center"
       >
         <Container size="md" className="flex flex-col items-center text-center">
-          <Display as="h1" size="xl" align="center" maxWidth="16ch">
+          <Display as="h1" size="xl" align="center" maxWidth="22ch">
             <Words words={HEADLINE_WORDS} />
           </Display>
 
           <Rise step={3} className="w-full">
-            <Body size="lg" align="center" className="mt-8 mx-auto" maxWidth="42ch">
-              We deploy custom AI systems tailored to how your business works to
-              ensure you win the next decade.
+            <Body size="lg" align="center" className="mt-8 mx-auto" maxWidth="52ch">
+              Don&apos;t fall behind in the AI era. Transform your company with AI
+              that&apos;s fully customized to your operations and procedures
+              specifically.
             </Body>
           </Rise>
 
