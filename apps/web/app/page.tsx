@@ -34,17 +34,13 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const HEADLINE_WORDS = [
-  { text: 'We' },
-  { text: 'transform' },
-  { text: 'your' },
-  { text: 'business' },
-  { text: 'with' },
-  { text: 'AI' },
-  { text: 'customized', em: true },
-  { text: 'to' },
-  { text: 'how' },
-  { text: 'you' },
-  { text: 'work.' },
+  { text: "Don't" },
+  { text: 'fall' },
+  { text: 'behind' },
+  { text: 'in' },
+  { text: 'the' },
+  { text: 'AI', em: true },
+  { text: 'era.' },
 ];
 
 const HERO_STATS: StatItem[] = [

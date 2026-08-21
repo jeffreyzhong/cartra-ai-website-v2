@@ -8,7 +8,7 @@ Cartra designs and deploys custom AI agents for mid-market operations teams. The
 
 Approved homepage hero:
 
-> We transform your business with AI customized to how you work.
+> Don't fall behind in the AI era.
 
 Approved homepage subheading:
 
