@@ -39,7 +39,7 @@ export function HeroAgentAnimation({ className = '' }: HeroAgentAnimationProps) 
   const [phase, setPhase] = useState<Phase>('sop');
   const [visibleSteps, setVisibleSteps] = useState(0);
   const [chatBeat, setChatBeat] = useState<ChatBeat>(0);
-  const [accuracy, setAccuracy] = useState(68);
+  const [accuracy, setAccuracy] = useState(84);
   const [footnote, setFootnote] = useState('Applying your procedures…');
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export function HeroAgentAnimation({ className = '' }: HeroAgentAnimationProps) 
       setPhase('learn');
       setVisibleSteps(SOP_STEPS.length);
       setChatBeat(4);
-      setAccuracy(94);
+      setAccuracy(99);
       setFootnote('12 runs · cycle time −38%');
       return;
     }
@@ -66,7 +66,7 @@ export function HeroAgentAnimation({ className = '' }: HeroAgentAnimationProps) 
       setPhase('sop');
       setVisibleSteps(0);
       setChatBeat(0);
-      setAccuracy(68);
+      setAccuracy(84);
       setFootnote('Applying your procedures…');
 
       SOP_STEPS.forEach((_, index) => {
@@ -85,11 +85,11 @@ export function HeroAgentAnimation({ className = '' }: HeroAgentAnimationProps) 
       schedule(() => {
         setPhase('learn');
         setFootnote('12 runs · cycle time −38%');
-        setAccuracy(76);
+        setAccuracy(90);
       }, 6800);
 
-      schedule(() => setAccuracy(88), 7400);
-      schedule(() => setAccuracy(94), 8000);
+      schedule(() => setAccuracy(95), 7400);
+      schedule(() => setAccuracy(99), 8000);
 
       schedule(runCycle, 11800);
     };
