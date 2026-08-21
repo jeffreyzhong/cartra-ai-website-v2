@@ -134,10 +134,10 @@ export default function Home() {
       </Section>
 
       {/* Wedge */}
-      <Section padding="tight">
-        <Container size="md" className="text-center">
+      <Section>
+        <Container size="xl" className="text-center">
           <Eyebrow tone="muted" className="justify-center inline-flex">What we build</Eyebrow>
-          <Display as="h2" size="md" align="center" className="mt-4 mx-auto" maxWidth="22ch">
+          <Display as="h2" size="lg" align="center" className="mt-4 mx-auto" maxWidth="22ch">
             Not a platform. Not a prompt. A production system your ops team can trust.
           </Display>
           <Body size="md" align="center" className="mt-5 mx-auto" maxWidth="58ch">
