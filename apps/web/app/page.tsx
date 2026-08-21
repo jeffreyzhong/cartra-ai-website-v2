@@ -11,7 +11,6 @@ import {
   StatGroup,
   Rise,
   Words,
-  AgentMockup,
   type StatItem,
 } from '@repo/ui';
 import Navigation from './components/Navigation';
@@ -75,32 +74,29 @@ export default function Home() {
       <main>
 
       {/* Hero */}
-      <Section id="home" padding="hero" className="overflow-hidden">
-        <Container size="lg" className="text-center">
-          <Display
-            as="h1"
-            size="xl"
-            align="center"
-            maxWidth="24ch"
-            className="mx-auto"
-          >
+      <Section
+        id="home"
+        padding="hero"
+        className="overflow-hidden min-h-[calc(100svh-4rem)] flex items-center"
+      >
+        <Container size="md" className="flex flex-col items-center text-center">
+          <Display as="h1" size="xl" align="center" maxWidth="16ch">
             <Words words={HEADLINE_WORDS} />
           </Display>
 
-          <Rise step={3}>
-            <Body size="lg" align="center" className="mt-8 mx-auto">
+          <Rise step={3} className="w-full">
+            <Body size="lg" align="center" className="mt-8 mx-auto" maxWidth="42ch">
               We deploy custom AI systems tailored to how your business works to
               ensure you win the next decade.
             </Body>
           </Rise>
 
-          <Rise step={5} className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <Rise
+            step={5}
+            className="mt-10 flex flex-wrap items-center justify-center gap-3"
+          >
             <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
             <Button variant="ghost" as="a" href="#process">See our process</Button>
-          </Rise>
-
-          <Rise step={6} className="mt-14 mx-auto max-w-3xl">
-            <AgentMockup />
           </Rise>
         </Container>
       </Section>
