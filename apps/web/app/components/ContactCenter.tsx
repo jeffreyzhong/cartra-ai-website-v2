@@ -148,7 +148,7 @@ export default function ContactCenter({
 }
 
 const PILL_BASE_CLASS =
-  'inline-flex items-center gap-2 rounded-c-md px-3.5 py-2 font-display transition-colors';
+  'inline-flex items-center gap-2 rounded-c-pill px-3.5 py-2 font-display transition-colors';
 const PILL_FILLED_CLASS =
   'bg-c-surface-card text-c-text border border-c-border-strong hover:bg-c-surface';
 const PILL_DARK_CLASS =
@@ -284,7 +284,7 @@ function Modal({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-c-md text-c-text-muted transition-colors hover:bg-c-surface hover:text-c-text"
+            className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-c-pill text-c-text-muted transition-colors hover:bg-c-surface hover:text-c-text"
           >
             <svg
               width="16"

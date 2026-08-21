@@ -97,7 +97,7 @@
   padding: 10px 18px;
   height: 40px;
   min-height: 40px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   border: 0;
   white-space: nowrap;
   cursor: pointer;
