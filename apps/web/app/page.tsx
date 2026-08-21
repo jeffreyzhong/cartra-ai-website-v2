@@ -82,13 +82,13 @@ export default function Home() {
         padding="hero"
         className="overflow-hidden min-h-[calc(100svh-4rem)] flex items-center"
       >
-        <Container size="md" className="flex flex-col items-center text-center">
-          <Display as="h1" size="xl" align="center" maxWidth="22ch">
+        <Container size="md" className="flex flex-col items-start text-left">
+          <Display as="h1" size="xl" maxWidth="22ch">
             <Words words={HEADLINE_WORDS} />
           </Display>
 
           <Rise step={3} className="w-full">
-            <Body size="lg" align="center" className="mt-8 mx-auto" maxWidth="52ch">
+            <Body size="lg" className="mt-8" maxWidth="52ch">
               Don&apos;t fall behind in the AI era. Transform your company with AI
               that&apos;s fully customized to your operations and procedures
               specifically.
@@ -97,7 +97,7 @@ export default function Home() {
 
           <Rise
             step={5}
-            className="mt-10 flex flex-wrap items-center justify-center gap-3"
+            className="mt-10 flex flex-wrap items-center justify-start gap-3"
           >
             <CalendlyButton>Book a free consultation</CalendlyButton>
             <Button variant="ghost" as="a" href="#process">See our process</Button>
