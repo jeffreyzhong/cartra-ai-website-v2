@@ -85,8 +85,8 @@ export default function Home() {
         className="overflow-hidden min-h-[calc(100svh-4rem)] flex items-center"
       >
         <Container size="2xl" className="w-full">
-          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,32rem)_1fr] xl:grid-cols-[minmax(0,36rem)_1fr] xl:gap-16">
-            <div className="flex flex-col items-start text-left">
+          <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-10 xl:grid-cols-[minmax(0,36rem)_minmax(0,1fr)] xl:gap-12">
+            <div className="flex flex-col items-start text-left min-w-0">
               <Display as="h1" size="xl" maxWidth="24ch">
                 <Words words={HEADLINE_WORDS} />
               </Display>
@@ -107,7 +107,7 @@ export default function Home() {
               </Rise>
             </div>
 
-            <HeroAgentAnimation className="hidden lg:block" />
+            <HeroAgentAnimation className="hidden lg:flex w-full min-w-0 self-stretch" />
           </div>
         </Container>
       </Section>

@@ -458,7 +458,7 @@ The system uses **hairline-only depth**. No drop shadows, no elevation tiers. Ca
 
 ### Hero Agent Animation (homepage)
 
-**`hero-agent-panel`** — White card (`{colors.surface-card}`) with hairline border, rounded `{rounded.lg}`. Desktop-only (`lg+`) beside hero copy. Timeline pastels scoped to in-panel pills only.
+**`hero-agent-panel`** — White card (`{colors.surface-card}`) with hairline border, rounded `{rounded.lg}`. Desktop-only (`lg+`) beside hero copy. Layout: **50/50 grid on `lg`**, then capped copy column (`36rem`) + fluid animation column on `xl+`. Panel fills its column (`width: 100%`, height matched to copy block via `items-stretch`). Timeline pastels scoped to in-panel pills only.
 
 **Tab bar** — Two auto-cycling tabs: **Workflow Agents** and **Voice Agents**. Tabs sit above the panel header; active tab uses card surface + hairline border (no shadow). Tabs advance automatically after each demo completes one full loop (~11.8s). Respects `prefers-reduced-motion` (static final frame, no auto-cycle).
 
