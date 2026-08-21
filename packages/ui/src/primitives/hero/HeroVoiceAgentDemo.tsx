@@ -49,7 +49,6 @@ export function HeroVoiceAgentDemo({ onCycleComplete }: HeroVoiceAgentDemoProps)
   const [taskStatuses, setTaskStatuses] = useState<TaskStatus[]>(
     TASKS.map(() => 'pending'),
   );
-  const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [footnote, setFootnote] = useState('Connecting call…');
 
   useEffect(() => {
@@ -57,7 +56,6 @@ export function HeroVoiceAgentDemo({ onCycleComplete }: HeroVoiceAgentDemoProps)
       setPhase('confirmed');
       setTranscriptBeat(3);
       setTaskStatuses(TASKS.map(() => 'completed'));
-      setSelectedSlot('Tue · 2:30 PM');
       setFootnote('Avg. booking time · 42s');
       return;
     }
@@ -84,7 +82,6 @@ export function HeroVoiceAgentDemo({ onCycleComplete }: HeroVoiceAgentDemoProps)
       setPhase('call');
       setTranscriptBeat(0);
       setTaskStatuses(TASKS.map(() => 'pending'));
-      setSelectedSlot(null);
       setFootnote('Connecting call…');
 
       schedule(() => {
@@ -113,7 +110,6 @@ export function HeroVoiceAgentDemo({ onCycleComplete }: HeroVoiceAgentDemoProps)
 
       schedule(() => {
         setTaskStatus(1, 'completed');
-        setSelectedSlot('Tue · 2:30 PM');
         setTaskStatus(2, 'running');
         setFootnote('Sending confirmation…');
       }, 5900);
@@ -230,13 +226,6 @@ export function HeroVoiceAgentDemo({ onCycleComplete }: HeroVoiceAgentDemoProps)
               </li>
             ))}
           </ul>
-
-          {selectedSlot && (
-            <div className="ds-hero-voice-slot is-visible">
-              <span className="ds-hero-voice-slot-label">Suggested slot</span>
-              <span className="ds-hero-voice-slot-value">{selectedSlot}</span>
-            </div>
-          )}
         </div>
 
         <div

@@ -475,7 +475,7 @@
 
 .ds-hero-agent-body {
   position: relative;
-  min-height: 17rem;
+  min-height: 20rem;
   padding: 16px;
 }
 
@@ -485,13 +485,14 @@
   opacity: 0;
   transform: translateY(8px);
   pointer-events: none;
+  overflow: hidden;
   transition:
     opacity var(--duration-medium) var(--ease-out-soft),
     transform var(--duration-medium) var(--ease-out-soft);
 }
 
 .ds-hero-agent-scene.has-metric {
-  padding-bottom: 4.75rem;
+  padding-bottom: 5.25rem;
 }
 
 .ds-hero-agent-scene.is-active {
@@ -863,7 +864,7 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
+  padding: 8px 12px;
   border: 1px solid var(--c-border-soft);
   border-radius: var(--radius-md);
   background: var(--c-canvas-soft);
@@ -921,39 +922,6 @@
 
 .ds-hero-voice-task.is-completed .ds-hero-voice-task-badge {
   color: var(--c-semantic-success);
-}
-
-.ds-hero-voice-slot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 10px;
-  padding: 10px 12px;
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius-md);
-  background: var(--c-surface-card);
-  opacity: 0;
-  transform: translateY(6px);
-}
-
-.ds-hero-voice-slot.is-visible {
-  animation: ds-hero-step-in var(--duration-medium) var(--ease-out-soft) forwards;
-}
-
-.ds-hero-voice-slot-label {
-  font-family: var(--font-display);
-  font-size: var(--text-caption);
-  font-weight: 600;
-  letter-spacing: var(--tracking-loose);
-  text-transform: uppercase;
-  color: var(--c-text-soft);
-}
-
-.ds-hero-voice-slot-value {
-  font-family: var(--font-mono);
-  font-size: var(--text-body-sm);
-  color: var(--c-text);
 }
 
 .ds-hero-voice-confirmed {
