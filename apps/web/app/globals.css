@@ -25,7 +25,7 @@ body {
 body {
   background-color: var(--c-bg);
   color: var(--c-text);
-  font-family: var(--font-display), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -49,9 +49,11 @@ const preset: Partial<Config> = {
         'c-timeline-done': 'var(--c-timeline-done)',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-serif)', 'Source Serif 4', 'Georgia', 'serif'],
-        mono: ['var(--font-mono)', 'JetBrains Mono', 'Fira Code', 'ui-monospace', 'monospace'],
+        display: ['var(--font-display)'],
+        sans: ['var(--font-sans)'],
+        ui: ['var(--font-ui)'],
+        heading: ['var(--font-display)'],
+        mono: ['var(--font-mono)'],
       },
       borderRadius: {
         'c-xs': 'var(--radius-xs)',
