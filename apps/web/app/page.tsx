@@ -89,9 +89,8 @@ export default function Home() {
 
           <Rise step={3}>
             <Body size="lg" align="center" className="mt-8 mx-auto">
-              Cartra designs and deploys custom AI agents that run operational
-              workflows on top of the software your team already uses. Multiply
-              productivity, reduce manual work, and launch in weeks.
+              We deploy custom AI systems tailored to how your business works to
+              ensure you win the next decade.
             </Body>
           </Rise>
 
