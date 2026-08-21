@@ -32,11 +32,14 @@ export function HeroAgentAnimation({ className = '' }: HeroAgentAnimationProps) 
     setCycleKey((key) => key + 1);
   }, [reducedMotion]);
 
+  const handleTabSelect = useCallback((tabId: HeroAgentTab) => {
+    if (tabId === activeTab) return;
+    setActiveTab(tabId);
+    setCycleKey((key) => key + 1);
+  }, [activeTab]);
+
   return (
-    <div
-      className={`ds-hero-agent-anim ${className}`.trim()}
-      aria-hidden
-    >
+    <div className={`ds-hero-agent-anim ${className}`.trim()}>
       <div className="ds-hero-agent-panel">
         <div className="ds-hero-agent-tabs" role="tablist" aria-label="Agent demos">
           {TABS.map((tab) => (
@@ -44,9 +47,12 @@ export function HeroAgentAnimation({ className = '' }: HeroAgentAnimationProps) 
               key={tab.id}
               type="button"
               role="tab"
+              id={`hero-agent-tab-${tab.id}`}
               aria-selected={activeTab === tab.id}
+              aria-controls="hero-agent-tabpanel"
+              tabIndex={activeTab === tab.id ? 0 : -1}
               className={`ds-hero-agent-tab ${activeTab === tab.id ? 'is-active' : ''}`}
-              tabIndex={-1}
+              onClick={() => handleTabSelect(tab.id)}
             >
               {tab.label}
             </button>
@@ -55,7 +61,9 @@ export function HeroAgentAnimation({ className = '' }: HeroAgentAnimationProps) 
 
         <div
           key={`${activeTab}-${cycleKey}`}
+          id="hero-agent-tabpanel"
           role="tabpanel"
+          aria-labelledby={`hero-agent-tab-${activeTab}`}
           className="ds-hero-agent-tabpanel"
         >
           {activeTab === 'workflow' ? (
