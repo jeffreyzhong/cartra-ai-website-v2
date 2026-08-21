@@ -98,7 +98,7 @@ export default function AgentSystemsIndex() {
                 30-minute call and we&apos;ll tell you.
               </Body>
               <div className="mt-8 flex justify-center">
-                <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
+                <CalendlyButton>Book a free consultation</CalendlyButton>
               </div>
             </div>
           </Card>

@@ -40,6 +40,7 @@ export type { StatItem } from './primitives/Stat';
 export { Rise } from './primitives/Rise';
 export { Words } from './primitives/Word';
 export { AgentMockup } from './primitives/AgentMockup';
+export { HeroAgentAnimation } from './primitives/HeroAgentAnimation';
 
 // Hooks
 export { useReducedMotion } from './hooks/useReducedMotion';

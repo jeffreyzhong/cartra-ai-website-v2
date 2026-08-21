@@ -11,7 +11,7 @@ import {
   StatGroup,
   Rise,
   Words,
-  AgentMockup,
+  HeroAgentAnimation,
   type StatItem,
 } from '@repo/ui';
 import Navigation from './components/Navigation';
@@ -34,13 +34,17 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const HEADLINE_WORDS = [
-  { text: "Don't" },
-  { text: 'fall' },
-  { text: 'behind' },
-  { text: 'in' },
-  { text: 'the' },
+  { text: 'Custom' },
   { text: 'AI' },
-  { text: 'era.' },
+  { text: 'agents' },
+  { text: 'to' },
+  { text: 'power' },
+  { text: 'the' },
+  { text: 'next' },
+  { text: 'decade' },
+  { text: 'of' },
+  { text: 'your' },
+  { text: 'business.' },
 ];
 
 const HERO_STATS: StatItem[] = [
@@ -75,33 +79,36 @@ export default function Home() {
       <main>
 
       {/* Hero */}
-      <Section id="home" padding="hero" className="overflow-hidden">
-        <Container size="lg" className="text-center">
-          <Display
-            as="h1"
-            size="xl"
-            align="center"
-            maxWidth="24ch"
-            className="mx-auto"
-          >
-            <Words words={HEADLINE_WORDS} />
-          </Display>
+      <Section
+        id="home"
+        padding="hero"
+        className="overflow-hidden min-h-[calc(100svh-4rem)] flex items-center"
+      >
+        <Container size="2xl" className="w-full">
+          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,32rem)_1fr] xl:grid-cols-[minmax(0,36rem)_1fr] xl:gap-16">
+            <div className="flex flex-col items-start text-left">
+              <Display as="h1" size="xl" maxWidth="24ch">
+                <Words words={HEADLINE_WORDS} />
+              </Display>
 
-          <Rise step={3}>
-            <Body size="lg" align="center" className="mt-8 mx-auto">
-              We deploy custom AI systems tailored to how your business works to
-              ensure you win the next decade.
-            </Body>
-          </Rise>
+              <Rise step={3} className="w-full">
+                <Body size="lg" className="mt-8" maxWidth="52ch">
+                  Don&apos;t fall behind in the AI era. Transform your company with AI
+                  that&apos;s fully tailored to your specific operations and procedures.
+                </Body>
+              </Rise>
 
-          <Rise step={5} className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
-            <Button variant="ghost" as="a" href="#process">See our process</Button>
-          </Rise>
+              <Rise
+                step={5}
+                className="mt-10 flex flex-wrap items-center justify-start gap-3"
+              >
+                <CalendlyButton>Book a free consultation</CalendlyButton>
+                <Button variant="ghost" as="a" href="#process">See our process</Button>
+              </Rise>
+            </div>
 
-          <Rise step={6} className="mt-14 mx-auto max-w-3xl">
-            <AgentMockup />
-          </Rise>
+            <HeroAgentAnimation className="hidden lg:block" />
+          </div>
         </Container>
       </Section>
 
@@ -733,7 +740,7 @@ export default function Home() {
                 Book a 30-minute no-strings-attached strategy call. We&apos;ll get acquainted, discuss your company&apos;s situation, and you&apos;ll walk away with actionable advice and insights. Completely free. No sales pitch, just genuine guidance you can use immediately.
               </Body>
               <div className="mt-8 flex justify-center">
-                <CalendlyButton trailingIcon="→">Book a free consultation</CalendlyButton>
+                <CalendlyButton>Book a free consultation</CalendlyButton>
               </div>
             </div>
           </Card>

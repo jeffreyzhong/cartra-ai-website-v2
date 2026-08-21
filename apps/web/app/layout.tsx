@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, JetBrains_Mono, Source_Serif_4 } from "next/font/google";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "@repo/ui/tokens.css";
 import "@repo/ui/motion.css";
 import "@repo/ui/components.css";
@@ -16,26 +17,47 @@ import {
   createWebsiteJsonLd,
 } from "./lib/seo";
 
-const geist = Geist({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-inter",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
 });
 
-const sourceSerif = Source_Serif_4({
-  subsets: ["latin"],
-  variable: "--font-serif",
+const aeonik = localFont({
+  src: [
+    {
+      path: "./fonts/aeonik-regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/aeonik-regularitalic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "./fonts/aeonik-medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/aeonik-mediumitalic.woff2",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "./fonts/aeonik-semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/aeonik-semibolditalic.woff2",
+      weight: "600",
+      style: "italic",
+    },
+  ],
+  variable: "--font-aeonik",
   display: "swap",
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -93,8 +115,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geist.variable} ${sourceSerif.variable} ${jetbrainsMono.variable} antialiased`}>
+    <html lang="en" className={`${inter.variable} ${aeonik.variable}`}>
+      <body className="antialiased">
         <JsonLd
           data={{
             "@context": "https://schema.org",
