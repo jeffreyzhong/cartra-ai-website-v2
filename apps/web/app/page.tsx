@@ -82,7 +82,7 @@ export default function Home() {
       <Section
         id="home"
         padding="hero"
-        className="overflow-hidden min-h-[calc(100svh-4rem)] flex items-center"
+        className="overflow-hidden lg:min-h-[calc(100svh-4rem)] lg:flex lg:items-center"
       >
         <Container size="2xl" className="w-full">
           <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-10 xl:grid-cols-[minmax(0,36rem)_minmax(0,1fr)] xl:gap-12">
@@ -107,7 +107,7 @@ export default function Home() {
               </Rise>
             </div>
 
-            <HeroAgentAnimation className="hidden lg:flex w-full min-w-0 self-stretch" />
+            <HeroAgentAnimation className="flex w-full min-w-0 lg:self-stretch" />
           </div>
         </Container>
       </Section>

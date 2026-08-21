@@ -381,8 +381,14 @@
 .ds-hero-agent-anim {
   width: 100%;
   min-width: 0;
-  height: 100%;
-  min-height: 22rem;
+  min-height: 20rem;
+}
+
+@media (min-width: 1024px) {
+  .ds-hero-agent-anim {
+    height: 100%;
+    min-height: 22rem;
+  }
 }
 
 .ds-hero-agent-panel {
@@ -390,12 +396,18 @@
   flex-direction: column;
   width: 100%;
   min-width: 0;
-  height: 100%;
+  min-height: inherit;
   background: var(--c-surface-card);
   border: 1px solid var(--c-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   text-align: left;
+}
+
+@media (min-width: 1024px) {
+  .ds-hero-agent-panel {
+    height: 100%;
+  }
 }
 
 .ds-hero-agent-tabs {
