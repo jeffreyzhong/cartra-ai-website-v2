@@ -11,6 +11,7 @@ import {
   StatGroup,
   Rise,
   Words,
+  HeroAgentAnimation,
   type StatItem,
 } from '@repo/ui';
 import Navigation from './components/Navigation';
@@ -106,10 +107,7 @@ export default function Home() {
               </Rise>
             </div>
 
-            <div
-              className="hidden min-h-[420px] lg:block xl:min-h-[480px]"
-              aria-hidden="true"
-            />
+            <HeroAgentAnimation className="hidden lg:block" />
           </div>
         </Container>
       </Section>

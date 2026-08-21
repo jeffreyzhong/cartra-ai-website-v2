@@ -375,3 +375,234 @@
 .ds-agent-code-ink {
   color: var(--c-text);
 }
+
+/* ── Hero agent animation (homepage) ───────────────────── */
+
+.ds-hero-agent-anim {
+  width: 100%;
+  max-width: 26rem;
+  margin-inline: auto;
+}
+
+.ds-hero-agent-panel {
+  background: var(--c-surface-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-align: left;
+}
+
+.ds-hero-agent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-canvas-soft);
+}
+
+.ds-hero-agent-title {
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: var(--tracking-loose);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.ds-hero-agent-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: var(--tracking-loose);
+  text-transform: uppercase;
+  color: var(--c-text);
+  line-height: 1.3;
+  transition: background-color var(--duration-base) var(--ease-out-soft);
+}
+
+.ds-hero-agent-pill-sop { background: var(--c-timeline-thinking); }
+.ds-hero-agent-pill-run { background: var(--c-timeline-read); }
+.ds-hero-agent-pill-learn { background: var(--c-timeline-grep); }
+
+.ds-hero-agent-body {
+  position: relative;
+  min-height: 15.5rem;
+  padding: 16px;
+}
+
+.ds-hero-agent-scene {
+  position: absolute;
+  inset: 16px;
+  padding-bottom: 4.75rem;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity var(--duration-medium) var(--ease-out-soft),
+    transform var(--duration-medium) var(--ease-out-soft);
+}
+
+.ds-hero-agent-scene.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.ds-hero-sop-label {
+  font-family: var(--font-display);
+  font-size: var(--text-body-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--c-text-soft);
+  margin-bottom: 10px;
+}
+
+.ds-hero-sop-list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.ds-hero-sop-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--c-border-soft);
+  border-radius: var(--radius-md);
+  background: var(--c-canvas-soft);
+  font-family: var(--font-ui);
+  font-size: var(--text-body-sm);
+  line-height: 1.4;
+  color: var(--c-body);
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.ds-hero-sop-step.is-visible {
+  animation: ds-hero-step-in var(--duration-medium) var(--ease-out-soft) forwards;
+}
+
+.ds-hero-sop-index {
+  flex-shrink: 0;
+  width: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--c-text-soft);
+  padding-top: 1px;
+}
+
+.ds-hero-task-list {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.ds-hero-task {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border: 1px solid var(--c-border-soft);
+  border-radius: var(--radius-md);
+  background: var(--c-canvas-soft);
+}
+
+.ds-hero-task-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background: var(--c-border-strong);
+  transition: background-color var(--duration-base) var(--ease-out-soft);
+}
+
+.ds-hero-task-dot--running {
+  background: var(--c-timeline-read);
+  animation: ds-hero-pulse 1.1s var(--ease-in-out) infinite;
+}
+
+.ds-hero-task-dot--done {
+  background: var(--c-semantic-success);
+}
+
+.ds-hero-task-name {
+  font-family: var(--font-ui);
+  font-size: var(--text-body-sm);
+  color: var(--c-text);
+  line-height: 1.35;
+}
+
+.ds-hero-task-status {
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--c-text-soft);
+  transition: color var(--duration-base) var(--ease-out-soft);
+}
+
+.ds-hero-task-status--running {
+  color: var(--c-text-muted);
+}
+
+.ds-hero-task-status--done {
+  color: var(--c-semantic-success);
+}
+
+.ds-hero-metric {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+}
+
+.ds-hero-metric-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: var(--text-body-xs);
+  font-weight: 500;
+  color: var(--c-text-muted);
+  margin-bottom: 6px;
+}
+
+.ds-hero-metric-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-body-sm);
+  color: var(--c-text);
+  transition: color var(--duration-base) var(--ease-out-soft);
+}
+
+.ds-hero-metric-track {
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--c-border-soft);
+  overflow: hidden;
+}
+
+.ds-hero-metric-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--c-primary);
+  transition: width var(--duration-medium) var(--ease-out-soft);
+}
+
+.ds-hero-metric-note {
+  margin-top: 8px;
+  font-family: var(--font-ui);
+  font-size: var(--text-body-xs);
+  color: var(--c-text-soft);
+  line-height: 1.4;
+  transition: opacity var(--duration-base) var(--ease-out-soft);
+}
