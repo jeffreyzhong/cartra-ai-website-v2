@@ -63,11 +63,17 @@
     transform: none;
   }
 
-  .ds-hero-task-dot--running {
+  .ds-hero-sop-step {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .ds-hero-chat-thinking-pill {
     animation: none;
   }
 
-  .ds-hero-sop-step {
+  .ds-hero-chat-response {
     animation: none;
     opacity: 1;
     transform: none;
