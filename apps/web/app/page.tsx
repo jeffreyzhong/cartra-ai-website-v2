@@ -781,6 +781,7 @@ export default function Home() {
                 <p className="text-c-text font-semibold">Company</p>
                 <div className="mt-3 flex flex-col gap-2">
                   <Link href="/" className="inline-flex items-center h-8 hover:text-c-text transition-colors">Home</Link>
+                  <Link href="/agents" className="inline-flex items-center h-8 hover:text-c-text transition-colors">Agents</Link>
                   <Link href="/agent-systems" className="inline-flex items-center h-8 hover:text-c-text transition-colors">Agent Systems</Link>
                   <Link href="/case-studies" className="inline-flex items-center h-8 hover:text-c-text transition-colors">Case Studies</Link>
                   <ContactLink className="inline-flex items-center h-8 hover:text-c-text transition-colors cursor-pointer" />

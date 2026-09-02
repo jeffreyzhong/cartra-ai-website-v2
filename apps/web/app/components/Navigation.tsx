@@ -2,9 +2,19 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import CalendlyButton from './CalendlyButton';
 
+function navClass(active: boolean, visibility = 'hidden md:inline-flex') {
+  return `${visibility} items-center h-10 font-display text-sm font-medium transition-colors ${
+    active ? 'text-c-text' : 'text-c-text-muted hover:text-c-text'
+  }`;
+}
+
 export default function Navigation() {
+  const pathname = usePathname();
+  const onAgents = pathname === '/agents';
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-c-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,33 +36,30 @@ export default function Navigation() {
           </Link>
 
           <div className="flex items-center gap-6 justify-self-center">
-            <Link
-              href="/#results"
-              className="hidden md:inline-flex items-center h-10 font-display text-sm font-medium text-c-text-muted hover:text-c-text transition-colors"
-            >
+            <Link href="/agents" className={navClass(onAgents, 'inline-flex')}>
+              Agents
+            </Link>
+            <Link href="/#results" className={navClass(false)}>
               Results
             </Link>
             <Link
               href="/agent-systems"
-              className="hidden md:inline-flex items-center h-10 font-display text-sm font-medium text-c-text-muted hover:text-c-text transition-colors"
+              className={navClass(pathname.startsWith('/agent-systems'))}
             >
               Agent Systems
             </Link>
             <Link
               href="/case-studies"
-              className="hidden lg:inline-flex items-center h-10 font-display text-sm font-medium text-c-text-muted hover:text-c-text transition-colors"
+              className={navClass(pathname === '/case-studies', 'hidden lg:inline-flex')}
             >
               Case Studies
             </Link>
-            <Link
-              href="/#process"
-              className="hidden md:inline-flex items-center h-10 font-display text-sm font-medium text-c-text-muted hover:text-c-text transition-colors"
-            >
+            <Link href="/#process" className={navClass(false)}>
               Process
             </Link>
             <Link
               href="/#faq"
-              className="hidden md:inline-flex items-center h-10 font-display text-sm font-medium text-c-text-muted hover:text-c-text transition-colors"
+              className={navClass(false, 'hidden lg:inline-flex')}
             >
               FAQ
             </Link>

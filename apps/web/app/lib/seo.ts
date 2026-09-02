@@ -196,6 +196,7 @@ export function createServiceJsonLd({
 
 export const SITEMAP_ROUTES = [
   '/',
+  '/agents',
   '/agent-systems',
   ...AGENT_SYSTEMS.map((agent) => `/agent-systems/${agent.slug}`),
   '/ai-agent-development-company',
