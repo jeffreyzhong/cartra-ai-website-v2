@@ -67,9 +67,12 @@ function IconPaths({ name }: { name: IconName }) {
     case 'ab':
       return (
         <>
-          <path d="M5 18V6.5h4.2a3.1 3.1 0 0 1 0 6.2H5" />
-          <path d="M14.5 18 17 6.5 19.5 18" />
-          <path d="M15.2 14.5h3.6" />
+          <path d="M3.8 18 8.2 6.8 12.6 18" />
+          <path d="M5.6 13.7h5.2" />
+          <path d="M14.4 7v11" />
+          <path d="M16.6 7v11" />
+          <path d="M16.6 7h3.4a2.05 2.05 0 0 1 0 4.1H16.6" />
+          <path d="M16.6 11.1h3.8a2.25 2.25 0 0 1 0 5.5H16.6" />
         </>
       );
     default:
