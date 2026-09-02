@@ -85,6 +85,8 @@ export default function LifecycleIcon({ name }: { name: IconName }) {
     <span className="agents-icon" aria-hidden>
       <svg
         viewBox="0 0 24 24"
+        width={20}
+        height={20}
         fill="none"
         stroke="currentColor"
         strokeWidth="1.5"

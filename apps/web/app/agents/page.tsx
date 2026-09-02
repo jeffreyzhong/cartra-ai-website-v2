@@ -312,22 +312,10 @@ export default function AgentsPage() {
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {LIFECYCLE.map((item) => (
-                  <Card key={item.title} className="h-full">
+                  <Card key={item.title} className="agents-lifecycle-card">
                     <LifecycleIcon name={item.icon} />
-                    <h3
-                      className="font-display text-c-text mt-5"
-                      style={{
-                        fontSize: '1.0625rem',
-                        fontWeight: 600,
-                        letterSpacing: '-0.01em',
-                        lineHeight: 1.3,
-                      }}
-                    >
-                      {item.title}
-                    </h3>
-                    <Body size="sm" className="mt-3">
-                      {item.body}
-                    </Body>
+                    <h3 className="agents-lifecycle-title">{item.title}</h3>
+                    <Body size="sm">{item.body}</Body>
                   </Card>
                 ))}
               </div>
