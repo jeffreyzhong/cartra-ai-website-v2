@@ -8,30 +8,87 @@ type IconName =
   | 'tags'
   | 'ab';
 
-const PATHS: Record<IconName, string> = {
-  workspaces:
-    'M4 5.5h6.5V11H4V5.5zm8.5 0H19V11h-6.5V5.5zM4 13h6.5v5.5H4V13zm8.5 0H19v5.5h-6.5V13z',
-  versioning:
-    'M7 5.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0 9a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm.75-5v5m3.75-7.5H15a2 2 0 0 1 2 2v9',
-  catalog:
-    'M6 5.5h12v13H6v-13zm3 3h6M9 12h6M9 15h4',
-  permissions:
-    'M12 4.5a3.5 3.5 0 0 1 3.5 3.5v2h1.5v9h-10v-9H8.5V8A3.5 3.5 0 0 1 12 4.5z',
-  skills:
-    'M8 7l4-2.5L16 7v5.5L12 15.5 8 12.5V7zm4 8.5V21',
-  a2a:
-    'M5 8h9m0 0-2.5-2.5M14 8l-2.5 2.5M19 16H10m0 0 2.5-2.5M10 16l2.5 2.5',
-  tags:
-    'M4.5 12.5V5.5H12l7 7-6.5 6.5-8-6.5zm4-4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z',
-  ab:
-    'M6 17V7h5.5a3.2 3.2 0 0 1 0 6.4H6m.2 0H12M15.5 7l3 10m-5.2-3.6h4.6',
-};
+function IconPaths({ name }: { name: IconName }) {
+  switch (name) {
+    case 'workspaces':
+      return (
+        <>
+          <rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1.2" />
+          <rect x="13" y="3.5" width="7.5" height="7.5" rx="1.2" />
+          <rect x="3.5" y="13" width="7.5" height="7.5" rx="1.2" />
+          <rect x="13" y="13" width="7.5" height="7.5" rx="1.2" />
+        </>
+      );
+    case 'versioning':
+      return (
+        <>
+          <circle cx="7" cy="6" r="2.2" />
+          <circle cx="7" cy="18" r="2.2" />
+          <circle cx="17" cy="12" r="2.2" />
+          <path d="M7 8.2v7.6M9.1 6.8c3.2.4 5.6 2 5.6 5.2" />
+        </>
+      );
+    case 'catalog':
+      return (
+        <>
+          <path d="M6 4.5h9.5A2.5 2.5 0 0 1 18 7v12.5H7.5A1.5 1.5 0 0 1 6 18V4.5Z" />
+          <path d="M6 4.5A1.5 1.5 0 0 0 4.5 6v12A1.5 1.5 0 0 0 6 19.5" />
+          <path d="M9 9h6M9 12.5h6M9 16h4" />
+        </>
+      );
+    case 'permissions':
+      return (
+        <>
+          <rect x="5" y="11" width="14" height="9" rx="1.5" />
+          <path d="M8.5 11V8.2a3.5 3.5 0 0 1 7 0V11" />
+        </>
+      );
+    case 'skills':
+      return (
+        <>
+          <path d="M8 8.2 12 5.5 16 8.2v5.4L12 16.3 8 13.6V8.2Z" />
+          <path d="M12 16.3V20" />
+        </>
+      );
+    case 'a2a':
+      return (
+        <>
+          <path d="M4 8h11M15 8l-3-3M15 8l-3 3" />
+          <path d="M20 16H9M9 16l3-3M9 16l3 3" />
+        </>
+      );
+    case 'tags':
+      return (
+        <>
+          <path d="M4.5 12.2V5.5H11l7.2 7.2-6.2 6.2L4.5 12.2Z" />
+          <circle cx="8.2" cy="9.2" r="1" />
+        </>
+      );
+    case 'ab':
+      return (
+        <>
+          <path d="M5 18V6.5h4.2a3.1 3.1 0 0 1 0 6.2H5" />
+          <path d="M14.5 18 17 6.5 19.5 18" />
+          <path d="M15.2 14.5h3.6" />
+        </>
+      );
+    default:
+      return null;
+  }
+}
 
 export default function LifecycleIcon({ name }: { name: IconName }) {
   return (
     <span className="agents-icon" aria-hidden>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-        <path d={PATHS[name]} />
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <IconPaths name={name} />
       </svg>
     </span>
   );

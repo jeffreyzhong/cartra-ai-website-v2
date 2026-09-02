@@ -78,7 +78,7 @@ export default function WorkAutomationVisual() {
     <div className="agents-card-visual">
       <div className="agents-stage-header">
         <span className="agents-stage-title">Manual run · Trigger</span>
-        <span className={`agents-pill ${phase === 'run' ? 'agents-pill-done' : 'agents-pill-thinking'}`}>
+        <span className={`agents-pill ${phase === 'run' ? 'agents-pill-edit' : 'agents-pill-thinking'}`}>
           {phase === 'run' ? 'Running' : 'Idle'}
         </span>
       </div>

@@ -267,7 +267,7 @@
 /* ── Transform card visuals ────────────────────────────── */
 
 .agents-card-visual {
-  height: 17.5rem;
+  height: 20rem;
   background: var(--c-canvas-soft);
   border-bottom: 1px solid var(--c-border);
   overflow: hidden;
@@ -275,7 +275,7 @@
 
 @media (min-width: 768px) {
   .agents-card-visual {
-    height: 19rem;
+    height: 21.5rem;
   }
 }
 
@@ -285,8 +285,8 @@
 
 .agents-tool-menu {
   display: grid;
-  gap: 6px;
-  padding: 16px;
+  gap: 4px;
+  padding: 12px 14px 16px;
 }
 
 .agents-tool-group {
@@ -303,7 +303,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 10px;
+  padding: 7px 10px;
   border: 1px solid transparent;
   border-radius: var(--radius-md);
   background: transparent;
@@ -620,6 +620,7 @@
   scroll-snap-type: x mandatory;
   padding-bottom: 8px;
   scrollbar-width: thin;
+  overscroll-behavior-x: contain;
 }
 
 .agents-rail-card {
