@@ -33,6 +33,7 @@ Ahrefs project:
 Primary SEO pages:
 
 - `/`
+- `/agents`
 - `/agent-systems`
 - `/agent-systems/customs-document-ops`
 - `/agent-systems/procurement-vendor-ops`
