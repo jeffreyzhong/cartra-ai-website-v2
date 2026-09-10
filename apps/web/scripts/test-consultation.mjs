@@ -32,10 +32,49 @@ const payload = {
   email: "visitor@example.com",
   role: "CEO",
   company: "Example Co",
+  needs: "Reduce manual data entry.\nConnect our existing tools.",
   revenue: lib.REVENUE_OPTIONS[0],
   "cf-turnstile-response": "test-token",
   website: "",
 };
+for (const email of [
+  "person@cartra.ai",
+  "first.last+sales@sub.company.co.uk",
+  " Person@Company.COM ",
+]) {
+  assert.equal(lib.workEmailError(email), "");
+}
+for (const email of [
+  "",
+  "bad",
+  "a@@company.com",
+  "a..b@company.com",
+  ".a@company.com",
+  "a.@company.com",
+  "a@-company.com",
+  "a@company..com",
+  "a@company.c",
+  "a@company.com/path",
+  "a b@company.com",
+  "a".repeat(65) + "@company.com",
+  "person@GMAIL.COM",
+  "person@outlook.com",
+]) {
+  assert.notEqual(lib.workEmailError(email), "");
+  assert.equal(lib.parseConsultation({ ...payload, email }), null);
+}
+assert.deepEqual(lib.REVENUE_OPTIONS, [
+  "Under $20M",
+  "$20M–$100M",
+  "$100M–$200M",
+  "$200M–$500M",
+  "$500M–$1B",
+  "$1B+",
+]);
+for (const role of lib.ROLE_OPTIONS)
+  assert.ok(lib.parseConsultation({ ...payload, role }));
+for (const revenue of lib.REVENUE_OPTIONS)
+  assert.ok(lib.parseConsultation({ ...payload, revenue }));
 const envKeys = [
   "CLOUDFLARE_ACCOUNT_ID",
   "CLOUDFLARE_EMAIL_API_TOKEN",
@@ -93,6 +132,12 @@ try {
   assert.equal(calls[1].body.reply_to, payload.email);
   assert.equal(calls[0].body.response, payload["cf-turnstile-response"]);
   assert.ok(calls[1].body.text.includes("Role: CEO"));
+  assert.ok(calls[1].body.text.includes(payload.needs));
+  assert.equal(
+    lib.parseConsultation({ ...payload, needs: undefined }).needs,
+    "",
+  );
+  assert.ok(lib.parseConsultation({ ...payload, needs: "x".repeat(2000) }));
   delivery = {
     success: true,
     result: { delivered: [], queued: ["jeff@cartra.ai"] },
@@ -115,6 +160,14 @@ try {
     {},
     { ...payload, name: " " },
     { ...payload, email: "bad" },
+    { ...payload, needs: "x".repeat(2001) },
+    { ...payload, needs: { text: "Invalid type" } },
+    { ...payload, needs: "Bad\u0000text" },
+    { ...payload, email: "person@gmail.com" },
+    { ...payload, email: "a..b@company.com" },
+    { ...payload, role: "" },
+    { ...payload, role: "Invented role" },
+    { ...payload, revenue: "Under $1 million" },
     { ...payload, company: "Bad\r\nBcc: someone@example.com" },
     { ...payload, name: "x".repeat(101) },
     { ...payload, revenue: "invalid" },
@@ -124,7 +177,7 @@ try {
   ]) {
     assert.equal((await POST(request(invalid))).status, 400);
   }
-  assert.equal((await POST(request("x".repeat(8193)))).status, 413);
+  assert.equal((await POST(request("x".repeat(16385)))).status, 413);
   assert.equal(
     (await POST(request(payload, { origin: "https://other.example" }))).status,
     403,

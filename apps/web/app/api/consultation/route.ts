@@ -1,9 +1,13 @@
-import { parseConsultation, validEmail } from "../../lib/consultation";
+import {
+  parseConsultation,
+  validEmail,
+  workEmailError,
+} from "../../lib/consultation";
 import { TURNSTILE_ACTION } from "../../lib/turnstile";
 
 export const runtime = "nodejs";
 const RECIPIENT = "jeff@cartra.ai";
-const MAX_BODY_BYTES = 8192;
+const MAX_BODY_BYTES = 16384;
 
 function failure(error: string, status: number) {
   return Response.json({ error }, { status });
@@ -49,9 +53,11 @@ export async function POST(request: Request) {
     return failure("Invalid request.", 400);
   }
   const details = parseConsultation(input);
+  if (input && typeof input.email === "string" && workEmailError(input.email))
+    return failure(workEmailError(input.email), 400);
   if (!details)
     return failure(
-      "Please complete all fields with a valid email and revenue range.",
+      "Please complete all fields with a company email and select a role and revenue range.",
       400,
     );
   if (input.website) return failure("Unable to verify this request.", 400);
@@ -131,6 +137,9 @@ export async function POST(request: Request) {
             `Role: ${details.role}`,
             `Company: ${details.company}`,
             `Annual revenue (USD): ${details.revenue}`,
+            "",
+            "What they would like help with:",
+            details.needs || "Not provided",
             "",
             "Reply to this email to arrange a consultation.",
           ].join("\n"),

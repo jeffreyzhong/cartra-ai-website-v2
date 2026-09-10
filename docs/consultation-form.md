@@ -1,6 +1,10 @@
 # Consultation form setup
 
-All consultation buttons and the homepage footer Contact button open the same custom form. It collects name, work email, role, company, and annual revenue in USD. Revenue ranges include “Prefer not to say.” Submissions go to `jeff@cartra.ai`; replying addresses the visitor. The form requests a call, and Jeff schedules it by email.
+All consultation buttons and the homepage footer Contact button open the same custom form. It collects name, work email, role, company, and annual revenue in USD. Role is a required dropdown covering owners/founders, CEOs, other C-suite executives, VPs, directors, managers, individual contributors, and Other. Revenue options are Under $20M, $20M–$100M, $100M–$200M, $200M–$500M, $500M–$1B, and $1B+. Submissions go to `jeff@cartra.ai`; replying addresses the visitor. The form requests a call, and Jeff schedules it by email.
+
+Work-email checks run in the browser and backend: trim surrounding whitespace, validate address and domain syntax, and reject a small explicit list of common personal-email providers. Custom company domains (including subdomains and plus-addressing) are accepted. This is a sanity check, not DNS, mailbox ownership, or deliverability verification.
+
+An optional “What would you like help with?” textarea lets visitors describe their needs in up to 2,000 characters. The plain-text notification includes their response with line breaks preserved, or “Not provided” if left empty. The backend enforces the length and rejects control characters other than tabs and line breaks.
 
 ## Cloudflare configuration
 
