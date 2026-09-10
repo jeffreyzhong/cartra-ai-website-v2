@@ -10,7 +10,7 @@ import {
   Card,
 } from '@repo/ui';
 import Navigation from '../components/Navigation';
-import CalendlyButton from '../components/CalendlyButton';
+import ConsultationButton from '../components/ConsultationButton';
 import SeoInternalLinks from '../components/SeoInternalLinks';
 import JsonLd from '../components/JsonLd';
 import { AGENT_SYSTEMS } from '../content/agent-systems';
@@ -98,7 +98,7 @@ export default function AgentSystemsIndex() {
                 30-minute call and we&apos;ll tell you.
               </Body>
               <div className="mt-8 flex justify-center">
-                <CalendlyButton>Book a free consultation</CalendlyButton>
+                <ConsultationButton>Book a free consultation</ConsultationButton>
               </div>
             </div>
           </Card>

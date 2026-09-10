@@ -10,7 +10,7 @@ import {
   Card,
 } from '@repo/ui';
 import Navigation from '../components/Navigation';
-import CalendlyButton from '../components/CalendlyButton';
+import ConsultationButton from '../components/ConsultationButton';
 import SeoInternalLinks from '../components/SeoInternalLinks';
 import JsonLd from '../components/JsonLd';
 import { CASE_STUDIES } from '../content/case-studies';
@@ -110,7 +110,7 @@ export default function CaseStudiesPage() {
                 Book a 30-minute call and we will map the highest-leverage agent system for your operation.
               </Body>
               <div className="mt-8 flex justify-center">
-                <CalendlyButton>Book a free consultation</CalendlyButton>
+                <ConsultationButton>Book a free consultation</ConsultationButton>
               </div>
             </Card>
           </Container>

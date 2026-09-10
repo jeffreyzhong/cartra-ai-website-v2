@@ -17,7 +17,7 @@ import {
 import Navigation from './components/Navigation';
 import FAQ from './components/FAQ';
 import AgentSystems from './components/AgentSystems';
-import CalendlyButton from './components/CalendlyButton';
+import ConsultationButton from './components/ConsultationButton';
 import ContactLink from './components/ContactLink';
 import SeoInternalLinks from './components/SeoInternalLinks';
 import Link from 'next/link';
@@ -102,7 +102,7 @@ export default function Home() {
                 step={5}
                 className="mt-10 flex flex-wrap items-center justify-start gap-3"
               >
-                <CalendlyButton>Book a free consultation</CalendlyButton>
+                <ConsultationButton>Book a free consultation</ConsultationButton>
                 <Button variant="ghost" as="a" href="#process">See our process</Button>
               </Rise>
             </div>
@@ -315,7 +315,7 @@ export default function Home() {
           </Card>
 
           <div className="text-center">
-            <CalendlyButton trailingIcon="→">Learn how we can help</CalendlyButton>
+            <ConsultationButton trailingIcon="→">Learn how we can help</ConsultationButton>
           </div>
         </Container>
       </Section>
@@ -605,7 +605,7 @@ export default function Home() {
           </div>
 
           <div className="text-center">
-            <CalendlyButton trailingIcon="→">Talk to us</CalendlyButton>
+            <ConsultationButton trailingIcon="→">Talk to us</ConsultationButton>
           </div>
         </Container>
       </Section>
@@ -740,7 +740,7 @@ export default function Home() {
                 Book a 30-minute no-strings-attached strategy call. We&apos;ll get acquainted, discuss your company&apos;s situation, and you&apos;ll walk away with actionable advice and insights. Completely free. No sales pitch, just genuine guidance you can use immediately.
               </Body>
               <div className="mt-8 flex justify-center">
-                <CalendlyButton>Book a free consultation</CalendlyButton>
+                <ConsultationButton>Book a free consultation</ConsultationButton>
               </div>
             </div>
           </Card>

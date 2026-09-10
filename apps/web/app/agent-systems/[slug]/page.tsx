@@ -11,7 +11,7 @@ import {
   Card,
 } from '@repo/ui';
 import Navigation from '../../components/Navigation';
-import CalendlyButton from '../../components/CalendlyButton';
+import ConsultationButton from '../../components/ConsultationButton';
 import SeoInternalLinks from '../../components/SeoInternalLinks';
 import JsonLd from '../../components/JsonLd';
 import { AGENT_SYSTEMS, getAgentSystem } from '../../content/agent-systems';
@@ -80,7 +80,7 @@ export default async function AgentSystemDetail(
             {agent.tagline}
           </Body>
           <div className="mt-10 flex justify-center">
-            <CalendlyButton>Book a free consultation</CalendlyButton>
+            <ConsultationButton>Book a free consultation</ConsultationButton>
           </div>
         </Container>
       </Section>
@@ -235,7 +235,7 @@ export default async function AgentSystemDetail(
                 share a realistic ROI projection. No pitch, no pressure.
               </Body>
               <div className="mt-8 flex justify-center">
-                <CalendlyButton>Book a free consultation</CalendlyButton>
+                <ConsultationButton>Book a free consultation</ConsultationButton>
               </div>
             </div>
           </Card>

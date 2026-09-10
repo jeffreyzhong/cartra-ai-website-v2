@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import CalendlyButton from './CalendlyButton';
+import ConsultationButton from './ConsultationButton';
 
 export default function Navigation() {
   return (
@@ -59,7 +59,7 @@ export default function Navigation() {
           </div>
 
           <div className="flex items-center justify-self-end">
-            <CalendlyButton>Book a call</CalendlyButton>
+            <ConsultationButton>Book a call</ConsultationButton>
           </div>
         </div>
       </div>

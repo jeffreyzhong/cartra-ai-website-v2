@@ -7,6 +7,7 @@ import "@repo/ui/components.css";
 import "./globals.css";
 import JsonLd from "./components/JsonLd";
 import Analytics from "./components/Analytics";
+import ConsultationProvider from "./components/ConsultationProvider";
 import {
   DEFAULT_DESCRIPTION,
   LOGO_PATH,
@@ -124,7 +125,7 @@ export default function RootLayout({
           }}
         />
         <Analytics />
-        {children}
+        <ConsultationProvider>{children}</ConsultationProvider>
       </body>
     </html>
   );
