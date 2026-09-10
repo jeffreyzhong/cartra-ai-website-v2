@@ -2,28 +2,33 @@
 
 import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
+import { TURNSTILE_ACTION, TURNSTILE_SITE_KEY } from "../lib/turnstile";
 
 type TurnstileApi = {
   render: (element: HTMLElement, options: Record<string, unknown>) => string;
   remove: (id: string) => void;
+  reset: (id: string) => void;
 };
 
 export default function Turnstile({
   onToken,
+  attempt,
 }: {
   onToken: (token: string) => void;
+  attempt: number;
 }) {
   const container = useRef<HTMLDivElement>(null);
+  const widget = useRef<string | null>(null);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
-  const sitekey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const sitekey = TURNSTILE_SITE_KEY;
 
   useEffect(() => {
     const api = (window as Window & { turnstile?: TurnstileApi }).turnstile;
     if (!ready || !container.current || !sitekey || !api) return;
     const id = api.render(container.current, {
       sitekey,
-      action: "consultation",
+      action: TURNSTILE_ACTION,
       theme: "light",
       size: "flexible",
       callback: (token: string) => {
@@ -36,12 +41,21 @@ export default function Turnstile({
         setFailed(true);
       },
     });
+    widget.current = id;
     return () => {
       api.remove(id);
+      widget.current = null;
     };
   }, [ready, sitekey, onToken]);
 
-  if (!sitekey) return null;
+  useEffect(() => {
+    const api = (window as Window & { turnstile?: TurnstileApi }).turnstile;
+    if (attempt > 0 && widget.current !== null) {
+      onToken("");
+      api?.reset(widget.current);
+    }
+  }, [attempt, onToken]);
+
   return (
     <>
       <Script

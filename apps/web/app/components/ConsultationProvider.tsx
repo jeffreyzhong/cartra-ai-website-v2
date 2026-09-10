@@ -66,7 +66,7 @@ function ConsultationDialog({ onClose }: { onClose: () => void }) {
       const response = await fetch("/api/consultation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, token }),
+        body: JSON.stringify({ ...data, "cf-turnstile-response": token }),
         signal: AbortSignal.timeout(25000),
       });
       const result = await response.json();
@@ -190,7 +190,7 @@ function ConsultationDialog({ onClose }: { onClose: () => void }) {
             </div>
           </fieldset>
           <footer className={styles.footer}>
-            <Turnstile key={attempt} onToken={setToken} />
+            <Turnstile attempt={attempt} onToken={setToken} />
             {error && (
               <p role="alert" className={styles.error}>
                 {error} You can also email{" "}
@@ -201,10 +201,7 @@ function ConsultationDialog({ onClose }: { onClose: () => void }) {
               <p>We’ll email you to find a time to talk.</p>
               <Button
                 type="submit"
-                disabled={
-                  status === "sending" ||
-                  (!!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !token)
-                }
+                disabled={status === "sending" || !token}
                 trailingIcon="→"
               >
                 {status === "sending" ? "Sending…" : "Request a call"}

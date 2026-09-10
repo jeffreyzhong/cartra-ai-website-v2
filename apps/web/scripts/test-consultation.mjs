@@ -25,6 +25,7 @@ function load(path, dependencies = {}) {
 const lib = load("../app/lib/consultation.ts");
 const { POST } = load("../app/api/consultation/route.ts", {
   "../../lib/consultation": lib,
+  "../../lib/turnstile": load("../app/lib/turnstile.ts"),
 });
 const payload = {
   name: "Test Visitor",
@@ -32,7 +33,7 @@ const payload = {
   role: "CEO",
   company: "Example Co",
   revenue: lib.REVENUE_OPTIONS[0],
-  token: "test-token",
+  "cf-turnstile-response": "test-token",
   website: "",
 };
 const envKeys = [
@@ -40,6 +41,7 @@ const envKeys = [
   "CLOUDFLARE_EMAIL_API_TOKEN",
   "CLOUDFLARE_EMAIL_FROM",
   "TURNSTILE_SECRET_KEY",
+  "TURNSTILE_HOSTNAMES",
 ];
 const originalEnv = Object.fromEntries(
   envKeys.map((key) => [key, process.env[key]]),
@@ -72,9 +74,16 @@ try {
     CLOUDFLARE_EMAIL_API_TOKEN: "test-secret",
     CLOUDFLARE_EMAIL_FROM: "website@cartra.ai",
     TURNSTILE_SECRET_KEY: "test-turnstile",
+    TURNSTILE_HOSTNAMES: "cartra.ai,www.cartra.ai",
   });
   globalThis.fetch = async (url, options) => {
-    calls.push({ url, body: JSON.parse(options.body) });
+    calls.push({
+      url,
+      body:
+        options.body instanceof URLSearchParams
+          ? Object.fromEntries(options.body)
+          : JSON.parse(options.body),
+    });
     return url.includes("siteverify")
       ? Response.json(challenge)
       : Response.json(delivery, { status: providerStatus });
@@ -82,6 +91,7 @@ try {
   assert.equal((await POST(request())).status, 200);
   assert.equal(calls[1].body.to, "jeff@cartra.ai");
   assert.equal(calls[1].body.reply_to, payload.email);
+  assert.equal(calls[0].body.response, payload["cf-turnstile-response"]);
   assert.ok(calls[1].body.text.includes("Role: CEO"));
   delivery = {
     success: true,
@@ -108,7 +118,7 @@ try {
     { ...payload, company: "Bad\r\nBcc: someone@example.com" },
     { ...payload, name: "x".repeat(101) },
     { ...payload, revenue: "invalid" },
-    { ...payload, token: "" },
+    { ...payload, "cf-turnstile-response": "" },
     { ...payload, website: "spam" },
     "{",
   ]) {
@@ -127,6 +137,13 @@ try {
   delete process.env.CLOUDFLARE_EMAIL_API_TOKEN;
   assert.equal((await POST(request())).status, 503);
   process.env.CLOUDFLARE_EMAIL_API_TOKEN = "test-secret";
+  process.env.TURNSTILE_HOSTNAMES = "";
+  assert.equal((await POST(request())).status, 503);
+  process.env.TURNSTILE_HOSTNAMES = "other.example";
+  calls = [];
+  assert.equal((await POST(request())).status, 400);
+  assert.equal(calls.length, 1);
+  process.env.TURNSTILE_HOSTNAMES = "cartra.ai,www.cartra.ai";
   for (const invalid of [
     { success: false },
     { ...challenge, hostname: "other.example" },
@@ -137,6 +154,44 @@ try {
     assert.equal((await POST(request())).status, 400);
     assert.equal(calls.length, 1);
   }
+  // Model Siteverify's single-use contract: never send twice for one token.
+  calls = [];
+  const redeemed = new Set();
+  globalThis.fetch = async (url, options) => {
+    calls.push(url);
+    if (url.includes("siteverify")) {
+      const token = options.body.get("response");
+      if (redeemed.has(token))
+        return Response.json({
+          success: false,
+          "error-codes": ["timeout-or-duplicate"],
+        });
+      redeemed.add(token);
+      return Response.json({
+        success: true,
+        hostname: "cartra.ai",
+        action: "consultation",
+      });
+    }
+    return Response.json({
+      success: true,
+      result: { delivered: ["jeff@cartra.ai"], queued: [] },
+    });
+  };
+  assert.equal((await POST(request())).status, 200);
+  assert.equal((await POST(request())).status, 400);
+  assert.equal(
+    calls.filter((url) => url.includes("email/sending/send")).length,
+    1,
+  );
+  assert.equal(
+    (
+      await POST(
+        request({ ...payload, "cf-turnstile-response": "fresh-token" }),
+      )
+    ).status,
+    200,
+  );
   globalThis.fetch = async () => {
     throw new Error("Provider timeout");
   };

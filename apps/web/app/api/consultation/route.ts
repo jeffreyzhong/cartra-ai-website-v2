@@ -1,4 +1,5 @@
 import { parseConsultation, validEmail } from "../../lib/consultation";
+import { TURNSTILE_ACTION } from "../../lib/turnstile";
 
 export const runtime = "nodejs";
 const RECIPIENT = "jeff@cartra.ai";
@@ -59,22 +60,26 @@ export async function POST(request: Request) {
   const apiToken = process.env.CLOUDFLARE_EMAIL_API_TOKEN;
   const sender = process.env.CLOUDFLARE_EMAIL_FROM;
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+  const expectedHostnames = new Set(
+    (process.env.TURNSTILE_HOSTNAMES ?? "cartra.ai,www.cartra.ai")
+      .split(",")
+      .map((hostname) => hostname.trim())
+      .filter(Boolean),
+  );
   if (
     !account ||
     !/^[a-f0-9]{32}$/i.test(account) ||
     !apiToken ||
     !sender ||
     !validEmail(sender) ||
-    !turnstileSecret
+    !turnstileSecret ||
+    expectedHostnames.size === 0
   ) {
     return failure("The form is temporarily unavailable.", 503);
   }
 
-  if (
-    typeof input.token !== "string" ||
-    !input.token ||
-    input.token.length > 2048
-  )
+  const token = input["cf-turnstile-response"];
+  if (typeof token !== "string" || !token || token.length > 2048)
     return failure("Please complete the verification and try again.", 400);
 
   try {
@@ -82,10 +87,10 @@ export async function POST(request: Request) {
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
           secret: turnstileSecret,
-          response: input.token,
+          response: token,
         }),
         signal: AbortSignal.timeout(8000),
       },
@@ -98,7 +103,8 @@ export async function POST(request: Request) {
     const challenge = await verification.json();
     if (
       challenge.success !== true ||
-      challenge.action !== "consultation" ||
+      challenge.action !== TURNSTILE_ACTION ||
+      !expectedHostnames.has(challenge.hostname) ||
       challenge.hostname !== new URL(request.url).hostname
     ) {
       return failure("Verification expired or failed. Please try again.", 400);
