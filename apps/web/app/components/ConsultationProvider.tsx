@@ -10,7 +10,13 @@ import {
   type ReactNode,
 } from "react";
 import { Button } from "@repo/ui";
-import { CONSULTATION_FIELDS, REVENUE_OPTIONS } from "../lib/consultation";
+import {
+  CONSULTATION_FIELDS,
+  REVENUE_OPTIONS,
+  ROLE_OPTIONS,
+  NEEDS_MAX_LENGTH,
+  workEmailError,
+} from "../lib/consultation";
 import { trackEvent } from "../lib/analytics";
 import Turnstile from "./Turnstile";
 import styles from "./consultation.module.css";
@@ -41,6 +47,7 @@ function ConsultationDialog({ onClose }: { onClose: () => void }) {
   const [token, setToken] = useState("");
   const [attempt, setAttempt] = useState(0);
   const [error, setError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   useEffect(() => {
     const element = dialog.current!;
@@ -149,14 +156,86 @@ function ConsultationDialog({ onClose }: { onClose: () => void }) {
                 <label htmlFor={`consultation-${field.name}`}>
                   {field.label}
                 </label>
-                <input
-                  id={`consultation-${field.name}`}
-                  name={field.name}
-                  type={field.name === "email" ? "email" : "text"}
-                  autoComplete={field.autoComplete}
-                  maxLength={field.maxLength}
-                  required
-                />
+                {field.name === "role" ? (
+                  <select
+                    id="consultation-role"
+                    name="role"
+                    autoComplete="organization-title"
+                    defaultValue=""
+                    required
+                  >
+                    <option value="" disabled>
+                      Select your role
+                    </option>
+                    {ROLE_OPTIONS.map((option) => (
+                      <option key={option}>{option}</option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    id={`consultation-${field.name}`}
+                    name={field.name}
+                    type={field.name === "email" ? "email" : "text"}
+                    autoComplete={field.autoComplete}
+                    maxLength={field.maxLength}
+                    aria-describedby={
+                      field.name === "email"
+                        ? "consultation-email-help"
+                        : undefined
+                    }
+                    aria-invalid={
+                      field.name === "email" && emailError ? true : undefined
+                    }
+                    onChange={
+                      field.name === "email"
+                        ? (event) => {
+                            const message = workEmailError(
+                              event.currentTarget.value,
+                            );
+                            event.currentTarget.setCustomValidity(message);
+                            if (emailError) setEmailError(message);
+                          }
+                        : undefined
+                    }
+                    onBlur={
+                      field.name === "email"
+                        ? (event) => {
+                            event.currentTarget.value =
+                              event.currentTarget.value.trim();
+                            const message = workEmailError(
+                              event.currentTarget.value,
+                            );
+                            event.currentTarget.setCustomValidity(message);
+                            setEmailError(message);
+                          }
+                        : undefined
+                    }
+                    onInvalid={
+                      field.name === "email"
+                        ? (event) => {
+                            const message = workEmailError(
+                              event.currentTarget.value,
+                            );
+                            event.currentTarget.setCustomValidity(message);
+                            setEmailError(message);
+                          }
+                        : undefined
+                    }
+                    required
+                  />
+                )}
+                {field.name === "email" && (
+                  <p
+                    id="consultation-email-help"
+                    className={
+                      emailError ? styles.error : "text-sm text-c-body"
+                    }
+                    aria-live="polite"
+                  >
+                    {emailError ||
+                      "Use your company email, such as you@company.com."}
+                  </p>
+                )}
               </div>
             ))}
             <div className={styles.field}>
@@ -176,6 +255,23 @@ function ConsultationDialog({ onClose }: { onClose: () => void }) {
                   <option key={option}>{option}</option>
                 ))}
               </select>
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="consultation-needs">
+                What would you like help with?{" "}
+                <span className="text-sm text-c-body">(optional)</span>
+              </label>
+              <textarea
+                id="consultation-needs"
+                name="needs"
+                rows={4}
+                maxLength={NEEDS_MAX_LENGTH}
+                aria-describedby="consultation-needs-help"
+                placeholder="Tell us about a workflow you’d like to improve, a challenge you’re facing, or what you’d like to achieve."
+              />
+              <p id="consultation-needs-help" className="text-sm text-c-body">
+                A few sentences are plenty. Up to 2,000 characters.
+              </p>
             </div>
             <div className={styles.trap} aria-hidden="true">
               <label htmlFor="consultation-website">
