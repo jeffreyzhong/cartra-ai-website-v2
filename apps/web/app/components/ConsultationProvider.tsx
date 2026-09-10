@@ -127,7 +127,7 @@ function ConsultationDialog({ onClose }: { onClose: () => void }) {
         </h2>
         <p id="consultation-description">
           {status === "success"
-            ? "Jeff will follow up by email to arrange your free consultation."
+            ? "We’ll follow up by email to arrange your free consultation."
             : "Tell us a little about yourself so we can make the most of our conversation."}
         </p>
         <button
