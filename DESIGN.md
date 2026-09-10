@@ -289,7 +289,7 @@ This file is the **canonical visual source of truth** for Cartra UI. All UI impl
 
 - **Logo / favicon**: `apps/web/public/cartra_geometric_logo_round.png` only — never redraw or substitute.
 - **Homepage copy**: preserve brand-led hero/subhead from `docs/marketing-context.md` unless explicitly asked to change copy.
-- **Primary CTA intent**: “Book a free consultation” / discovery-call flows (Calendly) — map to `{colors.primary}` button styles, not Cursor “Download” product CTAs.
+- **Primary CTA intent**: “Book a free consultation” / discovery-call request forms — map to `{colors.primary}` button styles, not Cursor “Download” product CTAs.
 - **Font substitute**: CursorGothic is licensed — use **Geist** (current) or **Inter** at weight 400 with negative letter-spacing for display. Keep **Source Serif 4** only if editorial long-form (testimonials/quotes) still needs a serif; default body in this system is the same sans as display.
 - **Timeline pastels**: use only inside agent-workflow / product mockups (Thinking → Done), never as page accents or system status colors.
 - **Code surfaces**: JetBrains Mono for workflow logs, agent panes, and any monospace UI — Cartra is not an IDE, but agent systems still benefit from mono on those surfaces.

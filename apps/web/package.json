@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint --max-warnings 0",
     "check:public-copy": "node scripts/check-public-copy.mjs",
-    "check-types": "next typegen && tsc --noEmit"
+    "check-types": "next typegen && tsc --noEmit",
+    "test:consultation": "node scripts/test-consultation.mjs"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
