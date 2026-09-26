@@ -458,7 +458,7 @@ The system uses **hairline-only depth**. No drop shadows, no elevation tiers. Ca
 
 ### Hero Agent Animation (homepage)
 
-**`hero-agent-panel`** — White card (`{colors.surface-card}`) with hairline border, rounded `{rounded.lg}`. Beside hero copy on `lg+`; **stacked below copy on mobile/tablet** (single-column grid). Layout: **50/50 grid on `lg`**, then capped copy column (`36rem`) + fluid animation column on `xl+`. Panel fills its column (`width: 100%`, height matched to copy block on desktop via `items-stretch`). Timeline pastels scoped to in-panel pills only.
+**`hero-agent-panel`** — White card (`{colors.surface-card}`) with hairline border, rounded `{rounded.lg}`. Beside hero copy on `lg+`; **below `lg` it moves under the explainer reel** (its own section after `#explainer`, mounted once via `apps/web/app/components/HeroPanelSlot.tsx`) so the reel can peek above the fold. Layout: **50/50 grid on `lg`**, then capped copy column (`36rem`) + fluid animation column on `xl+`. Panel fills its column (`width: 100%`, height matched to copy block on desktop via `items-stretch`). Timeline pastels scoped to in-panel pills only.
 
 **Tab bar** — Two tabs: **Workflow Agents** and **Voice Agents**. Clickable — users can switch manually; tabs also auto-advance after each demo completes one full loop (~11.8s). Active tab uses card surface + hairline border (no shadow). Respects `prefers-reduced-motion` (static final frame, no auto-cycle).
 
@@ -470,6 +470,17 @@ The system uses **hairline-only depth**. No drop shadows, no elevation tiers. Ca
 **Visual reference:** Task-row and transcript patterns inspired by [beautifului.dev](https://www.beautifului.dev) (Task Rows, Approval Card, Chat primitives). Keep animations hairline-only — no shadows, no extra brand colors beyond timeline pastels.
 
 **Implementation:** `packages/ui/src/primitives/HeroAgentAnimation.tsx` (orchestrator), `hero/HeroWorkflowAgentDemo.tsx`, `hero/HeroVoiceAgentDemo.tsx`. Styles: `.ds-hero-agent-*`, `.ds-hero-voice-*` in `components.css`.
+
+### Explainer Reel (homepage)
+
+**`explainer-reel`** — "Cartra in 30 seconds": a 30s kinetic-type film directly under the hero. Five scenes (problem, what we do, how it works, one proof point, Cartra end card) on a 120bpm grid, built from DOM + Web Animations (no video file, no dependencies). The hero (`.ds-xp-hero-peek`) is shortened so the reel's eyebrow and the top of its ink stage peek above the fold on portrait phones, tablets and desktop (landscape phones scroll to it).
+
+- **Hero peek tiers:** hero min-height is `100svh - --xp-peek` on `lg+` and `min(100svh - --xp-peek-m, 38rem)` below `lg` (tall tablets see more of the reel instead of an empty hero). At `lg+` with a viewport height of 820px or less, the hero h1 caps at `max(2rem, min(display-xl, 8.5vh))` with `pt-24` / `pb-6` and tighter copy spacing, so it no longer always renders at the full 72px; at 660px or less the hero padding tightens further (`pt-20` / `pb-4`).
+- **Stage:** 16:9 at `640px+`, 4:5 on phones. Sized in container units (`--u` = 1cqw portrait / 1cqh landscape) so the composition scales like a video. Static hairline edge beneath the full-bleed fields, `{rounded.lg}`, no shadow.
+- **Scoped departures (inside `.ds-xp-reel` only):** Aeonik **500/600** at display scale for the requested bold type (never 700), and **one full-bleed `{colors.primary}` field** for the proof scene. Orange otherwise marks only the agent and its work: the caret, the "busywork." selection bar, the word "agents", the process rail, and the 01/02/03 step numerals (`{colors.primary-active}`). No timeline pastels.
+- **Playback:** server-renders a static poster frame; plays once half the stage is in view, pauses offscreen or in a hidden tab, stops on the end card after three loops (Replay). Pause/Play button plus five chapter segments; clicking the stage toggles too.
+- **Reduced motion:** nothing autoplays; Previous / Next step through held frames that together show every line. A screen-reader transcript is always present.
+- **Implementation:** `packages/ui/src/primitives/ExplainerReel.tsx` (player), `primitives/explainer/` (`timeline.ts` choreography, `engine.ts`, `measure.ts`, `ReelStage.tsx`, `copy.ts`). Styles: `.ds-xp-*` in `styles/explainer.css`. `?xp=<seconds>` holds any frame for review.
 
 ### Cards
 

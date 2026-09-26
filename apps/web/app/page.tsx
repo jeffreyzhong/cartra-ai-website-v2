@@ -11,7 +11,7 @@ import {
   StatGroup,
   Rise,
   Words,
-  HeroAgentAnimation,
+  ExplainerReel,
   type StatItem,
 } from '@repo/ui';
 import Navigation from './components/Navigation';
@@ -20,6 +20,7 @@ import AgentSystems from './components/AgentSystems';
 import ConsultationButton from './components/ConsultationButton';
 import ContactLink from './components/ContactLink';
 import SeoInternalLinks from './components/SeoInternalLinks';
+import HeroPanelSlot from './components/HeroPanelSlot';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
@@ -81,18 +82,23 @@ export default function Home() {
       {/* Hero */}
       <Section
         id="home"
-        padding="hero"
-        className="overflow-hidden lg:min-h-[calc(100svh-4rem)] lg:flex lg:items-center"
+        padding="heroPeek"
+        className="ds-xp-hero-peek overflow-hidden flex flex-col justify-center lg:flex-row lg:items-center"
       >
         <Container size="2xl" className="w-full">
           <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-10 xl:grid-cols-[minmax(0,36rem)_minmax(0,1fr)] xl:gap-12">
             <div className="flex flex-col items-start text-left min-w-0">
-              <Display as="h1" size="xl" maxWidth="24ch">
+              <Display
+                as="h1"
+                size="xl"
+                maxWidth="24ch"
+                style={{ fontSize: 'var(--xp-hero-display, var(--text-display-xl))' }}
+              >
                 <Words words={HEADLINE_WORDS} />
               </Display>
 
               <Rise step={3} className="w-full">
-                <Body size="lg" className="mt-8" maxWidth="52ch">
+                <Body size="lg" className="mt-8 [@media(min-width:1024px)_and_(max-height:820px)]:mt-6" maxWidth="52ch">
                   Don&apos;t fall behind in the AI era. Transform your company with AI
                   that&apos;s fully tailored to your specific operations and procedures.
                 </Body>
@@ -100,15 +106,29 @@ export default function Home() {
 
               <Rise
                 step={5}
-                className="mt-10 flex flex-wrap items-center justify-start gap-3"
+                className="mt-10 [@media(min-width:1024px)_and_(max-height:820px)]:mt-8 flex flex-wrap items-center justify-start gap-3"
               >
                 <ConsultationButton>Book a free consultation</ConsultationButton>
                 <Button variant="ghost" as="a" href="#process">See our process</Button>
               </Rise>
             </div>
 
-            <HeroAgentAnimation className="flex w-full min-w-0 lg:self-stretch" />
+            <HeroPanelSlot placement="desktop" className="hidden lg:flex w-full min-w-0 lg:self-stretch" />
           </div>
+        </Container>
+      </Section>
+
+      {/* Explainer reel: peeks above the fold under the hero */}
+      <Section id="explainer" padding="flush" aria-labelledby="explainer-title">
+        <Container size="2xl">
+          <ExplainerReel logoSrc="/cartra_geometric_logo_round.png" headingId="explainer-title" />
+        </Container>
+      </Section>
+
+      {/* Hero agent demo, relocated below the reel on phones and tablets */}
+      <Section padding="tight" className="lg:hidden">
+        <Container size="2xl">
+          <HeroPanelSlot placement="mobile" className="flex w-full min-w-0" />
         </Container>
       </Section>
 

@@ -1,0 +1,832 @@
+/**
+ * Cartra Design System — Explainer reel ("Cartra in 30 seconds")
+ *
+ * Visual source of truth: root DESIGN.md. Deliberate, component-scoped
+ * departures requested for this film: Aeonik 500/600 at display scale
+ * ("bold text", still never 700) and one full-bleed orange field (proof).
+ *
+ * The stage is a size container. One unit drives every size:
+ *   --u = 1cqw in portrait (phones, 4:5), 1cqh in landscape (16:9)
+ * so the composition scales like a video at any width.
+ * All motion lives in explainer/timeline.ts (Web Animations).
+ */
+
+:root {
+  /* Distance from the viewport bottom to the explainer's top edge at load. */
+  --xp-peek: clamp(136px, 20svh, 200px);
+  --xp-peek-m: clamp(140px, 22svh, 190px);
+}
+
+/* ── Hero peek (applied to the home hero section) ──────── */
+
+/* min-height is only a floor: the hero must also stay short enough on small
+   screens for the reel to show. Below lg the floor is capped so tall tablets
+   don't get a mostly empty hero (they simply see more of the reel). */
+.ds-xp-hero-peek {
+  min-height: min(calc(100vh - var(--xp-peek-m)), 38rem);
+  min-height: min(calc(100svh - var(--xp-peek-m)), 38rem);
+}
+
+@media (min-width: 1024px) {
+  .ds-xp-hero-peek {
+    min-height: calc(100vh - var(--xp-peek));
+    min-height: calc(100svh - var(--xp-peek));
+  }
+}
+
+/* Short laptop viewports (e.g. 1366x657 inside Chrome): cap the hero h1 by
+   viewport height so the hero fits under its floor. Plain vh on purpose: a
+   custom property gets no fallback, and desktop has no dynamic toolbar. */
+@media (min-width: 1024px) and (max-height: 820px) {
+  .ds-xp-hero-peek {
+    --xp-hero-display: max(2rem, min(var(--text-display-xl), 8.5vh));
+  }
+}
+
+/* Very short desktop windows (e.g. 1280x600 at 150% scaling): the hero agent
+   panel's content sets the row height, so only the padding can give. The
+   element selector outranks the Section padding utilities. */
+@media (min-width: 1024px) and (max-height: 660px) {
+  section.ds-xp-hero-peek {
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+  }
+}
+
+@property --xp-n {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+
+/* ── Frame: header row, stage, controls ─────────────────── */
+
+.ds-xp {
+  width: 100%;
+  container: xpframe / inline-size;
+}
+
+@media (min-width: 640px) {
+  /* Keep the whole 16:9 frame plus controls visible under the 64px nav. */
+  .ds-xp {
+    width: min(100%, calc((100vh - 11rem) * 16 / 9));
+    width: min(100%, calc((100svh - 11rem) * 16 / 9));
+    margin-inline: auto;
+  }
+}
+
+.ds-xp-header {
+  display: flex;
+  align-items: center;
+  min-height: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.ds-xp-title {
+  margin: 0;
+  line-height: 1;
+}
+
+/* Body tone rather than muted: 11px text needs 4.5:1 on the canvas. */
+.ds-xp-title .ds-eyebrow {
+  color: var(--c-body);
+}
+
+.ds-xp-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  container: xp / size;
+  overflow: hidden;
+  overflow: clip;
+  border-radius: var(--radius-lg);
+  background: var(--c-surface-card);
+  isolation: isolate;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 640px) {
+  .ds-xp-stage {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.ds-xp-reel {
+  --u: 1cqw;
+  --mx: 7%;
+  position: absolute;
+  inset: 0;
+  font-family: var(--font-display);
+  font-kerning: normal;
+  white-space: nowrap;
+  color: var(--c-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+@container xp (orientation: landscape) {
+  .ds-xp-reel {
+    --u: 1cqh;
+    --mx: 7.5%;
+  }
+  .xp-br-p {
+    display: none;
+  }
+}
+
+@container xp (orientation: portrait) {
+  .xp-br-l {
+    display: none;
+  }
+}
+
+/* ── Layers, in paint order ─────────────────────────────── */
+
+.ds-xp-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.ds-xp-what,
+.ds-xp-how {
+  z-index: 1;
+}
+
+.ds-xp-brand {
+  z-index: 2;
+}
+
+.ds-xp-orange {
+  z-index: 3;
+  background: var(--c-primary);
+  color: var(--c-surface-card);
+}
+
+.ds-xp-rail {
+  z-index: 4;
+}
+
+.ds-xp-ink {
+  z-index: 5;
+  background: var(--c-text);
+  color: var(--c-bg);
+}
+
+.ds-xp-ink-loop {
+  z-index: 6;
+  background: var(--c-text);
+}
+
+.ds-xp-caret {
+  z-index: 7;
+}
+
+.ds-xp-edge {
+  z-index: 0;
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+/* ── Type masks ─────────────────────────────────────────── */
+
+.ds-xp-stack {
+  position: absolute;
+  left: var(--mx);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Vertical clip only; padding + negative margin give glyphs room without
+   changing the line pitch. */
+.ds-xp-mask,
+.ds-xp-imask {
+  overflow-x: visible;
+  overflow-y: clip;
+  padding-block: 0.12em 0.22em;
+  margin-block: -0.12em -0.22em;
+}
+
+.ds-xp-mask {
+  display: block;
+}
+
+.ds-xp-imask {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ds-xp-mask-slam {
+  padding-block: 0.22em 0.26em;
+  margin-block: -0.22em -0.26em;
+}
+
+.ds-xp-line {
+  display: block;
+}
+
+.ds-xp-vmove,
+.ds-xp-verb,
+.ds-xp-word,
+.ds-xp-line-i,
+.ds-xp-wordmark-i {
+  display: inline-block;
+}
+
+.ds-xp-word,
+.ds-xp-slam {
+  transform-origin: 0 80%;
+}
+
+/* Caret stops (measured) and the poster's inline caret share one geometry. */
+.ds-xp-probe {
+  display: inline-block;
+  width: 0;
+  height: 0.82em;
+  vertical-align: -0.1em;
+  margin-left: 0.06em;
+  margin-right: -0.06em;
+}
+
+.ds-xp-probe-start {
+  margin: 0;
+}
+
+.ds-xp-poster-caret {
+  display: inline-block;
+  width: 0.09em;
+  height: 0.82em;
+  vertical-align: -0.1em;
+  margin-left: 0.06em;
+  margin-right: -0.15em;
+  background: currentColor;
+  visibility: hidden;
+}
+
+.ds-xp-caret {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(0.9 * var(--u));
+  height: calc(8.2 * var(--u));
+  transform-origin: 0 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.ds-xp-caret-i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+}
+
+.ds-xp-caret-c {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--c-bg);
+}
+
+/* Poster: the server-rendered t=250ms frame, shown until playback starts. */
+.ds-xp-reel:not([data-live]) [data-poster='hide'],
+.ds-xp-reel:not([data-live]) .ds-xp-caret,
+.ds-xp-reel:not([data-live]) .ds-xp-ink-loop {
+  visibility: hidden;
+}
+
+.ds-xp-reel:not([data-live]) .ds-xp-poster-caret {
+  visibility: visible;
+  animation: ds-xp-blink 1s steps(1, end) 5;
+}
+
+@keyframes ds-xp-blink {
+  0%,
+  49.99% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ── Scene 1 · The problem ──────────────────────────────── */
+
+.ds-xp-verbs {
+  position: absolute;
+  left: var(--mx);
+  top: 6%;
+  font-size: calc(15 * var(--u));
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.ds-xp-punch {
+  top: 30%;
+  gap: calc(2.5 * var(--u));
+  font-size: calc(13 * var(--u));
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.ds-xp-sel {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  transform-origin: 50% 50%;
+}
+
+.ds-xp-sel-bar {
+  position: absolute;
+  left: -0.04em;
+  right: -0.02em;
+  top: 0.02em;
+  bottom: -0.2em;
+  background: var(--c-primary);
+  transform-origin: 100% 50%;
+}
+
+.ds-xp-sel-txt {
+  position: relative;
+}
+
+.ds-xp-sel-ink {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--c-text);
+}
+
+/* ── Scene 2 · What we do ───────────────────────────────── */
+
+.ds-xp-headline {
+  top: 22%;
+  font-size: calc(10 * var(--u));
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.ds-xp-agent {
+  color: var(--c-primary);
+}
+
+.ds-xp-no {
+  top: 26%;
+  gap: calc(1.9 * var(--u));
+  font-size: calc(11 * var(--u));
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+/* ── Scene 3 · How it works ─────────────────────────────── */
+
+.ds-xp-odo {
+  position: absolute;
+  left: var(--mx);
+  top: 7%;
+  height: 1em;
+  overflow: hidden;
+  overflow: clip;
+  font-size: max(24px, calc(7 * var(--u)));
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-primary-active);
+}
+
+.ds-xp-odo-strip {
+  display: flex;
+  flex-direction: column;
+}
+
+.ds-xp-odo-strip > span {
+  display: block;
+  height: 1em;
+}
+
+.ds-xp-steps {
+  top: 16%;
+  gap: calc(1.25 * var(--u));
+  font-size: calc(10 * var(--u));
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--c-text);
+}
+
+.ds-xp-sup {
+  top: 50%;
+  right: var(--mx);
+  font-size: max(18px, calc(5.6 * var(--u)));
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--c-body);
+}
+
+.ds-xp-rail {
+  position: absolute;
+  left: var(--mx);
+  right: var(--mx);
+  top: 88%;
+  height: max(3px, calc(0.6 * var(--u)));
+  transform-origin: 0 50%;
+}
+
+.ds-xp-rail-track,
+.ds-xp-rail-fill {
+  position: absolute;
+  inset: 0;
+}
+
+.ds-xp-rail-track {
+  background: var(--c-border);
+}
+
+.ds-xp-rail-fill {
+  background: var(--c-primary);
+  transform-origin: 0 50%;
+}
+
+.ds-xp-rail-white {
+  position: absolute;
+  inset: 0;
+  background: var(--c-surface-card);
+}
+
+/* ── Scene 4 · Proof ────────────────────────────────────── */
+
+.ds-xp-stat-wrap {
+  position: absolute;
+  left: var(--mx);
+  top: 14%;
+  font-size: calc(42 * var(--u));
+  font-weight: 600;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+}
+
+.ds-xp-stat {
+  display: block;
+  transform-origin: 0 100%;
+}
+
+.ds-xp-num {
+  position: relative;
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-xp-num-ghost {
+  visibility: hidden;
+}
+
+/* --xp-n does not inherit, so the counter is set on the animated element
+   itself and only read by its ::before. */
+.ds-xp-num-live {
+  position: absolute;
+  top: 0;
+  right: 0;
+  counter-reset: xp-n var(--xp-n);
+}
+
+.ds-xp-num-live::before {
+  content: counter(xp-n);
+}
+
+.ds-xp-stat-label {
+  position: absolute;
+  left: var(--mx);
+  top: 56%;
+  font-size: max(24px, calc(7 * var(--u)));
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+/* ── Scene 5 · Cartra ───────────────────────────────────── */
+
+.ds-xp-lockup {
+  position: absolute;
+  left: var(--mx);
+  top: 24%;
+  display: flex;
+  align-items: center;
+  gap: calc(7.8 * var(--u));
+}
+
+.ds-xp-logo {
+  position: relative;
+  flex: none;
+  width: calc(21.8 * var(--u));
+  aspect-ratio: 1;
+}
+
+.ds-xp-logo-clip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  clip-path: circle(50%);
+}
+
+.ds-xp-logo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ds-xp-disc {
+  position: absolute;
+  inset: 0;
+  background: var(--c-primary);
+}
+
+.ds-xp-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--c-border);
+  border-radius: 50%;
+}
+
+.ds-xp-wordmark {
+  font-size: calc(14 * var(--u));
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--c-text);
+}
+
+.ds-xp-tagline {
+  position: absolute;
+  left: var(--mx);
+  top: 56%;
+  font-size: calc(6.4 * var(--u));
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+}
+
+/* ── Landscape composition (16:9) ───────────────────────── */
+
+@container xp (orientation: landscape) {
+  .ds-xp-verbs {
+    font-size: calc(18 * var(--u));
+  }
+  .ds-xp-punch {
+    top: 38%;
+    gap: calc(1 * var(--u));
+    font-size: calc(13.5 * var(--u));
+  }
+  .ds-xp-headline {
+    top: 30%;
+    gap: calc(1 * var(--u));
+    font-size: calc(11 * var(--u));
+  }
+  .ds-xp-no {
+    top: 27%;
+    gap: calc(0.7 * var(--u));
+    font-size: calc(13.5 * var(--u));
+  }
+  .ds-xp-odo {
+    top: 9%;
+    font-size: max(24px, calc(6 * var(--u)));
+  }
+  .ds-xp-steps {
+    top: 22%;
+    gap: calc(1.5 * var(--u));
+  }
+  .ds-xp-sup {
+    left: 58%;
+    font-size: calc(4.4 * var(--u));
+    line-height: 1.2;
+  }
+  .ds-xp-sup-0 {
+    top: 22%;
+  }
+  .ds-xp-sup-1 {
+    top: 33%;
+  }
+  .ds-xp-sup-2 {
+    top: 44%;
+  }
+  .ds-xp-rail {
+    top: 86%;
+  }
+  .ds-xp-stat-wrap {
+    top: 8%;
+    font-size: calc(50 * var(--u));
+  }
+  .ds-xp-stat-label {
+    top: 60%;
+    font-size: max(24px, calc(5.2 * var(--u)));
+  }
+  .ds-xp-lockup {
+    top: 22%;
+    gap: calc(8.3 * var(--u));
+  }
+  .ds-xp-logo {
+    width: calc(23.3 * var(--u));
+  }
+  .ds-xp-wordmark {
+    font-size: calc(15 * var(--u));
+  }
+  .ds-xp-tagline {
+    top: 60%;
+    font-size: calc(5.2 * var(--u));
+  }
+}
+
+/* ── Controls ───────────────────────────────────────────── */
+
+.ds-xp-controls {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.ds-xp-toggle {
+  flex: none;
+  justify-content: center;
+  width: 34px;
+  padding: 0;
+}
+
+.ds-xp-toggle-text {
+  display: none;
+}
+
+.ds-xp-now {
+  flex: none;
+  align-self: center;
+  width: 7.25rem;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--c-text);
+}
+
+/* Reduced motion adds Previous / Next; the readout drops to the counter. */
+.ds-xp-steppers {
+  display: flex;
+  flex: none;
+  gap: 6px;
+}
+
+.ds-xp-step {
+  justify-content: center;
+  width: 34px;
+  padding: 0;
+}
+
+.ds-xp-steppers ~ .ds-xp-now {
+  width: 1.75rem;
+}
+
+.ds-xp-steppers ~ .ds-xp-now .ds-xp-now-label {
+  display: none;
+}
+
+/* Narrow frames with steppers: drop the counter and tighten the row. */
+@container xpframe (max-width: 359px) {
+  .ds-xp-steppers ~ .ds-xp-now {
+    display: none;
+  }
+  .ds-xp-controls {
+    gap: 8px;
+  }
+}
+
+/* Very narrow phones: counter only, so every scene target stays >= 24px. */
+@container xpframe (max-width: 339px) {
+  .ds-xp-now {
+    width: 1.75rem;
+  }
+  .ds-xp-now-label {
+    display: none;
+  }
+}
+
+.ds-xp-now-n {
+  font-variant-numeric: tabular-nums;
+  color: var(--c-body);
+}
+
+.ds-xp-segs {
+  display: flex;
+  flex: 1;
+  gap: 6px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-xp-segs > li {
+  flex-basis: 0;
+  min-width: 24px;
+}
+
+.ds-xp-seg {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ds-xp-seg:focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.ds-xp-seg-track {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 3px;
+  overflow: hidden;
+  /* Without labels the track alone identifies the control: >= 3:1 needed. */
+  background: var(--c-text-muted);
+}
+
+.ds-xp-seg-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--c-text);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+.ds-xp-seg-label {
+  display: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--c-body);
+}
+
+.ds-xp-seg[aria-current='step'] .ds-xp-seg-label {
+  color: var(--c-text);
+}
+
+/* Labelled controls once the frame itself is wide enough (a container query,
+   so landscape phones with a height-capped frame keep the compact readout). */
+@container xpframe (min-width: 560px) {
+  /* Fixed width so Pause / Play / Replay never nudge the chapter segments. */
+  .ds-xp-toggle {
+    width: 6.5rem;
+    padding: 6px 12px;
+  }
+  .ds-xp-toggle-text {
+    display: inline;
+  }
+  .ds-xp-now {
+    display: none;
+  }
+  .ds-xp-seg {
+    justify-content: flex-start;
+    padding-top: 8px;
+  }
+  .ds-xp-seg-track {
+    height: 2px;
+    background: var(--c-border);
+  }
+  .ds-xp-seg-label {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-xp-reel:not([data-live]) .ds-xp-poster-caret {
+    animation: none;
+  }
+}
