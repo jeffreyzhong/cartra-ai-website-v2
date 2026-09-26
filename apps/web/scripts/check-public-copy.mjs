@@ -75,6 +75,25 @@ for (const filePath of [...walk(appRoot), ...walk(publicRoot)]) {
   }
 }
 
+// On-screen copy that lives outside the app: no em or en dashes allowed.
+const dashCheckedFiles = [
+  path.resolve(repoRoot, 'packages/ui/src/primitives/explainer/copy.ts'),
+];
+
+for (const filePath of dashCheckedFiles) {
+  const lines = readFileSync(filePath, 'utf8').split(/\r?\n/);
+  for (const [index, line] of lines.entries()) {
+    if (/[\u2013\u2014]/.test(line)) {
+      findings.push({
+        label: 'em or en dash in on-screen copy',
+        line: index + 1,
+        path: path.relative(repoRoot, filePath),
+        text: line.trim(),
+      });
+    }
+  }
+}
+
 if (findings.length > 0) {
   console.error('Public copy leakage check failed:');
   for (const finding of findings) {

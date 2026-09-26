@@ -11,6 +11,7 @@
  *   import '@repo/ui/tokens.css';
  *   import '@repo/ui/motion.css';
  *   import '@repo/ui/components.css';
+ *   import '@repo/ui/explainer.css';
  *
  * And add the Tailwind preset to their tailwind.config:
  *   import dsPreset from '@repo/ui/tailwind-preset';
@@ -41,6 +42,7 @@ export { Rise } from './primitives/Rise';
 export { Words } from './primitives/Word';
 export { AgentMockup } from './primitives/AgentMockup';
 export { HeroAgentAnimation } from './primitives/HeroAgentAnimation';
+export { ExplainerReel } from './primitives/ExplainerReel';
 
 // Hooks
 export { useReducedMotion } from './hooks/useReducedMotion';

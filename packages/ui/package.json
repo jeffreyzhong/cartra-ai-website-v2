@@ -13,6 +13,7 @@
     "./tokens.css": "./src/styles/tokens.css",
     "./motion.css": "./src/styles/motion.css",
     "./components.css": "./src/styles/components.css",
+    "./explainer.css": "./src/styles/explainer.css",
     "./tailwind-preset": {
       "types": "./src/tailwind-preset.ts",
       "default": "./src/tailwind-preset.ts"

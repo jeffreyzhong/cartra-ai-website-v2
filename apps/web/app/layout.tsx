@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "@repo/ui/tokens.css";
 import "@repo/ui/motion.css";
 import "@repo/ui/components.css";
+import "@repo/ui/explainer.css";
 import "./globals.css";
 import JsonLd from "./components/JsonLd";
 import Analytics from "./components/Analytics";
