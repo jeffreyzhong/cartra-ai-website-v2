@@ -73,7 +73,11 @@ function ConsultationDialog({ onClose }: { onClose: () => void }) {
       const response = await fetch("/api/consultation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, "cf-turnstile-response": token }),
+        body: JSON.stringify({
+          ...data,
+          source: window.location.pathname,
+          "cf-turnstile-response": token,
+        }),
         signal: AbortSignal.timeout(25000),
       });
       const result = await response.json();
