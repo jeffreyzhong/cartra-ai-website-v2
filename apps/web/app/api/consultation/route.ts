@@ -1,5 +1,6 @@
 import {
   parseConsultation,
+  parseSourcePage,
   validEmail,
   workEmailError,
 } from "../../lib/consultation";
@@ -61,6 +62,7 @@ export async function POST(request: Request) {
       400,
     );
   if (input.website) return failure("Unable to verify this request.", 400);
+  const sourcePage = parseSourcePage(input.source);
 
   const account = process.env.CLOUDFLARE_ACCOUNT_ID;
   const apiToken = process.env.CLOUDFLARE_EMAIL_API_TOKEN;
@@ -137,6 +139,7 @@ export async function POST(request: Request) {
             `Role: ${details.role}`,
             `Company: ${details.company}`,
             `Annual revenue (USD): ${details.revenue}`,
+            ...(sourcePage ? [`Source page: ${sourcePage}`] : []),
             "",
             "What they would like help with:",
             details.needs || "Not provided",

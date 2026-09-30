@@ -12,13 +12,14 @@ import {
 import Navigation from '../components/Navigation';
 import ContactCenter from '../components/ContactCenter';
 import { createPageMetadata } from '../lib/seo';
+import { FOUNDER } from '../content/founder';
 
-const PROFILE_IMAGE = '/jeff-zhong-headshot.png';
-const WECHAT_QR_IMAGE = '/wechat-qrcode.jpg';
-const WHATSAPP_QR_IMAGE = '/whatsapp-qrcode.jpg';
-const WECHAT_ID = 'jzhong2468';
-const EMAIL = 'jeff@cartra.ai';
-const WHATSAPP_URL = 'https://wa.me/19094385867';
+const PROFILE_IMAGE = FOUNDER.headshot;
+const WECHAT_QR_IMAGE = FOUNDER.wechatQr;
+const WHATSAPP_QR_IMAGE = FOUNDER.whatsappQr;
+const WECHAT_ID = FOUNDER.wechatId;
+const EMAIL = FOUNDER.email;
+const WHATSAPP_URL = FOUNDER.whatsappUrl;
 
 export const metadata: Metadata = {
   ...createPageMetadata({

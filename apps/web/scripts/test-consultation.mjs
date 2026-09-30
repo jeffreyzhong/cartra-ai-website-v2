@@ -133,6 +133,19 @@ try {
   assert.equal(calls[0].body.response, payload["cf-turnstile-response"]);
   assert.ok(calls[1].body.text.includes("Role: CEO"));
   assert.ok(calls[1].body.text.includes(payload.needs));
+  assert.ok(!calls[1].body.text.includes("Source page"));
+  calls = [];
+  assert.equal((await POST(request({ ...payload, source: "/30" }))).status, 200);
+  assert.ok(calls[1].body.text.includes("Source page: /30"));
+  calls = [];
+  assert.equal(
+    (await POST(request({ ...payload, source: "/30\nBcc: x@example.com" })))
+      .status,
+    200,
+  );
+  assert.ok(!calls[1].body.text.includes("Source page"));
+  assert.equal(lib.parseSourcePage("https://other.example/30"), "");
+  assert.equal(lib.parseSourcePage({ path: "/30" }), "");
   assert.equal(
     lib.parseConsultation({ ...payload, needs: undefined }).needs,
     "",
