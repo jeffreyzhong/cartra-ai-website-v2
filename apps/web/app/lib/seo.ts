@@ -202,4 +202,7 @@ export const SITEMAP_ROUTES = [
   '/ai-automation-agency',
   '/ai-workflow-automation',
   '/case-studies',
+  '/support',
+  '/privacy',
+  '/terms',
 ];

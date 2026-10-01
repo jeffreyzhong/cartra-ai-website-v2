@@ -75,9 +75,12 @@ for (const filePath of [...walk(appRoot), ...walk(publicRoot)]) {
   }
 }
 
-// On-screen copy that lives outside the app: no em or en dashes allowed.
+// Copy-only files rendered on screen: no em or en dashes allowed.
 const dashCheckedFiles = [
   path.resolve(repoRoot, 'packages/ui/src/primitives/explainer/copy.ts'),
+  path.resolve(appRoot, 'content/privacy-policy.tsx'),
+  path.resolve(appRoot, 'content/terms-of-use.tsx'),
+  path.resolve(appRoot, 'content/support.ts'),
 ];
 
 for (const filePath of dashCheckedFiles) {

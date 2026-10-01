@@ -2,14 +2,19 @@
 
 import { useState } from 'react';
 import { Card } from '@repo/ui';
-import { FAQS } from '../content/faqs';
+import { FAQS, type FAQItem } from '../content/faqs';
 
-export default function FAQ() {
+type FAQProps = {
+  /** Questions to render. Defaults to the home page sales FAQ. */
+  items?: FAQItem[];
+};
+
+export default function FAQ({ items = FAQS }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className="space-y-3">
-      {FAQS.map((faq, index) => {
+      {items.map((faq, index) => {
         const isOpen = openIndex === index;
         return (
           <Card key={index}>
