@@ -9,6 +9,7 @@ import "./globals.css";
 import JsonLd from "./components/JsonLd";
 import Analytics from "./components/Analytics";
 import ConsultationProvider from "./components/ConsultationProvider";
+import SiteFooter from "./components/SiteFooter";
 import {
   DEFAULT_DESCRIPTION,
   LOGO_PATH,
@@ -126,7 +127,10 @@ export default function RootLayout({
           }}
         />
         <Analytics />
-        <ConsultationProvider>{children}</ConsultationProvider>
+        <ConsultationProvider>
+          {children}
+          <SiteFooter />
+        </ConsultationProvider>
       </body>
     </html>
   );
