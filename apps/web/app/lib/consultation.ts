@@ -90,7 +90,7 @@ export function workEmailError(value: string) {
   return "";
 }
 
-/** Page a request was sent from (e.g. "/30"), for lead attribution. Anything unexpected is dropped. */
+/** Page a request was sent from (e.g. "/agent-systems"), for lead attribution. Anything unexpected is dropped. */
 export function parseSourcePage(value: unknown) {
   return typeof value === "string" && /^\/[A-Za-z0-9/_-]{0,80}$/.test(value)
     ? value
